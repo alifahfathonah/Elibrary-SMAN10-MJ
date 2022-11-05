@@ -73,6 +73,34 @@ class Buku_m extends CI_Model
         return $this->db->delete('kategori', ['id_kategori' => $id]);
     }
 
+    public function getDenda()
+    {
+        return $this->db->get('biaya_denda')->result();
+    }
+
+    public function simpanDenda($post)
+    {
+        $data = [
+            'harga_denda' => $post['harga_denda'],
+            'stat' => empty($this->db->get('biaya_denda')->result()) ? 'Aktif' : 'Tidak Aktif',
+            'tgl_tetap' => date('Y-m-d')
+        ];
+
+        return $this->db->insert('biaya_denda',$data);
+    }
+
+    public function setActiveDenda($id)
+    {
+        $this->db->update('biaya_denda',[ 'stat' => 'Tidak Aktif']);
+        
+        return $this->db->update('biaya_denda',[ 'stat' => 'Aktif'], ['id_biaya_denda' => $id]);
+    }
+
+    public function hapusDenda($id)
+    {
+        return $this->db->delete('biaya_denda', ['id_biaya_denda' => $id]);
+    }
+
 }
 
 

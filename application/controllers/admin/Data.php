@@ -130,6 +130,54 @@ class Data extends CI_Controller
         }
     }
 
+    public function denda()
+    {
+        $data = [
+            'denda' => $this->buku_m->getDenda()
+        ];
+        $this->template->load('template/template','buku/data_denda',$data);
+    }
+
+    public function denda_proses()
+    {
+        $post = $this->input->post(NULL, TRUE);
+        if (isset($post['simpan'])) {
+            if ($this->buku_m->simpanDenda($post)) {
+                $this->session->set_flashdata('msg', $this->msgSuccess('Berhasil ditambahkan'));
+                redirect('admin/data/denda');
+            }else{
+                $this->session->set_flashdata('msg', $this->msgError('Gagal ditambahkan!'));
+                redirect('admin/data/denda');
+            }
+        }else{
+            redirect('admin/data/denda');
+        }
+    }
+
+    public function denda_active($id)
+    {
+        check_admin();
+        if ($this->buku_m->setActiveDenda($id)) {
+            redirect('admin/data/denda');
+        }
+        redirect('penggunadmin/data/denda');
+    }
+
+    public function denda_hapus($id = null)
+    {
+        if ($id != null) {
+            if ($this->buku_m->hapusDenda($id)) {
+                $this->session->set_flashdata('msg', $this->msgSuccess('Berhasil dihapus'));
+                redirect('admin/data/denda');
+            }else{
+                $this->session->set_flashdata('msg', $this->msgError('Gagal dihapus!'));
+                redirect('admin/data/denda');
+            }
+        }else{
+            redirect('admin/data/denda');
+        }
+    }
+
     function uploadCover()
     {
         $config['upload_path'] = './assets/buku/cover/';
