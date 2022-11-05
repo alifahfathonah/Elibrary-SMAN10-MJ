@@ -4,59 +4,66 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Transaksi_m extends CI_Model
 {
 
-    public function getPemasukan()
+    public function getPeminjaman()
     {
-        $this->db->join('user', 'id_user = user');
-        $this->db->order_by('tanggal', 'DESC');
-        return $this->db->get('pemasukan')->result();
+        // $this->db->join('user', 'id_user = user');
+        // $this->db->order_by('tanggal', 'DESC');
+        return $this->db->get('peminjaman')->result();
     }
 
-    public function simpanPemasukan($post)
-    {
-        $data = [
-            'tanggal' => $post['tanggal'],
-            'catatan' => $post['catatan'],
-            'jumlah' => $post['jumlah'],
-            'status' => $post['status'],
-            'user' => $this->session->userdata('id_user')
-        ];
+    // public function getPemasukan()
+    // {
+    //     $this->db->join('user', 'id_user = user');
+    //     $this->db->order_by('tanggal', 'DESC');
+    //     return $this->db->get('pemasukan')->result();
+    // }
 
-        return $this->db->insert('pemasukan',$data);
-    }
+    // public function simpanPemasukan($post)
+    // {
+    //     $data = [
+    //         'tanggal' => $post['tanggal'],
+    //         'catatan' => $post['catatan'],
+    //         'jumlah' => $post['jumlah'],
+    //         'status' => $post['status'],
+    //         'user' => $this->session->userdata('id_user')
+    //     ];
 
-    public function hapusPemasukan($id)
-    {
-        return $this->db->delete('pemasukan', ['id_pemasukan' => $id]);
-    }
+    //     return $this->db->insert('pemasukan',$data);
+    // }
 
-    public function getPengeluaran()
-    {
-        $this->db->join('user', 'id_user = user');
-        $this->db->order_by('tanggal', 'DESC');
-        return $this->db->get('pengeluaran')->result();
-    }
+    // public function hapusPemasukan($id)
+    // {
+    //     return $this->db->delete('pemasukan', ['id_pemasukan' => $id]);
+    // }
 
-    public function simpanPengeluaran($post)
-    {
-        $data = [
-            'tanggal' => $post['tanggal'],
-            'catatan' => $post['catatan'],
-            'jumlah' => $post['jumlah'],
-            'user' => $this->session->userdata('id_user')
-        ];
+    // public function getPengeluaran()
+    // {
+    //     $this->db->join('user', 'id_user = user');
+    //     $this->db->order_by('tanggal', 'DESC');
+    //     return $this->db->get('pengeluaran')->result();
+    // }
 
-        return $this->db->insert('pengeluaran',$data);
-    }
+    // public function simpanPengeluaran($post)
+    // {
+    //     $data = [
+    //         'tanggal' => $post['tanggal'],
+    //         'catatan' => $post['catatan'],
+    //         'jumlah' => $post['jumlah'],
+    //         'user' => $this->session->userdata('id_user')
+    //     ];
 
-    public function hapusPengeluaran($id)
-    {
-        return $this->db->delete('pengeluaran', ['id_pengeluaran' => $id]);
-    }
+    //     return $this->db->insert('pengeluaran',$data);
+    // }
 
-    public function updateSelesai($id)
-    {
-        return $this->db->update('pemasukan', ['status' => 'selesai'], ['id_pemasukan' => $id]);
-    }
+    // public function hapusPengeluaran($id)
+    // {
+    //     return $this->db->delete('pengeluaran', ['id_pengeluaran' => $id]);
+    // }
+
+    // public function updateSelesai($id)
+    // {
+    //     return $this->db->update('pemasukan', ['status' => 'selesai'], ['id_pemasukan' => $id]);
+    // }
 
 }
 

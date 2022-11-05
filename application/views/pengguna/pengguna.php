@@ -38,7 +38,7 @@
 										email</th>
 									<th
 										class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-										No_telp</th>
+										role</th>
 									<th
 										class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
 										Status</th>
@@ -48,8 +48,8 @@
 							<tbody>
 								<?php foreach($user as $row) : ?>
 								<?php if($row->id_user == $this->session->userdata('id_user') ){
-                                        continue;
-                                    } ?>
+											continue;
+									} ?>
 								<tr>
 									<td class="align-middle text-center">
 										<span class="text-secondary text-xs font-weight-bold">
@@ -72,7 +72,7 @@
 										<p class="text-xs text-secondary mb-0"><?= $row->email ?></p>
 									</td>
 									<td>
-										<p class="text-xs text-secondary mb-0"><?= $row->no_telp ?></p>
+										<p class="text-xs text-secondary mb-0"><?= $row->role ?></p>
 									</td>
 									<td class="align-middle text-center text-sm">
 										<span title="Aktifkan/non aktifkan"
@@ -173,7 +173,7 @@
 							<select class="form-control" name="role" required>
 								<option value="">Pilih Role</option>
 								<option value="admin">Admin</option>
-								<option value="pegawai">Pegawai</option>
+								<option value="anggota">Anggota</option>
 							</select>
 						</div>
 					</div>

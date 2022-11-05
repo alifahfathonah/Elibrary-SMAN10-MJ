@@ -9,7 +9,7 @@
 					</div>
 					<div class="text-end pt-1">
 						<p class="text-sm mb-0 text-capitalize">Pendapatan Hari Ini</p>
-						<h4 class="mb-0">Rp. <?= number_format($pendapatan['pendapatan_sekarang']) ?></h4>
+						<h4 class="mb-0">Rp. <?= number_format($pendapatan['pendapatan_sekarang'] ?? 0) ?></h4>
 					</div>
 				</div>
 				<hr class="dark horizontal my-0">
@@ -29,7 +29,7 @@
 					</div>
 					<div class="text-end pt-1">
 						<p class="text-sm mb-0 text-capitalize">Pengeluaran Hari Ini</p>
-						<h4 class="mb-0">Rp. <?= number_format($pengeluaran['pengeluaran_sekarang']) ?></h4>
+						<h4 class="mb-0">Rp. <?= number_format($pengeluaran['pengeluaran_sekarang']  ?? 0) ?></h4>
 					</div>
 				</div>
 				<hr class="dark horizontal my-0">
@@ -49,7 +49,7 @@
 					</div>
 					<div class="text-end pt-1">
 						<p class="text-sm mb-0 text-capitalize">Transaksi Hari Ini</p>
-						<h4 class="mb-0"><?= number_format($transaksi['transaksi_sekarang']) ?></h4>
+						<h4 class="mb-0"><?= number_format($transaksi['transaksi_sekarang']  ?? 0) ?></h4>
 					</div>
 				</div>
 				<hr class="dark horizontal my-0">
@@ -69,7 +69,7 @@
 					</div>
 					<div class="text-end pt-1">
 						<p class="text-sm mb-0 text-capitalize">Pending</p>
-						<h4 class="mb-0"><?= number_format($pending) ?></h4>
+						<h4 class="mb-0"><?= number_format($pending  ?? 0) ?></h4>
 					</div>
 				</div>
 				<hr class="dark horizontal my-0">
@@ -89,7 +89,7 @@
 					</div>
 					<div class="text-end pt-1">
 						<p class="text-sm mb-0 text-capitalize">Pendapatan Bulan Ini</p>
-						<h4 class="mb-0">Rp. <?= number_format($pendapatan['pendapatan_perbulan']) ?></h4>
+						<h4 class="mb-0">Rp. <?= number_format($pendapatan['pendapatan_perbulan']  ?? 0) ?></h4>
 					</div>
 				</div>
 				<hr class="dark horizontal my-0">
@@ -109,7 +109,7 @@
 					</div>
 					<div class="text-end pt-1">
 						<p class="text-sm mb-0 text-capitalize">Pengeluaran Bulan Ini</p>
-						<h4 class="mb-0">Rp. <?= number_format($pengeluaran['pengeluaran_perbulan']) ?></h4>
+						<h4 class="mb-0">Rp. <?= number_format($pengeluaran['pengeluaran_perbulan']  ?? 0) ?></h4>
 					</div>
 				</div>
 				<hr class="dark horizontal my-0">
@@ -129,7 +129,7 @@
 					</div>
 					<div class="text-end pt-1">
 						<p class="text-sm mb-0 text-capitalize">Transaksi Bulan Ini</p>
-						<h4 class="mb-0"><?= number_format($transaksi['transaksi_perbulan']) ?></h4>
+						<h4 class="mb-0"><?= number_format($transaksi['transaksi_perbulan']  ?? 0) ?></h4>
 					</div>
 				</div>
 				<hr class="dark horizontal my-0">
@@ -149,7 +149,7 @@
 					</div>
 					<div class="text-end pt-1">
 						<p class="text-sm mb-0 text-capitalize">Pengguna</p>
-						<h4 class="mb-0"><?= number_format($pengguna) ?></h4>
+						<h4 class="mb-0"><?= number_format($pengguna  ?? 0) ?></h4>
 					</div>
 				</div>
 				<hr class="dark horizontal my-0">
@@ -207,7 +207,7 @@
 		<div class="card my-4">
 			<div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
 				<div class="bg-gradient-info shadow-primary border-radius-lg pt-4 pb-3">
-					<h6 class="text-white text-capitalize ps-3">Pemasukan Terbaru</h6>
+					<h6 class="text-white text-capitalize ps-3">Peminjaman Terbaru</h6>
 				</div>
 			</div>
 			<div class="card-body px-0 pb-2">
@@ -254,7 +254,7 @@
 									<p class="text-xs text-secondary mb-0"><?= $row->catatan ?></p>
 								</td>
 								<td>
-									<p class="text-xs font-weight-bold mb-0">Rp. <?= number_format($row->jumlah) ?></p>
+									<p class="text-xs font-weight-bold mb-0">Rp. <?= number_format($row->jumlah  ?? 0) ?></p>
 								</td>
 								<td>
 									<p class="text-xs text-secondary mb-0"><?= $row->nama ?></p>
@@ -271,7 +271,7 @@
 		<div class="card my-4">
 			<div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
 				<div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-					<h6 class="text-white text-capitalize ps-3">Pengeluaran Terbaru</h6>
+					<h6 class="text-white text-capitalize ps-3">Pengembalian Terbaru</h6>
 				</div>
 			</div>
 			<div class="card-body px-0 pb-2">
@@ -302,7 +302,7 @@
 									<p class="text-xs text-secondary mb-0"><?= $row->catatan ?></p>
 								</td>
 								<td>
-									<p class="text-xs font-weight-bold mb-0">Rp. <?= number_format($row->jumlah) ?></p>
+									<p class="text-xs font-weight-bold mb-0">Rp. <?= number_format($row->jumlah  ?? 0) ?></p>
 								</td>
 								<td>
 									<p class="text-xs text-secondary mb-0"><?= $row->nama ?></p>

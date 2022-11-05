@@ -19,7 +19,7 @@ class Auth extends CI_Controller
     public function logout()
     {
         $this->session->sess_destroy();
-        redirect('auth/login');
+        redirect('admin/auth/login');
     }
 
     public function proses()
@@ -37,7 +37,7 @@ class Auth extends CI_Controller
                     'foto' => $row->foto
                 ];
                 $this->session->set_userdata($params);
-                redirect('dashboard');
+                redirect('admin/dashboard');
             }else{
                 $this->session->set_flashdata('msg','
                     <div class="alert alert-danger alert-dismissible text-white" role="alert">
@@ -47,10 +47,10 @@ class Auth extends CI_Controller
                                 <span aria-hidden="true">&times;</span>
                         </button>
                     </div>');
-                redirect('auth/login');
+                redirect('admin/auth/login');
             }
         }else{
-            redirect('auth/login');
+            redirect('admin/auth/login');
         }
     }
 

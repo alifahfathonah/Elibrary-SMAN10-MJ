@@ -6,18 +6,18 @@
 	</div>
 	<div class="row">
 		<div class="col-12">
+
 			<div class="card my-4">
 				<div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
 					<div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-						<h6 class="text-white text-capitalize ps-3">Pengeluaran</h6>
+						<h6 class="text-white text-capitalize ps-3">Peminjaman</h6>
 					</div>
 				</div>
 				<div class="card-body px-0 pb-2">
 					<div class="text-end me-3">
-						<button type="button" class="btn btn-secondary" data-bs-toggle="modal"
-							data-bs-target="#modalTambah">
-							<i class="material-icons opacity-10" translate="no">add</i> Tambah Transaksi
-						</button>
+						<a href="<?= base_url('admin/transaksi/tambahpinjam') ?>" class="btn btn-secondary">
+							<i class="material-icons opacity-10" translate="no">add</i> Tambah Pinjam
+						</a>
 					</div>
 					<div class="table-responsive p-4 mx-2">
 						<table class="table align-items-center mb-0" id="datatable">
@@ -25,36 +25,82 @@
 								<tr>
 									<th
 										class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-										Tanggal</th>
+										No</th>
+									<th
+										class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+										No Peminjaman</th>
+									<th
+										class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+										Id Peminjam</th>
+									<th
+										class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+										Nama Peminjam</th>
+									<th
+										class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+										Tanggal Pinjam</th>
 									<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-										Catatan
+										Tanggal Balik
 									</th>
 									<th
 										class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-										Jumlah Pengeluaran</th>
+										Status</th>
 									<th
 										class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-										User</th>
+										Denda</th>
 									<th class="text-secondary opacity-7"></th>
 								</tr>
 							</thead>
 							<tbody>
-								<?php foreach($pengeluaran as $row) : ?>
+								<?php $no=1; foreach($peminjaman as $row) : ?>
 								<tr>
 									<td class="align-middle text-center">
-										<span class="text-secondary text-xs font-weight-bold"><?= $row->tanggal ?></span>
+										<span
+											class="text-secondary text-xs font-weight-bold"><?= $no++ ?></span>
 									</td>
 									<td>
-										<p class="text-xs text-secondary mb-0"><?= $row->catatan ?></p>
+										<p class="text-xs text-secondary mb-0"><?= $row->no_pinjam ?></p>
 									</td>
 									<td>
-										<p class="text-xs font-weight-bold mb-0">Rp. <?= number_format($row->jumlah) ?></p>
+										<!-- <p class="text-xs text-secondary mb-0"><?= $row->id_pinjam ?></p> -->
 									</td>
 									<td>
-										<p class="text-xs text-secondary mb-0"><?= $row->nama ?></p>
+										<!-- <p class="text-xs text-secondary mb-0"><?= $row->nama_peminjam ?></p> -->
 									</td>
+									<td>
+										<p class="text-xs text-secondary mb-0"><?= $row->tgl_pinjam ?></p>
+									</td>
+									<td>
+										<p class="text-xs text-secondary mb-0"><?= $row->tgl_balik ?></p>
+									</td>
+									<td>
+										<p class="text-xs text-secondary mb-0"><?= $row->status ?></p>
+									</td>
+									<td>
+										<!-- <p class="text-xs font-weight-bold mb-0">Rp. <?= number_format($row->denda) ?> -->
+										</p>
+									</td>
+									<!-- <td class="align-middle text-center text-sm">
+										<span
+											class="badge badge-sm <?= ($row->status == 'selesai') ? 'bg-gradient-success' : 'bg-gradient-secondary' ?>">
+											<?php if($row->status == 'selesai'): ?>
+											<?= $row->status ?>
+											<?php else : ?>
+											<a href="<?= base_url('transaksi/selesai/').$row->id_pemasukan ?>"
+												class="text-white">
+												<?= $row->status ?>
+											</a>
+											<?php endif ?>
+										</span>
+									</td> -->
 									<td class="align-middle">
-										<a href="<?= base_url('transaksi/pengeluaran_hapus/').$row->id_pengeluaran ?>" onclick="return confirm('Hapus ?')"
+										<a href="<?= base_url('admin/transaksi/detailpinjam/').$row->kd_buku ?>"
+											class="text-secondary text-success font-weight-bold text-xs">
+											<i class="material-icons opacity-10" translate="no">visibility
+											</i>
+										</a> 
+										|
+										<a href="<?= base_url('transaksi/pemasukan_hapus/').$row->id_pinjam ?>"
+											onclick="return confirm('Hapus ?')"
 											class="text-secondary text-danger font-weight-bold text-xs">
 											<i class="material-icons opacity-10" translate="no">delete
 											</i>
@@ -71,23 +117,23 @@
 	</div>
 </div>
 
-<!-- Modal -->
+<!-- Modal Simpan -->
 <div class="modal fade" id="modalTambah" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
 	aria-labelledby="staticBackdropLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered modal-sm">
 		<div class="modal-content">
-			<form action="<?= base_url('transaksi/pengeluaran_proses') ?>" method="post">
+			<form action="<?= base_url('transaksi/pemasukan_proses') ?>" method="post">
 				<div class="modal-header p-0 position-relative mt-n4 mx-3 z-index-2">
 					<div
 						class="w-100 bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 d-flex justify-content-between">
-						<h6 class="modal-title text-white text-capitalize ps-3">Pengeluaran</h6>
+						<h6 class="modal-title text-white text-capitalize ps-3">Pemasukan</h6>
 						<button type="button" class="btn-close me-2" data-bs-dismiss="modal"
 							aria-label="Close"></button>
 					</div>
 				</div>
 				<div class="modal-body">
-					<div class="row mb-3">
-						<label>Tanggal</label>
+					<div class="row">
+						<label class="form-label">Tanggal</label>
 						<div class="input-group input-group-outline">
 							<input type="date" name="tanggal" class="form-control" required>
 						</div>
@@ -95,13 +141,22 @@
 					<div class="row my-3">
 						<label>Catatan</label>
 						<div class="input-group input-group-outline">
-							<textarea name="catatan" class="form-control" cols="10" rows="3"></textarea>
+							<textarea name="catatan" id="textarea" class="form-control" cols="10" rows="3"></textarea>
 						</div>
 					</div>
 					<div class="row my-3">
 						<label>Jumlah Pemasukan</label>
 						<div class="input-group input-group-outline">
 							<input type="number" name="jumlah" required class="form-control">
+						</div>
+					</div>
+					<div class="row my-3">
+						<div class="input-group input-group-outline">
+							<select class="form-control" name="status" required>
+								<option value="">Pilih Status</option>
+								<option value="selesai">Selesai</option>
+								<option value="pending">Pending</option>
+							</select>
 						</div>
 					</div>
 				</div>

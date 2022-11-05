@@ -6,56 +6,75 @@
 			aria-hidden="true" id="iconSidenav"></i>
 		<a class="navbar-brand m-0" href="<?= base_url('dashboard') ?>">
 			<img src="<?= base_url() ?>/assets/img/logo-ct.png" class="navbar-brand-img h-100" alt="main_logo">
-			<span class="ms-1 font-weight-bold text-white" translate="no">One Advertising</span>
+			<span class="ms-1 font-weight-bold text-white" translate="no">Perpustakaan</span>
 		</a>
 	</div>
 	<hr class="horizontal light mt-0 mb-2">
 	<div class="collapse navbar-collapse  w-auto h-auto max-height-vh-100" id="sidenav-collapse-main">
 		<ul class="navbar-nav">
 			<li class="nav-item">
-				<a class="nav-link text-white <?php if($this->uri->segment(1) == 'dashboard' || $this->uri->segment(1) == '') echo 'active bg-gradient-primary' ?>" href="<?= base_url('dashboard') ?>">
+				<a class="nav-link text-white <?php if($this->uri->segment(2) == 'dashboard' || $this->uri->segment(2) == '') echo 'active bg-gradient-primary' ?>" href="<?= base_url('admin/dashboard') ?>">
 					<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
 						<i class="material-icons opacity-10" translate="no">dashboard</i>
 					</div>
 					<span class="nav-link-text ms-1">Dashboard</span>
 				</a>
-			</li>
-            <li class="nav-item mt-3">
-				<h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Transaksi</h6>
+			</li> 
+			<li class="nav-item mt-3">
+				<h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Data Buku</h6>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link text-white <?php if($this->uri->segment(2) == 'pemasukan') echo 'active bg-gradient-primary' ?>" href="<?= base_url('transaksi/pemasukan') ?>">
+				<a class="nav-link text-white <?php if($this->uri->segment(3) == 'buku' || $this->uri->segment(3) == 'detailbuku'|| $this->uri->segment(2) == '') echo 'active bg-gradient-primary' ?>" href="<?= base_url('admin/data/buku') ?>">
 					<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-						<i class="material-icons opacity-10" translate="no">table_view</i>
+						<i class="material-icons opacity-10" translate="no">book</i>
 					</div>
-					<span class="nav-link-text ms-1" >Pemasukan</span>
+					<span class="nav-link-text ms-1">Data Buku</span>
 				</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link text-white <?php if($this->uri->segment(2) == 'pengeluaran') echo 'active bg-gradient-primary' ?>" href="<?= base_url('transaksi/pengeluaran') ?>">
+				<a class="nav-link text-white <?php if($this->uri->segment(3) == 'kategori' || $this->uri->segment(2) == '') echo 'active bg-gradient-primary' ?>" href="<?= base_url('admin/data/kategori') ?>">
+					<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+						<i class="material-icons opacity-10" translate="no">book</i>
+					</div>
+					<span class="nav-link-text ms-1">Kategori Buku</span>
+				</a>
+			</li>
+      <li class="nav-item mt-3">
+				<h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Transaksi</h6>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link text-white <?php if($this->uri->segment(3) == 'peminjaman' || $this->uri->segment(3) == 'tambahpinjam') echo 'active bg-gradient-primary' ?>" href="<?= base_url('admin/transaksi/peminjaman') ?>">
+					<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+						<i class="material-icons opacity-10" translate="no">table_view</i>
+					</div>
+					<span class="nav-link-text ms-1" >Peminjaman</span>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link text-white <?php if($this->uri->segment(3) == 'pengembalian') echo 'active bg-gradient-primary' ?>" href="<?= base_url('admin/transaksi/pengembalian') ?>">
 					<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
 						<i class="material-icons opacity-10" translate="no">receipt_long</i>
 					</div>
-					<span class="nav-link-text ms-1">Pengeluaran</span>
+					<span class="nav-link-text ms-1">Pengembalian</span>
 				</a>
 			</li>
 			<li class="nav-item mt-3">
 				<h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Laporan</h6>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link text-white <?php if($this->uri->segment(1) == 'laporan') echo 'active bg-gradient-primary' ?>" href="<?= base_url('laporan') ?>">
+				<a class="nav-link text-white <?php if($this->uri->segment(2) == 'laporan') echo 'active bg-gradient-primary' ?>" href="<?= base_url('admin/laporan') ?>">
 					<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
 						<i class="material-icons opacity-10" translate="no">print</i>
 					</div>
 					<span class="nav-link-text ms-1">Cetak Laporan</span>
 				</a>
 			</li>
-			<?php if(is_admin()) : ?>
-            <li class="nav-item mt-3">
+			<?php //if(is_admin()) : ?>
+			<li class="nav-item mt-3">
 				<h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Pengaturan</h6>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link text-white <?php if($this->uri->segment(1) == 'pengguna') echo 'active bg-gradient-primary' ?>" href="<?= base_url('pengguna') ?>">
+				<a class="nav-link text-white <?php if($this->uri->segment(2) == 'pengguna') echo 'active bg-gradient-primary' ?>" href="<?= base_url('admin/pengguna') ?>">
 					<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
 						<i class="material-icons opacity-10" translate="no">person</i>
 					</div>
@@ -63,14 +82,14 @@
 				</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link text-white <?php if($this->uri->segment(1) == 'homepage') echo 'active bg-gradient-primary' ?>" href="<?= base_url('homepage') ?>">
+				<a class="nav-link text-white <?php if($this->uri->segment(2) == 'denda') echo 'active bg-gradient-primary' ?>" href="<?= base_url('admin/denda') ?>">
 					<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-						<i class="material-icons opacity-10" translate="no">home</i>
+						<i class="material-icons opacity-10" translate="no">local_atm</i>
 					</div>
-					<span class="nav-link-text ms-1">Halaman Beranda</span>
+					<span class="nav-link-text ms-1">Denda</span>
 				</a>
 			</li>
-			<?php endif ?>
+			<?php //endif ?>
 		</ul>
 	</div>
 </aside>

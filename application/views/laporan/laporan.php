@@ -22,14 +22,14 @@
 									<input class="form-check-input" type="radio" name="tabel"
 										id="pemasukan" value="pemasukan" checked>
 									<label class="form-check-label" for="pemasukan">
-										Pemasukan
+										Peminjaman
 									</label>
 								</div>
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="tabel"
 										id="pengeluaran" value="pengeluaran">
 									<label class="form-check-label" for="pengeluaran">
-										Pengeluaran
+										Pengembalian
 									</label>
 								</div>
 							</div>

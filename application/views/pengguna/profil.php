@@ -86,7 +86,7 @@
 	aria-labelledby="staticBackdropLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered modal-md">
 		<div class="modal-content">
-			<form action="<?= base_url('pengguna/update_profil') ?>" method="post" enctype="multipart/form-data">
+			<form action="<?= base_url('admin/pengguna/update_profil') ?>" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="id" value="<?= $user->id_user ?>">
 				<div class="modal-header p-0 position-relative mt-n4 mx-3 z-index-2">
 					<div
@@ -147,7 +147,7 @@
 	aria-labelledby="staticBackdropLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered modal-sm">
 		<div class="modal-content">
-			<form action="<?= base_url('pengguna/update_password') ?>" method="post">
+			<form action="<?= base_url('admin/pengguna/update_password') ?>" method="post">
 				<input type="hidden" name="id" value="<?= $user->id_user ?>">
 				<div class="modal-header p-0 position-relative mt-n4 mx-3 z-index-2">
 					<div

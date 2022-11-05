@@ -5,7 +5,7 @@ function check_already_login()
     $ci = &get_instance();
     $user_session = $ci->session->userdata('id_user');
     if ($user_session) {
-        redirect('dashboard');
+        redirect('admin/dashboard');
     }
 }
 
@@ -14,7 +14,7 @@ function check_not_login()
     $ci = &get_instance();
     $user_session = $ci->session->userdata('id_user');
     if (!$user_session) {
-        redirect('auth/login');
+        redirect('admin/auth/login');
     }
 }
 
@@ -23,7 +23,7 @@ function check_admin()
     $ci = &get_instance();
     $ci->load->library('fungsi');
     if ($ci->fungsi->user_login()->role != 'admin') {
-        redirect('dashboard');
+        redirect('admin/dashboard');
     }
 }
 
