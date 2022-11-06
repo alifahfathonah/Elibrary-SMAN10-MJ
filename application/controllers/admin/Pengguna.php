@@ -9,6 +9,7 @@ class Pengguna extends CI_Controller
         parent::__construct();
         check_not_login();
         $this->load->model('pengguna_m');
+        $this->load->model('transaksi_m');
     }
 
     public function index()
@@ -94,7 +95,9 @@ class Pengguna extends CI_Controller
     {
         check_not_login();
         $data = [
-            'user' => $this->pengguna_m->getUser($this->session->userdata('id_user'))[0]
+            'user' => $this->pengguna_m->getUser($this->session->userdata('id_user'))[0],
+            'peminjaman' => $this->transaksi_m->getPeminjamanDistinctUser($this->session->userdata('id_user')),
+            'pengembalian' => $this->transaksi_m->getPengembalianDistinctUser($this->session->userdata('id_user')),
         ];
 
         $this->template->load('template/template','pengguna/profil',$data);
@@ -105,7 +108,9 @@ class Pengguna extends CI_Controller
         check_admin();
         if ($id != null) {
             $data = [
-                'user' => $this->pengguna_m->getUser($id)[0]
+                'user' => $this->pengguna_m->getUser($id)[0],
+                'peminjaman' => $this->transaksi_m->getPeminjamanDistinctUser($this->session->userdata('id_user')),
+                'pengembalian' => $this->transaksi_m->getPengembalianDistinctUser($this->session->userdata('id_user')),
             ];
     
             $this->template->load('template/template','pengguna/profil',$data);

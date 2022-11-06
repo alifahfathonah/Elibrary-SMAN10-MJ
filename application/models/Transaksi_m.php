@@ -4,6 +4,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Transaksi_m extends CI_Model
 {
 
+    public function getPeminjamanDistinctUser($id_user)
+    {
+        return $this->db->query("SELECT DISTINCT `no_pinjam`, peminjaman.`id_user`, 
+            `status`, `tgl_pinjam`, `lama_pinjam`, `tgl_balik`, `tgl_kembali` , `nama`
+            FROM peminjaman 
+            INNER JOIN user ON user.id_user = peminjaman.id_user
+            WHERE status = 'Dipinjam' AND peminjaman.id_user = '$id_user' ORDER BY no_pinjam DESC")->result();
+    }
+
     public function getPeminjamanDistinct()
     {
         return $this->db->query("SELECT DISTINCT `no_pinjam`, peminjaman.`id_user`, 
@@ -109,6 +118,15 @@ class Transaksi_m extends CI_Model
             FROM peminjaman 
             INNER JOIN user ON user.id_user = peminjaman.id_user
             WHERE status = 'Di Kembalikan' ORDER BY no_pinjam DESC")->result();
+    }
+
+    public function getPengembalianDistinctUser($id_user)
+    {
+        return $this->db->query("SELECT DISTINCT `no_pinjam`, peminjaman.`id_user`, 
+            `status`, `tgl_pinjam`, `lama_pinjam`, `tgl_balik`, `tgl_kembali` , `nama`
+            FROM peminjaman 
+            INNER JOIN user ON user.id_user = peminjaman.id_user
+            WHERE status = 'Di Kembalikan' AND peminjaman.id_user='$id_user' ORDER BY no_pinjam DESC")->result();
     }
 
     public function simpanKembalikan($no_pinjam)
