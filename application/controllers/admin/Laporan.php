@@ -34,9 +34,9 @@ class Laporan extends CI_Controller
         $pdf->SetFont('Times', 'B', 10);
         $pdf->Cell(190, 7, '', 0, 1, 'C');
         $pdf->SetFont('Times', 'B', 16);
-        $pdf->Cell(190, 7, 'ONE ADVERTISING', 0, 1, 'C');
+        $pdf->Cell(190, 7, 'Perpustakaan', 0, 1, 'C');
         $pdf->SetFont('Times', 'B', 8);
-        $pdf->Cell(190, 7, 'Jl. Kapten Pattimura, Rw. Sari, Kec. Kota Baru, Kota Jambi, Jambi 36361', 0, 1, 'C');
+        $pdf->Cell(190, 7, 'Jl. Lintas Sumatra Jl. Petaling No.RT 14, Kb. IX, Kec. Sungai Gelam, Kabupaten Muaro Jambi, Jambi 36364', 0, 1, 'C');
        $pdf->Line(10,30,205,30);
         $pdf->Ln(10);
 

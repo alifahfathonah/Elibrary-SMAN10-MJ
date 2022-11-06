@@ -3,8 +3,8 @@
 <link rel="apple-touch-icon" sizes="76x76" href="<?= base_url() ?>assets/img/apple-icon.png">
 <link rel="icon" type="image/png" href="<?= base_url() ?>assets/img/favicon.png">
 <title>
-	One Advertising
-	<?php if(!empty($this->uri->segment(1))) echo ": " . ucfirst($this->uri->segment(1)); if(!empty($this->uri->segment(2))) echo" - " . ucfirst($this->uri->segment(2)) ?>
+	E-Library
+	<?php if(!empty($this->uri->segment(1))) echo ": " . $this->uri->segment(1); if(!empty($this->uri->segment(2))) echo" - " . $this->uri->segment(2) ?>
 </title>
 <!--     Fonts and icons     -->
 <link rel="stylesheet" type="text/css"

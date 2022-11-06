@@ -38,7 +38,7 @@
 										email</th>
 									<th
 										class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-										No_telp</th>
+										role</th>
 									<th
 										class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
 										Status</th>
@@ -48,8 +48,8 @@
 							<tbody>
 								<?php foreach($user as $row) : ?>
 								<?php if($row->id_user == $this->session->userdata('id_user') ){
-                                        continue;
-                                    } ?>
+											continue;
+									} ?>
 								<tr>
 									<td class="align-middle text-center">
 										<span class="text-secondary text-xs font-weight-bold">
@@ -72,25 +72,25 @@
 										<p class="text-xs text-secondary mb-0"><?= $row->email ?></p>
 									</td>
 									<td>
-										<p class="text-xs text-secondary mb-0"><?= $row->no_telp ?></p>
+										<p class="text-xs text-secondary mb-0"><?= $row->role ?></p>
 									</td>
 									<td class="align-middle text-center text-sm">
 										<span title="Aktifkan/non aktifkan"
 											class="badge badge-sm <?= ($row->is_active == '1') ? 'bg-gradient-success' : 'bg-gradient-secondary' ?>">
 											
-											<a href="<?= base_url('pengguna/active/').$row->id_user ?>"
+											<a href="<?= base_url('admin/pengguna/active/').$row->id_user ?>"
 												class="text-white">
 												<?= $row->is_active == '1' ? 'Aktif' : 'Tidak Aktif' ?>
 											</a>
 										</span>
 									</td>
 									<td class="align-middle">
-										<a title="lihat" href="<?= base_url('pengguna/lihat_profil/').$row->id_user ?>"
+										<a title="lihat" href="<?= base_url('admin/pengguna/lihat_profil/').$row->id_user ?>"
 											class="text-secondary text-danger font-weight-bold text-xs">
 											<i class="material-icons opacity-10" translate="no">zoom_in
 											</i>
 										</a> |
-										<a title="hapus" href="<?= base_url('pengguna/user_hapus/').$row->id_user ?>"
+										<a title="hapus" href="<?= base_url('admin/pengguna/user_hapus/').$row->id_user ?>"
 											onclick="return confirm('Hapus ?')"
 											class="text-secondary text-danger font-weight-bold text-xs">
 											<i class="material-icons opacity-10" translate="no">delete
@@ -113,7 +113,7 @@
 	aria-labelledby="staticBackdropLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered modal-md">
 		<div class="modal-content">
-			<form action="<?= base_url('pengguna/user_proses') ?>" method="post">
+			<form action="<?= base_url('admin/pengguna/user_proses') ?>" method="post">
 				<div class="modal-header p-0 position-relative mt-n4 mx-3 z-index-2">
 					<div
 						class="w-100 bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 d-flex justify-content-between">
@@ -171,9 +171,9 @@
 					<div class="row my-3">
 						<div class="input-group input-group-outline">
 							<select class="form-control" name="role" required>
-								<option value="">Pilih Role</option>
+								<option value="">Pilih Level/Role</option>
 								<option value="admin">Admin</option>
-								<option value="pegawai">Pegawai</option>
+								<option value="anggota">Anggota</option>
 							</select>
 						</div>
 					</div>

@@ -3,11 +3,11 @@
 	<div class="container-fluid py-1 px-3 d-flex">
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-				<li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a>
+				<li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">PAGES</a>
 				</li>
-				<li class="breadcrumb-item text-sm text-dark active" aria-current="page"><?= ucfirst($this->uri->segment(1)) ? ucfirst($this->uri->segment(1)) : 'Dashboard'  ?></li>
+				<li class="breadcrumb-item text-sm text-dark active" aria-current="page"><?= $this->uri->segment(2) ? strtoupper($this->uri->segment(2)) : 'DASHBOARD'  ?></li>
 			</ol>
-			<h6 class="font-weight-bolder mb-0"><?= ucfirst($this->uri->segment(1)) ? ucfirst($this->uri->segment(1))." ".ucfirst($this->uri->segment(2)) : 'Dashboard' ?></h6>
+			<!-- <h6 class="font-weight-bolder mb-0"><?= $this->uri->segment(2) ? $this->uri->segment(2)." ".$this->uri->segment(3) : 'Dashboard' ?></h6> -->
 		</nav>
 		<div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
 			<ul class="navbar-nav ms-auto justify-content-end">
@@ -20,7 +20,7 @@
 					<ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4"
 						aria-labelledby="dropdownMenuButton">
 						<li class="mb-2">
-							<a class="dropdown-item border-radius-md" href="<?= base_url('pengguna/profil/') ?>">
+							<a class="dropdown-item border-radius-md" href="<?= base_url('admin/pengguna/profil/') ?>">
 								<div class="d-flex py-1">
 									<div class="my-auto">
 										<img src="<?= base_url('assets/img/profil/').$this->session->userdata('foto') ?>" class="avatar avatar-sm  me-3 ">
@@ -38,7 +38,7 @@
 							</a>
 						</li>
 						<li class="d-flex justify-content-end">
-							<a href="<?= base_url('auth/logout') ?>" class="w-100 btn btn-danger"><i class="material-icons opacity-10">logout</i> Logout</a>
+							<a href="<?= base_url('admin/auth/logout') ?>" class="w-100 btn btn-danger"><i class="material-icons opacity-10">logout</i> Logout</a>
 						</li>
 					</ul>
 				</li>

@@ -1,7 +1,7 @@
 <div class="container-fluid px-2 px-md-4">
 	<div class="page-header min-height-300 border-radius-xl mt-4"
-		style="background-image: url('https://images.unsplash.com/photo-1531512073830-ba890ca4eba2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');">
-		<span class="mask  bg-gradient-primary  opacity-6"></span>
+		style="background-image: url('https://images.unsplash.com/photo-1521587760476-6c12a4b040da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80');">
+		<span class="mask <?= (is_admin()) ? 'bg-gradient-success' : 'bg-gradient-success' ?>  opacity-3"></span>
 	</div>
 	<div class="card card-body mx-3 mx-md-4 mt-n6">
 		<div class="row gx-4 mb-2">
@@ -77,6 +77,217 @@
 				</div>
 			</div>
 		</div>
+		<div class="row mt-4 mb-4">
+			<div class="col-md-12">
+				<ul class="nav nav-tabs" id="myTab" role="tablist">
+					<li class="nav-item" role="presentation">
+						<button class="nav-link active" id="peminjaman-tab" data-bs-toggle="tab" data-bs-target="#peminjaman" type="button" role="tab" aria-controls="peminjaman" aria-selected="true">Peminjaman</button>
+					</li>
+					<li class="nav-item" role="presentation">
+						<button class="nav-link" id="pengembalian-tab" data-bs-toggle="tab" data-bs-target="#pengembalian" type="button" role="tab" aria-controls="pengembalian" aria-selected="false">Pengembalian</button>
+					</li>
+				</ul>
+				<div class="tab-content" id="myTabContent">
+					<div class="tab-pane fade show active" id="peminjaman" role="tabpanel" aria-labelledby="peminjaman-tab">
+						<table class="table align-items-center mb-0" id="datatable">
+							<thead>
+								<tr>
+									<th
+										class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+										No</th>
+									<th
+										class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+										No Peminjaman</th>
+									<th
+										class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+										Id Peminjam</th>
+									<th
+										class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+										Nama Peminjam</th>
+									<th
+										class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+										Tanggal Pinjam</th>
+									<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+										Tanggal Balik
+									</th>
+									<th
+										class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+										Status</th>
+									<th
+										class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+										Denda</th>
+									<th class="text-secondary opacity-7"></th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php $no=1; foreach($peminjaman as $row) : ?>
+								<tr>
+									<td class="align-middle text-center">
+										<span
+											class="text-secondary text-xs font-weight-bold"><?= $no++ ?></span>
+									</td>
+									<td>
+										<p class="text-xs text-secondary mb-0"><?= $row->no_pinjam ?></p>
+									</td>
+									<td>
+										<p class="text-xs text-secondary mb-0"><?= $row->id_user ?></p>
+									</td>
+									<td>
+										<p class="text-xs text-secondary mb-0"><?= $row->nama?></p>
+									</td>
+									<td>
+										<p class="text-xs text-secondary mb-0"><?= $row->tgl_pinjam ?></p>
+									</td>
+									<td>
+										<p class="text-xs text-secondary mb-0"><?= $row->tgl_balik ?></p>
+									</td>
+									<td>
+										<p class="text-xs text-secondary mb-0"><?= $row->status ?></p>
+									</td>
+									<td>
+										<?php 
+										$denda = $this->db->query("SELECT * FROM denda WHERE no_pinjam = '$row->no_pinjam'");
+										$total_denda = $denda->row();
+											if($row->status == 'Di Kembalikan')
+											{
+												echo $this->transaksi_m->rp($total_denda->denda);
+											}else{
+												$jml = $this->db->query("SELECT * FROM peminjaman WHERE no_pinjam = '$row->no_pinjam'")->num_rows();			
+												$date1 = date('Ymd');
+												$date2 = preg_replace('/[^0-9]/','',$row->tgl_balik);
+												$diff = $date1 - $date2;
+												if($diff > 0 )
+												{
+													echo $diff.' hari';
+													$dd = $this->transaksi_m->getBiayaDenda(); 
+													echo '<p class="text-xs text-secondary mb-0 text-danger">
+													'.$this->transaksi_m->rp($jml*($dd->harga_denda*$diff)).' 
+													</p><small style="color:#333;">* Untuk '.$jml.' Buku</small>';
+												}else{
+													echo '<p class="text-xs text-secondary mb-0 text-success">
+													Tidak Ada Denda</p>';
+												}
+											}
+										?>
+									</td>
+									
+									<td class="align-middle">
+										<a href="<?= base_url('admin/transaksi/detail_pinjam/').$row->no_pinjam ?>"
+											class="text-secondary text-success font-weight-bold text-xs">
+											<i class="material-icons opacity-10" translate="no">visibility
+											</i>
+										</a> 
+										|
+										<a href="<?= base_url('admin/transaksi/pinjam_hapus/').$row->no_pinjam ?>"
+											onclick="return confirm('Hapus ?')"
+											class="text-secondary text-danger font-weight-bold text-xs">
+											<i class="material-icons opacity-10" translate="no">delete
+											</i>
+										</a>
+									</td>
+								</tr>
+								<?php endforeach ?>
+							</tbody>
+						</table>
+					</div>
+					<div class="tab-pane fade" id="pengembalian" role="tabpanel" aria-labelledby="pengembalian-tab">
+						<table class="table align-items-center mb-0" id="datatable">
+							<thead>
+								<tr>
+									<th
+										class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+										No</th>
+									<th
+										class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+										No Peminjaman</th>
+									<th
+										class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+										Id Peminjam</th>
+									<th
+										class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+										Nama Peminjam</th>
+									<th
+										class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+										Tanggal Pinjam</th>
+									<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+										Tanggal Balik
+									</th>
+									<th
+										class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+										Tanggal Pengembalian</th>
+									<th
+										class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+										Denda</th>
+									<th class="text-secondary opacity-7"></th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php $no=1; foreach($pengembalian as $row) : ?>
+								<tr>
+									<td class="align-middle text-center">
+										<span
+											class="text-secondary text-xs font-weight-bold"><?= $no++ ?></span>
+									</td>
+									<td>
+										<p class="text-xs text-secondary mb-0"><?= $row->no_pinjam ?></p>
+									</td>
+									<td>
+										<p class="text-xs text-secondary mb-0"><?= $row->id_user ?></p>
+									</td>
+									<td>
+										<p class="text-xs text-secondary mb-0"><?= $row->nama?></p>
+									</td>
+									<td>
+										<p class="text-xs text-secondary mb-0"><?= $row->tgl_pinjam ?></p>
+									</td>
+									<td>
+										<p class="text-xs text-secondary mb-0"><?= $row->tgl_balik ?></p>
+									</td>
+									<td>
+										<p class="text-xs text-secondary mb-0"><?= $row->tgl_kembali ?></p>
+									</td>
+									<td>
+										<?php 
+										$denda = $this->db->query("SELECT * FROM denda WHERE no_pinjam = '$row->no_pinjam'");
+										$total_denda = $denda->row();
+											if($row->status == 'Di Kembalikan')
+											{
+												echo '<p class="text-xs text-secondary mb-0">'.$this->transaksi_m->rp($total_denda->denda).'</p>';
+											}else{
+												$jml = $this->db->query("SELECT * FROM peminjaman WHERE no_pinjam = '$row->no_pinjam'")->num_rows();			
+												$date1 = date('Ymd');
+												$date2 = preg_replace('/[^0-9]/','',$row->tgl_balik);
+												$diff = $date1 - $date2;
+												if($diff > 0 )
+												{
+													echo $diff.' hari';
+													$dd = $this->transaksi_m->getBiayaDenda(); 
+													echo '<p class="text-xs text-secondary mb-0 text-danger">
+													'.$this->transaksi_m->rp($jml*($dd->harga_denda*$diff)).' 
+													</p><small style="color:#333;">* Untuk '.$jml.' Buku</small>';
+												}else{
+													echo '<p class="text-xs text-secondary mb-0 text-success">
+													Tidak Ada Denda</p>';
+												}
+											}
+										?>
+									</td>
+									
+									<td class="align-middle">
+										<a href="<?= base_url('admin/transaksi/detail_pinjam/').$row->no_pinjam ?>"
+											class="text-secondary text-success font-weight-bold text-xs">
+											<i class="material-icons opacity-10" translate="no">visibility
+											</i>
+										</a> 
+									</td>
+								</tr>
+								<?php endforeach ?>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 
@@ -86,7 +297,7 @@
 	aria-labelledby="staticBackdropLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered modal-md">
 		<div class="modal-content">
-			<form action="<?= base_url('pengguna/update_profil') ?>" method="post" enctype="multipart/form-data">
+			<form action="<?= (is_admin()) ? base_url('admin/pengguna/update_profil') : base_url('pengguna/update_profil') ?> " method="post" enctype="multipart/form-data">
 				<input type="hidden" name="id" value="<?= $user->id_user ?>">
 				<div class="modal-header p-0 position-relative mt-n4 mx-3 z-index-2">
 					<div
@@ -147,7 +358,7 @@
 	aria-labelledby="staticBackdropLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered modal-sm">
 		<div class="modal-content">
-			<form action="<?= base_url('pengguna/update_password') ?>" method="post">
+			<form action="<?= (is_admin()) ? base_url('admin/pengguna/update_password') : base_url('pengguna/update_password') ?>" method="post">
 				<input type="hidden" name="id" value="<?= $user->id_user ?>">
 				<div class="modal-header p-0 position-relative mt-n4 mx-3 z-index-2">
 					<div

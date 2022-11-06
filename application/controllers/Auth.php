@@ -13,13 +13,13 @@ class Auth extends CI_Controller
     public function login()
     {
         check_already_login();
-        $this->load->view('auth/login');
+        $this->load->view('auth/login_user');
     }
 
     public function logout()
     {
         $this->session->sess_destroy();
-        redirect('auth/login');
+        redirect(base_url());
     }
 
     public function proses()
@@ -37,7 +37,7 @@ class Auth extends CI_Controller
                     'foto' => $row->foto
                 ];
                 $this->session->set_userdata($params);
-                redirect('dashboard');
+                redirect(base_url());
             }else{
                 $this->session->set_flashdata('msg','
                     <div class="alert alert-danger alert-dismissible text-white" role="alert">
