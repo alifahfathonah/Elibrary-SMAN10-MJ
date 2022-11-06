@@ -77,7 +77,7 @@
 									</td>
 									<td>
 										<?php 
-										$denda = $this->db->query("SELECT * FROM denda WHERE pinjam_id = '$row->no_pinjam'");
+										$denda = $this->db->query("SELECT * FROM denda WHERE no_pinjam = '$row->no_pinjam'");
 										$total_denda = $denda->row();
 											if($row->status == 'Di Kembalikan')
 											{

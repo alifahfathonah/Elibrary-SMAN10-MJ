@@ -77,11 +77,11 @@
 									</td>
 									<td>
 										<?php 
-										$denda = $this->db->query("SELECT * FROM denda WHERE pinjam_id = '$row->no_pinjam'");
+										$denda = $this->db->query("SELECT * FROM denda WHERE no_pinjam = '$row->no_pinjam'");
 										$total_denda = $denda->row();
 											if($row->status == 'Di Kembalikan')
 											{
-												echo $this->transaksi_m->rp($total_denda->denda);
+												echo '<p class="text-xs text-secondary mb-0">'.$this->transaksi_m->rp($total_denda->denda).'</p>';
 											}else{
 												$jml = $this->db->query("SELECT * FROM peminjaman WHERE no_pinjam = '$row->no_pinjam'")->num_rows();			
 												$date1 = date('Ymd');

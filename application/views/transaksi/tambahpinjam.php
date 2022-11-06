@@ -92,7 +92,7 @@
 				</div>
 			</div>
 			<div id="modal_body" class="modal-body fileSelection1">
-				<table id="example3" class="table table-bordered table-striped">
+				<table id="datatable" class="table table-bordered table-striped">
 					<thead>
 						<tr>
 							<th>No</th>
@@ -163,12 +163,12 @@
 				</div>
 			</div>
 			<div id="modal_body" class="modal-body fileSelection1">
-				<table id="example3" class="table table-bordered table-striped">
+				<table id="datatable1" class="table table-bordered table-striped">
 					<thead>
 					<tr>
 						<th>No</th>
 						<th>ISBN</th>
-						<th>Title</th>
+						<th>Judul Buku</th>
 						<th>Penerbit</th>
 						<th>Tahun Buku</th>
 						<th>Stok Buku</th>
@@ -219,3 +219,31 @@
 		});
 	});
 	</script>
+
+<script>
+	$(document).ready( function () {
+		$('#datatable').DataTable({
+			language: {
+				"paginate": {
+					"first":      "&laquo",
+					"last":       "&raquo",
+					"next":       "&gt",
+					"previous":   "&lt"
+				},
+			},
+			dom:' <"d-flex"l<"input-group input-group-outline justify-content-end me-4"f>>rt<"d-flex justify-content-between"ip><"clear">'
+		});
+
+		$('#datatable1').DataTable({
+			language: {
+				"paginate": {
+					"first":      "&laquo",
+					"last":       "&raquo",
+					"next":       "&gt",
+					"previous":   "&lt"
+				},
+			},
+			dom:' <"d-flex"l<"input-group input-group-outline justify-content-end me-4"f>>rt<"d-flex justify-content-between"ip><"clear">'
+		});
+	} );
+</script>

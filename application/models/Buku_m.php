@@ -30,6 +30,15 @@ class Buku_m extends CI_Model
         return $this->db->get('buku');
     }
 
+    public function getBukuByNoPinjam($no_pinjam)
+    {
+        $this->db->join('kategori', 'kategori.id_kategori = buku.id_kategori');
+        $this->db->join('peminjaman', 'peminjaman.kd_buku = buku.kd_buku');
+        $this->db->order_by('judul_buku', 'ASC');
+        $this->db->where('no_pinjam', $no_pinjam);
+        return $this->db->get('buku')->result();
+    }
+
     public function simpanBuku($post)
     {
         $data = [

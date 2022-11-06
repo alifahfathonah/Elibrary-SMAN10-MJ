@@ -29,6 +29,7 @@
 							class="card-img-top img-thumbnail w-100">
 					</div>
 					<div class="card-body text-center">
+						<!-- <p class="card-text text-secondary fw-bold"><?= $b->pengarang ?></p> -->
 						<p class="card-text text-primary fw-bold"><a href="<?= base_url('buku/detail/').$b->kd_buku ?>" class="text-decoration-none"><?= $b->judul_buku ?></a></p>
 					</div>
 				</div>

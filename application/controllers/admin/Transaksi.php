@@ -72,6 +72,21 @@ class Transaksi extends CI_Controller
         }
     }
 
+    public function kembalikan_proses($no_pinjam = null)
+    {
+        if ($no_pinjam != null) {
+            if ($this->transaksi_m->simpanKembalikan($no_pinjam)) {
+                $this->session->set_flashdata('msg', $this->msgSuccess('Berhasil ditambahkan'));
+                redirect('admin/transaksi/peminjaman');
+            }else{
+                $this->session->set_flashdata('msg', $this->msgError('Gagal ditambahkan!'));
+                redirect('admin/transaksi/peminjaman');
+            }
+        }else{
+            redirect('admin/transaksi/peminjaman');
+        }
+    }
+
     public function pinjam_hapus($no_pinjam = null)
     {
         if ($id != null) {
@@ -87,15 +102,14 @@ class Transaksi extends CI_Controller
         }
     }
 
-    public function detail_pinjam()
+    public function detail_pinjam($no_pinjam)
     {
         $data = [
-            'no_pinjam' => $this->transaksi_m->buatKodePinjam(),
-            'user' => $this->pengguna_m->getAnggota(),
-            'buku' => $this->buku_m->getBuku()
+            'peminjaman' => $this->transaksi_m->getPeminjamanByNoPinjamDistinct($no_pinjam)[0],
+            'buku' => $this->buku_m->getBukuByNoPinjam($no_pinjam)
         ];
         
-        $this->template->load('template/template','transaksi/tambahpinjam',$data);
+        $this->template->load('template/template','transaksi/detail_pinjam',$data);
     }
 
     public function result_peminjam()
@@ -175,7 +189,7 @@ class Transaksi extends CI_Controller
 			<thead>
 				<tr>
 					<th>No</th>
-					<th>Title</th>
+					<th>Judul Buku</th>
 					<th>Penerbit</th>
 					<th>Tahun</th>
 					<th>Aksi</th>
