@@ -51,17 +51,17 @@ class Pengguna extends CI_Controller
             if ($post['password'] == $post['konfirmasi_password']) {
                 if ($this->pengguna_m->simpanUser($post)) {
                     $this->session->set_flashdata('msg', $this->msgSuccess('Berhasil ditambahkan'));
-                    redirect('pengguna');
+                    redirect('admin/pengguna');
                 }else{
                     $this->session->set_flashdata('msg', $this->msgError('Gagal ditambahkan username telah ada!'));
-                redirect('pengguna');
+                redirect('admin/pengguna');
                 }
             }else{
                 $this->session->set_flashdata('msg', $this->msgError('Gagal ditambahkan Konfirmasi Password tidak cocok!'));
-            redirect('pengguna');
+            redirect('admin/pengguna');
             }
         }else{
-            redirect('pengguna');
+            redirect('admin/pengguna');
         }
     }
 
@@ -71,13 +71,13 @@ class Pengguna extends CI_Controller
         if ($id != null) {
             if ($this->pengguna_m->hapusUser($id)) {
                 $this->session->set_flashdata('msg', $this->msgSuccess('Berhasil dihapus'));
-                redirect('pengguna');
+                redirect('admin/pengguna');
             }else{
                 $this->session->set_flashdata('msg', $this->msgError('Gagal dihapus!'));
-            redirect('pengguna');
+            redirect('admin/pengguna');
             }
         }else{
-            redirect('pengguna');
+            redirect('admin/pengguna');
         }
     }
 
@@ -85,9 +85,9 @@ class Pengguna extends CI_Controller
     {
         check_admin();
         if ($this->pengguna_m->setActive($id)) {
-            redirect('pengguna');
+            redirect('admin/pengguna');
         }
-        redirect('pengguna');
+        redirect('admin/pengguna');
     }
 
     public function profil()
@@ -110,7 +110,7 @@ class Pengguna extends CI_Controller
     
             $this->template->load('template/template','pengguna/profil',$data);
         }else{
-            redirect('pengguna');
+            redirect('admin/pengguna');
         }
     }
 
@@ -144,15 +144,15 @@ class Pengguna extends CI_Controller
                 $this->session->set_flashdata('msg', $this->msgError('Gagal diubah username telah ada!'));
             }
             if (is_admin()) {
-                redirect('pengguna/lihat_profil/'.$post['id']);
+                redirect('admin/pengguna/lihat_profil/'.$post['id']);
             }else{
-                redirect('pengguna/profil/');
+                redirect('admin/pengguna/profil/');
             }
         }else{
             if (is_admin()) {
-                redirect('pengguna/');
+                redirect('admin/pengguna/');
             }else{
-                redirect('pengguna/profil/');
+                redirect('admin/pengguna/profil/');
             };
         }
     }
@@ -168,12 +168,12 @@ class Pengguna extends CI_Controller
                 $this->session->set_flashdata('msg', $this->msgError('Gagal diubah'));
             }
             if (is_admin()) {
-                redirect('pengguna/lihat_profil/'.$post['id']);
+                redirect('admin/pengguna/lihat_profil/'.$post['id']);
             }else{
-                redirect('pengguna/profil/');
+                redirect('admin/pengguna/profil/');
             }
         }else{
-            redirect('pengguna/profil/'.$post['id']);
+            redirect('admin/pengguna/profil/'.$post['id']);
         }
     }
 }
