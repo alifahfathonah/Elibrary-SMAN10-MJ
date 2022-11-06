@@ -123,7 +123,7 @@
 					<div class="row">
 						<label class="form-label">Kode Buku</label>
 						<div class="input-group input-group-outline">
-							<input type="text" name="kd_buku" class="form-control" required>
+							<input type="text" name="kd_buku" class="form-control" value="<?= $kd_buku ?>" readonly required>
 						</div>
 					</div>
 					<div class="row my-3">

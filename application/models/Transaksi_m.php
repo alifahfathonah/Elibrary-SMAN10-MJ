@@ -161,35 +161,6 @@ class Transaksi_m extends CI_Model
         
     }
 
-    // public function getPengeluaran()
-    // {
-    //     $this->db->join('user', 'id_user = user');
-    //     $this->db->order_by('tanggal', 'DESC');
-    //     return $this->db->get('pengeluaran')->result();
-    // }
-
-    // public function simpanPengeluaran($post)
-    // {
-    //     $data = [
-    //         'tanggal' => $post['tanggal'],
-    //         'catatan' => $post['catatan'],
-    //         'jumlah' => $post['jumlah'],
-    //         'user' => $this->session->userdata('id_user')
-    //     ];
-
-    //     return $this->db->insert('pengeluaran',$data);
-    // }
-
-    // public function hapusPengeluaran($id)
-    // {
-    //     return $this->db->delete('pengeluaran', ['id_pengeluaran' => $id]);
-    // }
-
-    // public function updateSelesai($id)
-    // {
-    //     return $this->db->update('pemasukan', ['status' => 'selesai'], ['id_pemasukan' => $id]);
-    // }
-
 }
 
 

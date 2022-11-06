@@ -41,6 +41,7 @@ class Data extends CI_Controller
     public function buku()
     {
         $data = [
+            'kd_buku' => $this->buku_m->buatKodeBuku(),
             'buku' => $this->buku_m->getBuku(),
             'kategori' => $this->buku_m->getKategori()
         ];
