@@ -108,7 +108,7 @@
 <!-- Modal Simpan -->
 <div class="modal fade" id="modalTambah" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
 	aria-labelledby="staticBackdropLabel" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered modal-lg">
+	<div class="modal-dialog modal-dialog-centered modal-xl">
 		<div class="modal-content">
 			<form action="<?= base_url('admin/data/buku_proses') ?>" method="post" enctype="multipart/form-data">
 				<div class="modal-header p-0 position-relative mt-n4 mx-3 z-index-2">
@@ -121,68 +121,82 @@
 				</div>
 				<div class="modal-body">
 					<div class="row">
-						<label class="form-label">Kode Buku</label>
-						<div class="input-group input-group-outline">
-							<input type="text" name="kd_buku" class="form-control" value="<?= $kd_buku ?>" readonly required>
+						<div class="col-md-4">
+							<label class="form-label">Kode Buku</label>
+							<div class="input-group input-group-outline">
+								<input type="text" name="kd_buku" class="form-control" value="<?= $kd_buku ?>" readonly required>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<label class="form-label">Kategori</label>
+							<div class="input-group input-group-outline">
+								<select class="form-control" name="id_kategori" required>
+									<option value="">Pilih Kategori</option>
+									<?php foreach($kategori as $k): ?>
+									<option value="<?= $k->id_kategori ?>"><?= $k->nama_kategori ?></option>
+									<?php endforeach; ?>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<label>Pengarang</label>
+							<div class="input-group input-group-outline">
+								<input type="text" name="pengarang" required class="form-control">
+							</div>
 						</div>
 					</div>
 					<div class="row my-3">
-						<div class="input-group input-group-outline">
-							<select class="form-control" name="id_kategori" required>
-								<option value="">Kategori</option>
-								<?php foreach($kategori as $k): ?>
-								<option value="<?= $k->id_kategori ?>"><?= $k->nama_kategori ?></option>
-								<?php endforeach; ?>
-							</select>
+						<div class="col-md-8">
+							<label>Judul Buku</label>
+							<div class="input-group input-group-outline">
+								<input type="text" name="judul_buku" class="form-control" required>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<label>Tahun Terbit</label>
+							<div class="input-group input-group-outline">
+								<input type="text" maxlength="4" name="tahun_terbit" required class="form-control">
+							</div>
 						</div>
 					</div>
 					<div class="row my-3">
-						<label>Judul Buku</label>
-						<div class="input-group input-group-outline">
-						<input type="text" name="judul_buku" class="form-control" required>
+						<div class="col-md-5">
+							<label>Penerbit</label>
+							<div class="input-group input-group-outline">
+								<input type="text" name="penerbit" required class="form-control">
+							</div>
+						</div>
+						<div class="col-md-5">
+							<label>ISBN</label>
+							<div class="input-group input-group-outline">
+								<input type="text" name="isbn" required class="form-control">
+							</div>
+						</div>
+						<div class="col-md-2">
+							<label>Jumlah Buku</label>
+							<div class="input-group input-group-outline">
+								<input type="number" name="jumlah_buku" required class="form-control">
+							</div>
 						</div>
 					</div>
 					<div class="row my-3">
-						<label>Pengarang</label>
-						<div class="input-group input-group-outline">
-							<input type="text" name="pengarang" required class="form-control">
+						<div class="col-md-4">
+							<img width="100px" src="https://w7.pngwing.com/pngs/867/249/png-transparent-book-thick-isolated-pink-peach-blank-closed-shut-cover-hardcover-thumbnail.png"  alt="">
+							<label>Cover (*jpg | png | jpeg)</label>
+							<div class="input-group input-group-outline">
+								<input type="file" name="cover" required class="form-control">
+							</div>
+						</div>
+						<div class="col-md-4">
+							<img width="100px" src="https://w7.pngwing.com/pngs/138/818/png-transparent-computer-icons-book-computer-program-open-book-purple-angle-violet-thumbnail.png" alt="">
+							<label>File Lampiran (*pdf < 4mb)</label>
+							<div class="input-group input-group-outline">
+								<input type="file" name="file" required class="form-control">
+							</div>
 						</div>
 					</div>
 					<div class="row my-3">
-						<label>Tahun Terbit</label>
-						<div class="input-group input-group-outline">
-							<input type="text" maxlength="4" name="tahun_terbit" required class="form-control">
-						</div>
-					</div>
-					<div class="row my-3">
-						<label>Penerbit</label>
-						<div class="input-group input-group-outline">
-							<input type="text" name="penerbit" required class="form-control">
-						</div>
-					</div>
-					<div class="row my-3">
-						<label>ISBN</label>
-						<div class="input-group input-group-outline">
-							<input type="text" name="isbn" required class="form-control">
-						</div>
-					</div>
-					<div class="row my-3">
-						<label>Jumlah Buku</label>
-						<div class="input-group input-group-outline">
-							<input type="number" name="jumlah_buku" required class="form-control">
-						</div>
-					</div>
-					<div class="row my-3">
-						<label>Cover</label>
-						<div class="input-group input-group-outline">
-							<input type="file" name="cover" required class="form-control">
-						</div>
-					</div>
-					<div class="row my-3">
-						<label>File</label>
-						<div class="input-group input-group-outline">
-							<input type="file" name="file" required class="form-control">
-						</div>
+						
 					</div>
 				</div>
 				<div class="modal-footer">
