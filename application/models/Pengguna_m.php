@@ -114,6 +114,12 @@ class Pengguna_m extends CI_Model
         return $this->db->delete('user', ['id_user' => $id]);
     }
 
+    public function getAnggota()
+    {
+            $this->db->where('role', 'anggota');
+        return $this->db->get('user')->result();
+    }
+
 }
 
 

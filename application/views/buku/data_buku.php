@@ -42,9 +42,6 @@
 									<th
 										class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
 										Penerbit</th>
-									<!-- <th
-										class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-										Kategori</th> -->
 									<th
 										class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
 										File</th>
@@ -59,7 +56,6 @@
 											class="text-secondary text-xs font-weight-bold"><?= $no++ ?></span>
 									</td>
 									<td>
-										<!-- <p class="text-xs text-secondary mb-0"></p> -->
 										<img src="<?= base_url('assets/buku/cover/'.$row->cover) ?>" alt="" class="avatar">
 									</td>
 									<td>
@@ -78,19 +74,6 @@
 									<td class="align-middle text-center">
 										<p class="text-xs text-secondary mb-0"><a href="<?= base_url('assets/buku/file/'.$row->file) ?>">File</a></p>
 									</td>
-									<!-- <td class="align-middle text-center text-sm">
-										<span
-											class="badge badge-sm <?= ($row->status == 'selesai') ? 'bg-gradient-success' : 'bg-gradient-secondary' ?>">
-											<?php if($row->status == 'selesai'): ?>
-											<?= $row->status ?>
-											<?php else : ?>
-											<a href="<?= base_url('buku/selesai/').$row->kd_buku ?>"
-												class="text-white">
-												<?= $row->status ?>
-											</a>
-											<?php endif ?>
-										</span>
-									</td> -->
 									<td class="align-middle">
 										<a href="<?= base_url('admin/data/editbuku/').$row->kd_buku ?>"
 											class="text-secondary text-warning font-weight-bold text-xs">

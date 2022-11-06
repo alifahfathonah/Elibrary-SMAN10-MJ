@@ -10,15 +10,15 @@
 			<div class="card my-4">
 				<div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
 					<div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-						<h6 class="text-white text-capitalize ps-3">Peminjaman</h6>
+						<h6 class="text-white text-capitalize ps-3">Pengembalian</h6>
 					</div>
 				</div>
 				<div class="card-body px-0 pb-2">
-					<div class="text-end me-3">
+					<!-- <div class="text-end me-3">
 						<a href="<?= base_url('admin/transaksi/tambahpinjam') ?>" class="btn btn-secondary">
 							<i class="material-icons opacity-10" translate="no">add</i> Tambah Pinjam
 						</a>
-					</div>
+					</div> -->
 					<div class="table-responsive p-4 mx-2">
 						<table class="table align-items-center mb-0" id="datatable">
 							<thead>
@@ -43,7 +43,7 @@
 									</th>
 									<th
 										class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-										Status</th>
+										Tanggal Pengembalian</th>
 									<th
 										class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
 										Denda</th>
@@ -51,7 +51,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<?php $no=1; foreach($peminjaman as $row) : ?>
+								<?php $no=1; foreach($pengembalian as $row) : ?>
 								<tr>
 									<td class="align-middle text-center">
 										<span
@@ -73,7 +73,7 @@
 										<p class="text-xs text-secondary mb-0"><?= $row->tgl_balik ?></p>
 									</td>
 									<td>
-										<p class="text-xs text-secondary mb-0"><?= $row->status ?></p>
+										<p class="text-xs text-secondary mb-0"><?= $row->tgl_kembali ?></p>
 									</td>
 									<td>
 										<?php 
@@ -108,13 +108,6 @@
 											<i class="material-icons opacity-10" translate="no">visibility
 											</i>
 										</a> 
-										|
-										<a href="<?= base_url('admin/transaksi/pinjam_hapus/').$row->no_pinjam ?>"
-											onclick="return confirm('Hapus ?')"
-											class="text-secondary text-danger font-weight-bold text-xs">
-											<i class="material-icons opacity-10" translate="no">delete
-											</i>
-										</a>
 									</td>
 								</tr>
 								<?php endforeach ?>

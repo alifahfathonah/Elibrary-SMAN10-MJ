@@ -22,6 +22,14 @@ class Buku_m extends CI_Model
         return $this->db->get('buku')->result();
     }
 
+    public function getBukuByKodeBukuNoResult($kd_buku)
+    {
+        $this->db->join('kategori', 'kategori.id_kategori = buku.id_kategori');
+        $this->db->order_by('judul_buku', 'ASC');
+        $this->db->where('kd_buku', $kd_buku);
+        return $this->db->get('buku');
+    }
+
     public function simpanBuku($post)
     {
         $data = [
