@@ -30,23 +30,17 @@
 					</div>
 					<div class="card-body text-center">
 						<!-- <p class="card-text text-secondary fw-bold"><?= $b->pengarang ?></p> -->
-						<p class="card-text text-primary fw-bold"><a href="<?= base_url('buku/detail/').$b->kd_buku ?>" class="text-decoration-none"><?= $b->judul_buku ?></a></p>
+						<p class="card-text fw-bold"><a href="<?= base_url('buku/detail/').$b->kd_buku ?>" class="text-decoration-none text-success"><?= $b->judul_buku ?></a></p>
 					</div>
 				</div>
 			</div>
 			<?php endforeach ?>
       <?php else : ?>
-      <!-- <div class="col-6 col-md-3 col-sm-6 mt-2"> -->
 				<div class="card">
-					<!-- <div class="text-center">
-						<img src="<?= base_url('assets/buku/cover/').$b->cover ?>" height="200px"
-							class="card-img-top img-thumbnail w-100">
-					</div> -->
 					<div class="card-body text-center">
 						<p class="card-text text-danger fw-bold">Data tidak ditemukan</p>
 					</div>
 				</div>
-			<!-- </div> -->
       <?php endif ?>
 		</div>
 	</div>

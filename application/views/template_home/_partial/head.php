@@ -7,8 +7,10 @@
 
 <!-- Font Awesome Icons -->
 <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-<!-- floating WA -->
-<link rel="stylesheet" href="<?= base_url() ?>assets/vendor/floating-whatsapp/floating-wpp.css">
+<!-- Material Icons -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+
+<link id="pagestyle" href="<?= base_url() ?>assets/css/material-dashboard.css?v=3.0.0" rel="stylesheet" />
 
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="<?= base_url() ?>assets/vendor/bootstrap/css/bootstrap.min.css">

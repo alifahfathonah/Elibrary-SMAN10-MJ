@@ -14,9 +14,9 @@
 				</div>
 				<hr class="dark horizontal my-0">
 				<div class="card-footer p-3">
-					<p class="mb-0"><span
+					<!-- <p class="mb-0"><span
 							class="<?= ($pendapatan['persentase_pendapatan_sekarang'] >= 0) ? 'text-success' : 'text-danger' ?> text-sm font-weight-bolder"><?= ($pendapatan['persentase_pendapatan_sekarang'] >= 0) ? "+" : ""?><?=$pendapatan['persentase_pendapatan_sekarang'] ?>%
-						</span>dari kemarin</p>
+						</span>dari kemarin</p> -->
 				</div>
 			</div>
 		</div>
@@ -34,9 +34,9 @@
 				</div>
 				<hr class="dark horizontal my-0">
 				<div class="card-footer p-3">
-					<p class="mb-0"><span
+					<!-- <p class="mb-0"><span
 							class="<?= ($pengeluaran['persentase_pengeluaran_sekarang'] >= 0) ? 'text-success' : 'text-danger' ?> text-sm font-weight-bolder"><?= ($pengeluaran['persentase_pengeluaran_sekarang'] >= 0) ? "+" : ""?><?=$pengeluaran['persentase_pengeluaran_sekarang'] ?>%
-						</span>dari kemarin</p>
+						</span>dari kemarin</p> -->
 				</div>
 			</div>
 		</div>
@@ -54,9 +54,9 @@
 				</div>
 				<hr class="dark horizontal my-0">
 				<div class="card-footer p-3">
-					<p class="mb-0"><span
+					<!-- <p class="mb-0"><span
 							class="<?= ($transaksi['persentase_transaksi_sekarang'] >= 0) ? 'text-success' : 'text-danger' ?> text-sm font-weight-bolder"><?= ($transaksi['persentase_transaksi_sekarang'] >= 0) ? "+" : ""?><?=$transaksi['persentase_transaksi_sekarang'] ?>%
-						</span> dari kemarin</p>
+						</span> dari kemarin</p> -->
 				</div>
 			</div>
 		</div>
@@ -74,190 +74,116 @@
 				</div>
 				<hr class="dark horizontal my-0">
 				<div class="card-footer p-3">
-					<p class="mb-0"><span class="text-success text-sm font-weight-bolder">&nbsp</span></p>
+					<!-- <p class="mb-0"><span class="text-success text-sm font-weight-bolder">&nbsp</span></p> -->
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="row mt-4">
-		<div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-			<div class="card">
-				<div class="card-header p-3 pt-2">
-					<div
-						class="icon icon-lg icon-shape bg-gradient-info shadow-dark text-center border-radius-xl mt-n4 position-absolute">
-						<i class="material-icons opacity-10" translate="no">table_view</i>
-					</div>
-					<div class="text-end pt-1">
-						<p class="text-sm mb-0 text-capitalize">Pendapatan Bulan Ini</p>
-						<h4 class="mb-0">Rp. <?= number_format($pendapatan['pendapatan_perbulan']  ?? 0) ?></h4>
-					</div>
-				</div>
-				<hr class="dark horizontal my-0">
-				<div class="card-footer p-3">
-					<p class="mb-0"><span
-							class="<?= ($pendapatan['persentase_pendapatan_bulan'] >= 0) ? 'text-success' : 'text-danger' ?> text-sm font-weight-bolder"><?= ($pendapatan['persentase_pendapatan_bulan'] >= 0) ? "+" : ""?><?=$pendapatan['persentase_pendapatan_bulan'] ?>%
-						</span>dari bulan lalu</p>
-				</div>
-			</div>
-		</div>
-		<div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-			<div class="card">
-				<div class="card-header p-3 pt-2">
-					<div
-						class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
-						<i class="material-icons opacity-10" translate="no">receipt</i>
-					</div>
-					<div class="text-end pt-1">
-						<p class="text-sm mb-0 text-capitalize">Pengeluaran Bulan Ini</p>
-						<h4 class="mb-0">Rp. <?= number_format($pengeluaran['pengeluaran_perbulan']  ?? 0) ?></h4>
-					</div>
-				</div>
-				<hr class="dark horizontal my-0">
-				<div class="card-footer p-3">
-					<p class="mb-0"><span
-							class="<?= ($pengeluaran['persentase_pengeluaran_bulan'] >= 0) ? 'text-success' : 'text-danger' ?> text-sm font-weight-bolder"><?= ($pengeluaran['persentase_pengeluaran_bulan'] >= 0) ? "+" : ""?><?=$pengeluaran['persentase_pengeluaran_bulan'] ?>%
-						</span>dari bulan lalu</p>
-				</div>
-			</div>
-		</div>
-		<div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-			<div class="card">
-				<div class="card-header p-3 pt-2">
-					<div
-						class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute">
-						<i class="material-icons opacity-10" translate="no">notes</i>
-					</div>
-					<div class="text-end pt-1">
-						<p class="text-sm mb-0 text-capitalize">Transaksi Bulan Ini</p>
-						<h4 class="mb-0"><?= number_format($transaksi['transaksi_perbulan']  ?? 0) ?></h4>
-					</div>
-				</div>
-				<hr class="dark horizontal my-0">
-				<div class="card-footer p-3">
-					<p class="mb-0"><span
-							class="<?= ($transaksi['persentase_transaksi_bulan'] >= 0) ? 'text-success' : 'text-danger' ?> text-sm font-weight-bolder"><?= ($transaksi['persentase_transaksi_bulan'] >= 0) ? "+" : ""?><?=$transaksi['persentase_transaksi_bulan'] ?>%</span>
-						dari Bulan lalu</p>
-				</div>
-			</div>
-		</div>
-		<div class="col-xl-3 col-sm-6">
-			<div class="card">
-				<div class="card-header p-3 pt-2">
-					<div
-						class="icon icon-lg icon-shape bg-gradient-dark shadow-info text-center border-radius-xl mt-n4 position-absolute">
-						<i class="material-icons opacity-10" translate="no">person</i>
-					</div>
-					<div class="text-end pt-1">
-						<p class="text-sm mb-0 text-capitalize">Pengguna</p>
-						<h4 class="mb-0"><?= number_format($pengguna  ?? 0) ?></h4>
-					</div>
-				</div>
-				<hr class="dark horizontal my-0">
-				<div class="card-footer p-3">
-					<p class="mb-0"><span class="text-success text-sm font-weight-bolder">&nbsp</span></p>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="row mt-4">
-		<div class="col-lg-4 col-md-6 mt-4 mb-4">
-			<div class="card z-index-2 ">
-				<div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
-					<div class="bg-gradient-info shadow-primary border-radius-lg py-3 pe-1">
-						<div class="chart">
-							<canvas id="chart-pendapatan" class="chart-canvas" height="170"></canvas>
-						</div>
-					</div>
-				</div>
-				<div class="card-body">
-					<h6 class="mb-0 ">Pendapatan Perbulan Tahun <?= date('Y') ?></h6>
-				</div>
-			</div>
-		</div>
-		<div class="col-lg-4 col-md-6 mt-4 mb-4">
-			<div class="card z-index-2  ">
-				<div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
-					<div class="bg-gradient-primary shadow-success border-radius-lg py-3 pe-1">
-						<div class="chart">
-							<canvas id="chart-pengeluaran" class="chart-canvas" height="170"></canvas>
-						</div>
-					</div>
-				</div>
-				<div class="card-body">
-					<h6 class="mb-0 "> Pengeluaran Perbulan Tahun <?= date('Y') ?> </h6>
-				</div>
-			</div>
-		</div>
-		<div class="col-lg-4 mt-4 mb-3">
-			<div class="card z-index-2 ">
-				<div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
-					<div class="bg-gradient-success shadow-dark border-radius-lg py-3 pe-1">
-						<div class="chart">
-							<canvas id="chart-transaksi" class="chart-canvas" height="170"></canvas>
-						</div>
-					</div>
-				</div>
-				<div class="card-body">
-					<h6 class="mb-0 ">Transaksi Perbulan Tahun <?= date('Y') ?></h6>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="row mb-4">
+	
+	<div class="row mb-4 mt-4">
 		<div class="card my-4">
 			<div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-				<div class="bg-gradient-info shadow-primary border-radius-lg pt-4 pb-3">
+				<div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
 					<h6 class="text-white text-capitalize ps-3">Peminjaman Terbaru</h6>
 				</div>
 			</div>
 			<div class="card-body px-0 pb-2">
 				<div class="table-responsive p-0">
-					<table class="table align-items-center mb-0">
+					<table class="table align-items-center mb-0" id="datatable">
 						<thead>
 							<tr>
 								<th
 									class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+									No</th>
+								<th
+									class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+									No Peminjaman</th>
+								<th
+									class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+									Id Peminjam</th>
+								<th
+									class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+									Nama Peminjam</th>
+								<th
+									class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+									Tanggal Pinjam</th>
+								<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+									Tanggal Balik
+								</th>
+								<th
+									class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
 									Status</th>
 								<th
 									class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-									Tanggal</th>
-								<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-									Catatan
-								</th>
-								<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-									Jumlah Pemasukan</th>
-								<th
-									class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-									User</th>
+									Denda</th>
+								<th class="text-secondary opacity-7"></th>
 							</tr>
 						</thead>
 						<tbody>
-							<?php foreach($pemasukan_terbaru as $row) : ?>
+							<?php $no=1; foreach($peminjaman as $row) : ?>
 							<tr>
-								<td class="align-middle text-center text-sm">
+								<td class="align-middle text-center">
 									<span
-										class="badge badge-sm <?= ($row->status == 'selesai') ? 'bg-gradient-success' : 'bg-gradient-secondary' ?>">
-										<?php if($row->status == 'selesai'): ?>
-										<?= $row->status ?>
-										<?php else : ?>
-										<a href="<?= base_url('transaksi/selesai/').$row->id_pemasukan ?>"
-											class="text-white">
-											<?= $row->status ?>
-										</a>
-										<?php endif ?>
-									</span>
-								</td>
-								<td class="align-middle text-center">
-									<span class="text-secondary text-xs font-weight-bold"><?= $row->tanggal ?></span>
+										class="text-secondary text-xs font-weight-bold"><?= $no++ ?></span>
 								</td>
 								<td>
-									<p class="text-xs text-secondary mb-0"><?= $row->catatan ?></p>
+									<p class="text-xs text-secondary mb-0"><?= $row->no_pinjam ?></p>
 								</td>
 								<td>
-									<p class="text-xs font-weight-bold mb-0">Rp. <?= number_format($row->jumlah  ?? 0) ?></p>
+									<p class="text-xs text-secondary mb-0"><?= $row->id_user ?></p>
 								</td>
 								<td>
-									<p class="text-xs text-secondary mb-0"><?= $row->nama ?></p>
+									<p class="text-xs text-secondary mb-0"><?= $row->nama?></p>
+								</td>
+								<td>
+									<p class="text-xs text-secondary mb-0"><?= $row->tgl_pinjam ?></p>
+								</td>
+								<td>
+									<p class="text-xs text-secondary mb-0"><?= $row->tgl_balik ?></p>
+								</td>
+								<td>
+									<p class="text-xs text-secondary mb-0"><?= $row->status ?></p>
+								</td>
+								<td>
+									<?php 
+									$denda = $this->db->query("SELECT * FROM denda WHERE no_pinjam = '$row->no_pinjam'");
+									$total_denda = $denda->row();
+										if($row->status == 'Di Kembalikan')
+										{
+											echo $this->transaksi_m->rp($total_denda->denda);
+										}else{
+											$jml = $this->db->query("SELECT * FROM peminjaman WHERE no_pinjam = '$row->no_pinjam'")->num_rows();			
+											$date1 = date('Ymd');
+											$date2 = preg_replace('/[^0-9]/','',$row->tgl_balik);
+											$diff = $date1 - $date2;
+											if($diff > 0 )
+											{
+												echo $diff.' hari';
+												$dd = $this->transaksi_m->getBiayaDenda(); 
+												echo '<p class="text-xs text-secondary mb-0 text-danger">
+												'.$this->transaksi_m->rp($jml*($dd->harga_denda*$diff)).' 
+												</p><small style="color:#333;">* Untuk '.$jml.' Buku</small>';
+											}else{
+												echo '<p class="text-xs text-secondary mb-0 text-success">
+												Tidak Ada Denda</p>';
+											}
+										}
+									?>
+								</td>
+								
+								<td class="align-middle">
+									<a href="<?= base_url('admin/transaksi/detail_pinjam/').$row->no_pinjam ?>"
+										class="text-secondary text-success font-weight-bold text-xs">
+										<i class="material-icons opacity-10" translate="no">visibility
+										</i>
+									</a> 
+									|
+									<a href="<?= base_url('admin/transaksi/pinjam_hapus/').$row->no_pinjam ?>"
+										onclick="return confirm('Hapus ?')"
+										class="text-secondary text-danger font-weight-bold text-xs">
+										<i class="material-icons opacity-10" translate="no">delete
+										</i>
+									</a>
 								</td>
 							</tr>
 							<?php endforeach ?>
@@ -267,54 +193,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="row mb-4">
-		<div class="card my-4">
-			<div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-				<div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-					<h6 class="text-white text-capitalize ps-3">Pengembalian Terbaru</h6>
-				</div>
-			</div>
-			<div class="card-body px-0 pb-2">
-				<div class="table-responsive p-0">
-					<table class="table align-items-center mb-0">
-						<thead>
-							<tr>
-								<th
-									class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-									Tanggal</th>
-								<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-									Catatan
-								</th>
-								<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-									Jumlah Pengeluaran</th>
-								<th
-									class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-									User</th>
-							</tr>
-						</thead>
-						<tbody>
-							<?php foreach($pengeluaran_terbaru as $row) : ?>
-							<tr>
-								<td class="align-middle text-center">
-									<span class="text-secondary text-xs font-weight-bold"><?= $row->tanggal ?></span>
-								</td>
-								<td>
-									<p class="text-xs text-secondary mb-0"><?= $row->catatan ?></p>
-								</td>
-								<td>
-									<p class="text-xs font-weight-bold mb-0">Rp. <?= number_format($row->jumlah  ?? 0) ?></p>
-								</td>
-								<td>
-									<p class="text-xs text-secondary mb-0"><?= $row->nama ?></p>
-								</td>
-							</tr>
-							<?php endforeach ?>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-	</div>
+	
 </div>
 
 <script>
