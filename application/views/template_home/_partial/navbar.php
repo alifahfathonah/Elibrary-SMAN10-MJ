@@ -20,7 +20,7 @@
 						<a href="javascript:;" class="nav-link text-body font-weight-bold px-0" id="dropdownMenuButton"
 							data-bs-toggle="dropdown">
 							<i class="fa fa-user me-sm-1 "></i>
-							<span class="d-sm-inline d-none nav-link"><?= $this->session->userdata('username') ?></span>
+							<span class="d-sm-inline d-none nav-link"><?= strtoupper($this->session->userdata('username')) ?></span>
 						</a>
 						<ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4"
 							aria-labelledby="dropdownMenuButton">
@@ -32,7 +32,7 @@
 										</div>
 										<div class="d-flex flex-column justify-content-center">
 											<h6 class="text-sm font-weight-normal mb-1">
-												<span class="font-weight-bold "><?= $this->session->userdata('nama') ?></span>
+												<span class="font-weight-bold "><?= ucwords($this->session->userdata('nama')) ?></span>
 											</h6>
 											<p class="text-xs text-secondary mb-0">
 												<i class="fa fa-briefcase me-1"></i>

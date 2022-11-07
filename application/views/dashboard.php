@@ -5,15 +5,16 @@
 				<div class="card-header p-3 pt-2">
 					<div
 						class="icon icon-lg icon-shape bg-gradient-info shadow-dark text-center border-radius-xl mt-n4 position-absolute">
-						<i class="material-icons opacity-10" translate="no">table_view</i>
+						<i class="material-icons opacity-10" translate="no">book</i>
 					</div>
 					<div class="text-end pt-1">
 						<p class="text-sm mb-0 text-capitalize">Buku</p>
-						<h4 class="mb-0">Rp. <?= number_format($pendapatan['pendapatan_sekarang'] ?? 0) ?></h4>
+						<h4 class="mb-0"><?= number_format($buku ?? 0) ?></h4>
 					</div>
 				</div>
 				<hr class="dark horizontal my-0">
-				<div class="card-footer p-3">
+				<div class="card-footer p-3 text-center">
+					<a href="<?= base_url('admin/data/buku') ?>">Lihat Selengkapnya <i class="material-icons opacity-10 align-middle" translate="no">visibility</i></a>
 				</div>
 			</div>
 		</div>
@@ -26,11 +27,12 @@
 					</div>
 					<div class="text-end pt-1">
 						<p class="text-sm mb-0 text-capitalize">Pinjam</p>
-						<h4 class="mb-0">Rp. <?= number_format($pengeluaran['pengeluaran_sekarang']  ?? 0) ?></h4>
+						<h4 class="mb-0"><?= number_format($pinjam  ?? 0) ?></h4>
 					</div>
 				</div>
 				<hr class="dark horizontal my-0">
-				<div class="card-footer p-3">
+				<div class="card-footer p-3 text-center">
+					<a href="<?= base_url('admin/transaksi/peminjaman') ?>">Lihat Selengkapnya <i class="material-icons opacity-10 align-middle" translate="no">visibility</i></a>
 				</div>
 			</div>
 		</div>
@@ -42,12 +44,13 @@
 						<i class="material-icons opacity-10" translate="no">notes</i>
 					</div>
 					<div class="text-end pt-1">
-						<p class="text-sm mb-0 text-capitalize">Dikembalikan</p>
-						<h4 class="mb-0"><?= number_format($transaksi['transaksi_sekarang']  ?? 0) ?></h4>
+						<p class="text-sm mb-0 text-capitalize">Kategori Buku</p>
+						<h4 class="mb-0"><?= number_format($kategori  ?? 0) ?></h4>
 					</div>
 				</div>
 				<hr class="dark horizontal my-0">
-				<div class="card-footer p-3">
+				<div class="card-footer p-3 text-center">
+					<a href="<?= base_url('admin/data/kategori') ?>">Lihat Selengkapnya <i class="material-icons opacity-10 align-middle" translate="no">visibility</i></a>
 				</div>
 			</div>
 		</div>
@@ -56,15 +59,16 @@
 				<div class="card-header p-3 pt-2">
 					<div
 						class="icon icon-lg icon-shape bg-gradient-dark shadow-info text-center border-radius-xl mt-n4 position-absolute">
-						<i class="material-icons opacity-10" translate="no">autorenew</i>
+						<i class="material-icons opacity-10" translate="no">people</i>
 					</div>
 					<div class="text-end pt-1">
 						<p class="text-sm mb-0 text-capitalize">Anggota</p>
-						<h4 class="mb-0"><?= number_format($pending  ?? 0) ?></h4>
+						<h4 class="mb-0"><?= number_format($anggota  ?? 0) ?></h4>
 					</div>
 				</div>
 				<hr class="dark horizontal my-0">
-				<div class="card-footer p-3">
+				<div class="card-footer p-3 text-center">
+					<a href="<?= base_url('admin/pengguna') ?>">Lihat Selengkapnya <i class="material-icons opacity-10 align-middle" translate="no">visibility</i></a>
 				</div>
 			</div>
 		</div>

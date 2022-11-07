@@ -34,7 +34,7 @@
 			<li class="nav-item">
 				<a class="nav-link text-white <?php if($this->uri->segment(3) == 'kategori' || $this->uri->segment(2) == '') echo 'active bg-gradient-primary' ?>" href="<?= base_url('admin/data/kategori') ?>">
 					<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-						<i class="material-icons opacity-10" translate="no">book</i>
+						<i class="material-icons opacity-10" translate="no">list</i>
 					</div>
 					<span class="nav-link-text ms-1">Kategori Buku</span>
 				</a>
