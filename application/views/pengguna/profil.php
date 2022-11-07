@@ -1,4 +1,4 @@
-<div class="container-fluid px-2 px-md-4">
+<div class="container px-2 px-md-4">
 	<div class="page-header min-height-300 border-radius-xl mt-4"
 		style="background-image: url('https://images.unsplash.com/photo-1521587760476-6c12a4b040da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80');">
 		<span class="mask <?= (is_admin()) ? 'bg-gradient-success' : 'bg-gradient-success' ?>  opacity-3"></span>
@@ -89,7 +89,7 @@
 				</ul>
 				<div class="tab-content" id="myTabContent">
 					<div class="tab-pane fade show active" id="peminjaman" role="tabpanel" aria-labelledby="peminjaman-tab">
-						<table class="table align-items-center mb-0" id="datatable">
+						<table class="table align-items-center mb-0" id="datatable1">
 							<thead>
 								<tr>
 									<th
@@ -191,7 +191,7 @@
 						</table>
 					</div>
 					<div class="tab-pane fade" id="pengembalian" role="tabpanel" aria-labelledby="pengembalian-tab">
-						<table class="table align-items-center mb-0" id="datatable">
+						<table class="table align-items-center mb-0" id="datatable2">
 							<thead>
 								<tr>
 									<th
@@ -274,7 +274,7 @@
 									</td>
 									
 									<td class="align-middle">
-										<a href="<?= base_url('admin/transaksi/detail_pinjam/').$row->no_pinjam ?>"
+										<a href="<?= base_url(is_admin() ? 'admin/transaksi/detail_pinjam/' : 'pengguna/detail_pinjam/').$row->no_pinjam ?>"
 											class="text-secondary text-success font-weight-bold text-xs">
 											<i class="material-icons opacity-10" translate="no">visibility
 											</i>
@@ -291,7 +291,6 @@
 	</div>
 </div>
 
-
 <!-- Modal edit Profil -->
 <div class="modal fade" id="modalEditProfil" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
 	aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -301,7 +300,7 @@
 				<input type="hidden" name="id" value="<?= $user->id_user ?>">
 				<div class="modal-header p-0 position-relative mt-n4 mx-3 z-index-2">
 					<div
-						class="w-100 bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 d-flex justify-content-between">
+						class="w-100 <?= is_admin() ? 'bg-gradient-primary' : 'bg-gradient-success' ?> shadow-primary border-radius-lg pt-4 pb-3 d-flex justify-content-between">
 						<h6 class="modal-title text-white text-capitalize ps-3">Edit Profil</h6>
 						<button type="button" class="btn-close me-2" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
@@ -347,7 +346,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-					<button type="submit" name="simpan" class="btn btn-primary">Simpan</button>
+					<button type="submit" name="simpan" class="btn <?= is_admin() ? 'btn-primary' : 'btn-success' ?>">Simpan</button>
 				</div>
 			</form>
 		</div>
@@ -362,7 +361,7 @@
 				<input type="hidden" name="id" value="<?= $user->id_user ?>">
 				<div class="modal-header p-0 position-relative mt-n4 mx-3 z-index-2">
 					<div
-						class="w-100 bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 d-flex justify-content-between">
+						class="w-100 <?= is_admin() ? 'bg-gradient-primary' : 'bg-gradient-success' ?> shadow-primary border-radius-lg pt-4 pb-3 d-flex justify-content-between">
 						<h6 class="modal-title text-white text-capitalize ps-3">Edit Password</h6>
 						<button type="button" class="btn-close me-2" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
@@ -389,9 +388,36 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-					<button type="submit" name="simpan" class="btn btn-primary">Simpan</button>
+					<button type="submit" name="simpan" class="btn <?= is_admin() ? 'btn-primary' : 'btn-success' ?>">Simpan</button>
 				</div>
 			</form>
 		</div>
 	</div>
 </div>
+
+<script>
+	$(document).ready( function () {
+		$('#datatable1').DataTable({
+			language: {
+				"paginate": {
+					"first":      "&laquo",
+					"last":       "&raquo",
+					"next":       "&gt",
+					"previous":   "&lt"
+				},
+			},
+			dom:' <"d-flex"l<"input-group input-group-outline justify-content-end me-4"f>>rt<"d-flex justify-content-between"ip><"clear">'
+		});
+		$('#datatable2').DataTable({
+			language: {
+				"paginate": {
+					"first":      "&laquo",
+					"last":       "&raquo",
+					"next":       "&gt",
+					"previous":   "&lt"
+				},
+			},
+			dom:' <"d-flex"l<"input-group input-group-outline justify-content-end me-4"f>>rt<"d-flex justify-content-between "ip><"clear">'
+		});
+	} );
+</script>

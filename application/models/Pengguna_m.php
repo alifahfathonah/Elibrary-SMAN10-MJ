@@ -116,7 +116,7 @@ class Pengguna_m extends CI_Model
 
     public function getAnggota()
     {
-            $this->db->where('role', 'anggota');
+        $this->db->where('role', 'anggota');
         return $this->db->get('user')->result();
     }
 

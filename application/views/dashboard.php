@@ -8,15 +8,12 @@
 						<i class="material-icons opacity-10" translate="no">table_view</i>
 					</div>
 					<div class="text-end pt-1">
-						<p class="text-sm mb-0 text-capitalize">Pendapatan Hari Ini</p>
+						<p class="text-sm mb-0 text-capitalize">Buku</p>
 						<h4 class="mb-0">Rp. <?= number_format($pendapatan['pendapatan_sekarang'] ?? 0) ?></h4>
 					</div>
 				</div>
 				<hr class="dark horizontal my-0">
 				<div class="card-footer p-3">
-					<!-- <p class="mb-0"><span
-							class="<?= ($pendapatan['persentase_pendapatan_sekarang'] >= 0) ? 'text-success' : 'text-danger' ?> text-sm font-weight-bolder"><?= ($pendapatan['persentase_pendapatan_sekarang'] >= 0) ? "+" : ""?><?=$pendapatan['persentase_pendapatan_sekarang'] ?>%
-						</span>dari kemarin</p> -->
 				</div>
 			</div>
 		</div>
@@ -28,15 +25,12 @@
 						<i class="material-icons opacity-10" translate="no">receipt</i>
 					</div>
 					<div class="text-end pt-1">
-						<p class="text-sm mb-0 text-capitalize">Pengeluaran Hari Ini</p>
+						<p class="text-sm mb-0 text-capitalize">Pinjam</p>
 						<h4 class="mb-0">Rp. <?= number_format($pengeluaran['pengeluaran_sekarang']  ?? 0) ?></h4>
 					</div>
 				</div>
 				<hr class="dark horizontal my-0">
 				<div class="card-footer p-3">
-					<!-- <p class="mb-0"><span
-							class="<?= ($pengeluaran['persentase_pengeluaran_sekarang'] >= 0) ? 'text-success' : 'text-danger' ?> text-sm font-weight-bolder"><?= ($pengeluaran['persentase_pengeluaran_sekarang'] >= 0) ? "+" : ""?><?=$pengeluaran['persentase_pengeluaran_sekarang'] ?>%
-						</span>dari kemarin</p> -->
 				</div>
 			</div>
 		</div>
@@ -48,15 +42,12 @@
 						<i class="material-icons opacity-10" translate="no">notes</i>
 					</div>
 					<div class="text-end pt-1">
-						<p class="text-sm mb-0 text-capitalize">Transaksi Hari Ini</p>
+						<p class="text-sm mb-0 text-capitalize">Dikembalikan</p>
 						<h4 class="mb-0"><?= number_format($transaksi['transaksi_sekarang']  ?? 0) ?></h4>
 					</div>
 				</div>
 				<hr class="dark horizontal my-0">
 				<div class="card-footer p-3">
-					<!-- <p class="mb-0"><span
-							class="<?= ($transaksi['persentase_transaksi_sekarang'] >= 0) ? 'text-success' : 'text-danger' ?> text-sm font-weight-bolder"><?= ($transaksi['persentase_transaksi_sekarang'] >= 0) ? "+" : ""?><?=$transaksi['persentase_transaksi_sekarang'] ?>%
-						</span> dari kemarin</p> -->
 				</div>
 			</div>
 		</div>
@@ -68,13 +59,12 @@
 						<i class="material-icons opacity-10" translate="no">autorenew</i>
 					</div>
 					<div class="text-end pt-1">
-						<p class="text-sm mb-0 text-capitalize">Pending</p>
+						<p class="text-sm mb-0 text-capitalize">Anggota</p>
 						<h4 class="mb-0"><?= number_format($pending  ?? 0) ?></h4>
 					</div>
 				</div>
 				<hr class="dark horizontal my-0">
 				<div class="card-footer p-3">
-					<!-- <p class="mb-0"><span class="text-success text-sm font-weight-bolder">&nbsp</span></p> -->
 				</div>
 			</div>
 		</div>
@@ -196,256 +186,3 @@
 	
 </div>
 
-<script>
-	$(document).ready(function () {
-		var ctx1 = document.getElementById("chart-pendapatan").getContext("2d");
-
-		new Chart(ctx1, {
-			type: "line",
-			data: {
-				labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov",
-					"Dec"],
-				datasets: [{
-					label: "Pemasukan",
-					tension: 0,
-					borderWidth: 0,
-					pointRadius: 5,
-					pointBackgroundColor: "rgba(255, 255, 255, .8)",
-					pointBorderColor: "transparent",
-					borderColor: "rgba(255, 255, 255, .8)",
-					borderColor: "rgba(255, 255, 255, .8)",
-					borderWidth: 4,
-					backgroundColor: "transparent",
-					fill: true,
-					data: <?= json_encode($chart['cpdt']) ?> ,
-					maxBarThickness: 6
-
-				}],
-			},
-			options: {
-				responsive: true,
-				maintainAspectRatio: false,
-				plugins: {
-					legend: {
-						display: false,
-					}
-				},
-				interaction: {
-					intersect: false,
-					mode: 'index',
-				},
-				scales: {
-					y: {
-						grid: {
-							drawBorder: false,
-							display: true,
-							drawOnChartArea: true,
-							drawTicks: false,
-							borderDash: [5, 5],
-							color: 'rgba(255, 255, 255, .2)'
-						},
-						ticks: {
-							display: true,
-							color: '#f8f9fa',
-							padding: 10,
-							font: {
-								size: 14,
-								weight: 300,
-								family: "Roboto",
-								style: 'normal',
-								lineHeight: 2
-							},
-						}
-					},
-					x: {
-						grid: {
-							drawBorder: false,
-							display: false,
-							drawOnChartArea: false,
-							drawTicks: false,
-							borderDash: [5, 5]
-						},
-						ticks: {
-							display: true,
-							color: '#f8f9fa',
-							padding: 10,
-							font: {
-								size: 14,
-								weight: 300,
-								family: "Roboto",
-								style: 'normal',
-								lineHeight: 2
-							},
-						}
-					},
-				},
-			},
-		});
-
-		var ctx2 = document.getElementById("chart-pengeluaran").getContext("2d");
-
-		new Chart(ctx2, {
-			type: "line",
-			data: {
-				labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov",
-					"Dec"],
-				datasets: [{
-					label: "Pengeluaran",
-					tension: 0,
-					borderWidth: 0,
-					pointRadius: 5,
-					pointBackgroundColor: "rgba(255, 255, 255, .8)",
-					pointBorderColor: "transparent",
-					borderColor: "rgba(255, 255, 255, .8)",
-					borderWidth: 4,
-					backgroundColor: "transparent",
-					fill: true,
-					data: <?= json_encode($chart['cpgt']) ?> ,
-					maxBarThickness: 6
-
-				}],
-			},
-			options: {
-				responsive: true,
-				maintainAspectRatio: false,
-				plugins: {
-					legend: {
-						display: false,
-					}
-				},
-				interaction: {
-					intersect: false,
-					mode: 'index',
-				},
-				scales: {
-					y: {
-						grid: {
-							drawBorder: false,
-							display: true,
-							drawOnChartArea: true,
-							drawTicks: false,
-							borderDash: [5, 5],
-							color: 'rgba(255, 255, 255, .2)'
-						},
-						ticks: {
-							display: true,
-							padding: 10,
-							color: '#f8f9fa',
-							font: {
-								size: 14,
-								weight: 300,
-								family: "Roboto",
-								style: 'normal',
-								lineHeight: 2
-							},
-						}
-					},
-					x: {
-						grid: {
-							drawBorder: false,
-							display: false,
-							drawOnChartArea: false,
-							drawTicks: false,
-							borderDash: [5, 5]
-						},
-						ticks: {
-							display: true,
-							color: '#f8f9fa',
-							padding: 10,
-							font: {
-								size: 14,
-								weight: 300,
-								family: "Roboto",
-								style: 'normal',
-								lineHeight: 2
-							},
-						}
-					},
-				},
-			},
-		});
-
-		var ctx3 = document.getElementById("chart-transaksi").getContext("2d");
-
-		new Chart(ctx3, {
-			type: "bar",
-			data: {
-				labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov",
-					"Dec"],
-				datasets: [{
-					label: "Transaksi",
-					tension: 0.4,
-					borderWidth: 0,
-					borderRadius: 4,
-					borderSkipped: false,
-					backgroundColor: "rgba(255, 255, 255, .8)",
-					data: <?= json_encode($chart['ctt']) ?> ,
-					maxBarThickness: 6
-				}, ],
-			},
-			options: {
-				responsive: true,
-				maintainAspectRatio: false,
-				plugins: {
-					legend: {
-						display: false,
-					}
-				},
-				interaction: {
-					intersect: false,
-					mode: 'index',
-				},
-				scales: {
-					y: {
-						grid: {
-							drawBorder: false,
-							display: true,
-							drawOnChartArea: true,
-							drawTicks: false,
-							borderDash: [5, 5],
-							color: 'rgba(255, 255, 255, .2)'
-						},
-						ticks: {
-							suggestedMin: 0,
-							suggestedMax: 500,
-							beginAtZero: true,
-							padding: 10,
-							font: {
-								size: 14,
-								weight: 300,
-								family: "Roboto",
-								style: 'normal',
-								lineHeight: 2
-							},
-							color: "#fff"
-						},
-					},
-					x: {
-						grid: {
-							drawBorder: false,
-							display: true,
-							drawOnChartArea: true,
-							drawTicks: false,
-							borderDash: [5, 5],
-							color: 'rgba(255, 255, 255, .2)'
-						},
-						ticks: {
-							display: true,
-							color: '#f8f9fa',
-							padding: 10,
-							font: {
-								size: 14,
-								weight: 300,
-								family: "Roboto",
-								style: 'normal',
-								lineHeight: 2
-							},
-						}
-					},
-				},
-			},
-		});
-
-	})
-
-</script>

@@ -10,6 +10,7 @@ class Pengguna extends CI_Controller
         // check_not_login();
         $this->load->model('pengguna_m');
         $this->load->model('transaksi_m');
+        $this->load->model('buku_m');
 
     }
 
@@ -109,5 +110,15 @@ class Pengguna extends CI_Controller
         }else{
             redirect('pengguna/profil/'.$post['id']);
         }
+    }
+
+    public function detail_pinjam($no_pinjam)
+    {
+        $data = [
+            'peminjaman' => $this->transaksi_m->getPeminjamanByNoPinjamDistinct($no_pinjam)[0],
+            'buku' => $this->buku_m->getBukuByNoPinjam($no_pinjam)
+        ];
+        
+        $this->template->load('template_home/template_home','transaksi/detail_pinjam',$data);
     }
 }
