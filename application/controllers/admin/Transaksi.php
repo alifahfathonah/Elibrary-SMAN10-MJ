@@ -7,7 +7,8 @@ class Transaksi extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        check_not_login();
+        check_admin_not_login();
+
         $this->load->model('transaksi_m');
         $this->load->model('pengguna_m');
         $this->load->model('buku_m');

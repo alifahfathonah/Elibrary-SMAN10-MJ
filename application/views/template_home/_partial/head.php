@@ -10,10 +10,12 @@
 <!-- Material Icons -->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
 
-<link id="pagestyle" href="<?= base_url() ?>assets/css/material-dashboard.css?v=3.0.0" rel="stylesheet" />
 
+<link id="pagestyle" href="<?= base_url() ?>assets/css/material-dashboard.css?v=3.0.0" rel="stylesheet" />
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="<?= base_url() ?>assets/vendor/bootstrap/css/bootstrap.min.css">
+<!-- Datatables -->
+<link rel="stylesheet" href="<?= base_url() ?>assets/vendor/datatables/datatables.min.css">
 
 <title>E-Library SMAN 10 Muaro Jambi</title>
 <style>

@@ -104,6 +104,17 @@ class Buku_m extends CI_Model
         return $this->db->insert('kategori',$data);
     }
 
+    public function ubahKategori($post)
+    {
+        $data = [
+            'nama_kategori' => $post['nama_kategori'],
+        ];
+
+        return $this->db->update('kategori',$data,[
+            'id_kategori' => $post['id_kategori']
+        ]);
+    }
+
     public function hapusKategori($id)
     {
         return $this->db->delete('kategori', ['id_kategori' => $id]);
@@ -123,6 +134,17 @@ class Buku_m extends CI_Model
         ];
 
         return $this->db->insert('biaya_denda',$data);
+    }
+
+    public function ubahDenda($post)
+    {
+        $data = [
+            'harga_denda' => $post['harga_denda']
+        ];
+
+        return $this->db->update('biaya_denda',$data, [
+            'id_biaya_denda' => $post['id_biaya_denda']
+        ]);
     }
 
     public function setActiveDenda($id)

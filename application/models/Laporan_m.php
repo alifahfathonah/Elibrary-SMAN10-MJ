@@ -89,10 +89,32 @@ class Laporan_m extends CI_Model
     //     return $this->db->get($table)->row();
     // }
 
-    // private function _getCount($table)
-    // {
-    //     return $this->db->count_all_results($table);
-    // }
+    public function getJumlahBuku()
+    {
+        return $this->_getCount('buku');
+    }
+
+    public function getJumlahPinjam()
+    {
+        $this->db->where('status', 'Dipinjam');
+        return $this->_getCount('peminjaman');
+    }
+
+    public function getJumlahAnggota()
+    {
+        $this->db->where('role', 'anggota');
+        return $this->_getCount('user');
+    }
+
+    public function getJumlahKategori()
+    {
+        return $this->_getCount('kategori');
+    }
+
+    private function _getCount($table)
+    {
+        return $this->db->count_all_results($table);
+    }
 
     // public function getChartPendapatan($bulan)
     // {

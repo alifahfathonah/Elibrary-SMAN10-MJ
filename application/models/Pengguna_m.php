@@ -4,11 +4,24 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Pengguna_m extends CI_Model
 {
 
-    public function login($post)
+    public function loginAdmin($post)
     {
         $where = [
             'username' => $post['username'],
             'password' => $post['password'],
+            'role' => 'admin',
+            'is_active' => "1"
+        ];
+
+        return $this->db->get_where('user', $where);
+    }
+
+    public function loginAnggota($post)
+    {
+        $where = [
+            'username' => $post['username'],
+            'password' => $post['password'],
+            'role' => 'anggota',
             'is_active' => "1"
         ];
 
@@ -116,7 +129,12 @@ class Pengguna_m extends CI_Model
 
     public function getAnggota()
     {
-            $this->db->where('role', 'anggota');
+        $this->db->where(
+            [
+                'role' => 'anggota',
+                'is_active' => 2
+            ]
+        );
         return $this->db->get('user')->result();
     }
 

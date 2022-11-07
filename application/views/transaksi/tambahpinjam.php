@@ -108,7 +108,7 @@
 						if($u->role == 'anggota'):
 						?>
 						<tr>
-							<td><?= $no;?></td>
+							<td><?= $no++;?></td>
 							<td><?= $u->id_user;?></td>
 							<td><?= $u->nama;?></td>
 							<td><?= $u->no_telp;?></td>

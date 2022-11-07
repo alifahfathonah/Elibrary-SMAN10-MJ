@@ -39,7 +39,9 @@
           <li class="list-group-item">
 						<p>File : <a class="text-bold" href="<?= base_url('assets/buku/file/'.$buku->file) ?>"><?= $buku->file ?></a><span></p>
 					</li>
-          
+          <li class="list-group-item">
+						<a href="javascript:history.back()" class="btn btn-danger">Kembali</a>
+					</li>
 					<li class="list-group-item">
 						<!-- <form action="<?= base_url('buku/sewa') ?>" method="post">
 							<input type="hidden" name="id_buku" value="<?= $buku->id_buku ?>">

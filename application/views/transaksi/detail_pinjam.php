@@ -8,7 +8,7 @@
 			<div class="col-lg-6 col-md-6">
 				<div class="card my-4">
 					<div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-						<div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+						<div class="<?= is_admin() ? 'bg-gradient-primary' : 'bg-gradient-success' ?> shadow-primary border-radius-lg pt-4 pb-3">
 							<h6 class="text-white text-capitalize ps-3">Pinjam</h6>
 						</div>
 					</div>
@@ -66,7 +66,7 @@
 			<div class="col-lg-6 col-md-6">
 				<div class="card my-4">
 					<div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-						<div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+						<div class="<?= is_admin() ? 'bg-gradient-primary' : 'bg-gradient-success' ?> shadow-primary border-radius-lg pt-4 pb-3">
 							<h6 class="text-white text-capitalize ps-3">Buku</h6>
 						</div>
 					</div>

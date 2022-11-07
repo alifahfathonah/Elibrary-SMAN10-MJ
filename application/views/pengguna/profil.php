@@ -1,4 +1,4 @@
-<div class="container-fluid px-2 px-md-4">
+<div class="container px-2 px-md-4">
 	<div class="page-header min-height-300 border-radius-xl mt-4"
 		style="background-image: url('https://images.unsplash.com/photo-1521587760476-6c12a4b040da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80');">
 		<span class="mask <?= (is_admin()) ? 'bg-gradient-success' : 'bg-gradient-success' ?>  opacity-3"></span>
@@ -89,208 +89,204 @@
 				</ul>
 				<div class="tab-content" id="myTabContent">
 					<div class="tab-pane fade show active" id="peminjaman" role="tabpanel" aria-labelledby="peminjaman-tab">
-						<table class="table align-items-center mb-0" id="datatable">
-							<thead>
-								<tr>
-									<th
-										class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-										No</th>
-									<th
-										class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-										No Peminjaman</th>
-									<th
-										class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-										Id Peminjam</th>
-									<th
-										class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-										Nama Peminjam</th>
-									<th
-										class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-										Tanggal Pinjam</th>
-									<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-										Tanggal Balik
-									</th>
-									<th
-										class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-										Status</th>
-									<th
-										class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-										Denda</th>
-									<th class="text-secondary opacity-7"></th>
-								</tr>
-							</thead>
-							<tbody>
-								<?php $no=1; foreach($peminjaman as $row) : ?>
-								<tr>
-									<td class="align-middle text-center">
-										<span
-											class="text-secondary text-xs font-weight-bold"><?= $no++ ?></span>
-									</td>
-									<td>
-										<p class="text-xs text-secondary mb-0"><?= $row->no_pinjam ?></p>
-									</td>
-									<td>
-										<p class="text-xs text-secondary mb-0"><?= $row->id_user ?></p>
-									</td>
-									<td>
-										<p class="text-xs text-secondary mb-0"><?= $row->nama?></p>
-									</td>
-									<td>
-										<p class="text-xs text-secondary mb-0"><?= $row->tgl_pinjam ?></p>
-									</td>
-									<td>
-										<p class="text-xs text-secondary mb-0"><?= $row->tgl_balik ?></p>
-									</td>
-									<td>
-										<p class="text-xs text-secondary mb-0"><?= $row->status ?></p>
-									</td>
-									<td>
-										<?php 
-										$denda = $this->db->query("SELECT * FROM denda WHERE no_pinjam = '$row->no_pinjam'");
-										$total_denda = $denda->row();
-											if($row->status == 'Di Kembalikan')
-											{
-												echo $this->transaksi_m->rp($total_denda->denda);
-											}else{
-												$jml = $this->db->query("SELECT * FROM peminjaman WHERE no_pinjam = '$row->no_pinjam'")->num_rows();			
-												$date1 = date('Ymd');
-												$date2 = preg_replace('/[^0-9]/','',$row->tgl_balik);
-												$diff = $date1 - $date2;
-												if($diff > 0 )
+						<div class="table-responsive p-4 mx-2">
+							<table class="table align-items-center mb-0" id="datatable1">
+								<thead>
+									<tr>
+										<th
+											class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+											No</th>
+										<th
+											class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+											No Peminjaman</th>
+										<th
+											class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+											Id Peminjam</th>
+										<th
+											class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+											Nama Peminjam</th>
+										<th
+											class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+											Tanggal Pinjam</th>
+										<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+											Tanggal Balik
+										</th>
+										<th
+											class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+											Status</th>
+										<th
+											class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+											Denda</th>
+										<th class="text-secondary opacity-7"></th>
+									</tr>
+								</thead>
+								<tbody>
+									<?php $no=1; foreach($peminjaman as $row) : ?>
+									<tr>
+										<td class="align-middle text-center">
+											<span
+												class="text-secondary text-xs font-weight-bold"><?= $no++ ?></span>
+										</td>
+										<td>
+											<p class="text-xs text-secondary mb-0"><?= $row->no_pinjam ?></p>
+										</td>
+										<td>
+											<p class="text-xs text-secondary mb-0"><?= $row->id_user ?></p>
+										</td>
+										<td>
+											<p class="text-xs text-secondary mb-0"><?= $row->nama?></p>
+										</td>
+										<td>
+											<p class="text-xs text-secondary mb-0"><?= $row->tgl_pinjam ?></p>
+										</td>
+										<td>
+											<p class="text-xs text-secondary mb-0"><?= $row->tgl_balik ?></p>
+										</td>
+										<td>
+											<p class="text-xs text-secondary mb-0"><?= $row->status ?></p>
+										</td>
+										<td>
+											<?php 
+											$denda = $this->db->query("SELECT * FROM denda WHERE no_pinjam = '$row->no_pinjam'");
+											$total_denda = $denda->row();
+												if($row->status == 'Di Kembalikan')
 												{
-													echo $diff.' hari';
-													$dd = $this->transaksi_m->getBiayaDenda(); 
-													echo '<p class="text-xs text-secondary mb-0 text-danger">
-													'.$this->transaksi_m->rp($jml*($dd->harga_denda*$diff)).' 
-													</p><small style="color:#333;">* Untuk '.$jml.' Buku</small>';
+													echo $this->transaksi_m->rp($total_denda->denda);
 												}else{
-													echo '<p class="text-xs text-secondary mb-0 text-success">
-													Tidak Ada Denda</p>';
+													$jml = $this->db->query("SELECT * FROM peminjaman WHERE no_pinjam = '$row->no_pinjam'")->num_rows();			
+													$date1 = date('Ymd');
+													$date2 = preg_replace('/[^0-9]/','',$row->tgl_balik);
+													$diff = $date1 - $date2;
+													if($diff > 0 )
+													{
+														echo $diff.' hari';
+														$dd = $this->transaksi_m->getBiayaDenda(); 
+														echo '<p class="text-xs text-secondary mb-0 text-danger">
+														'.$this->transaksi_m->rp($jml*($dd->harga_denda*$diff)).' 
+														</p><small style="color:#333;">* Untuk '.$jml.' Buku</small>';
+													}else{
+														echo '<p class="text-xs text-secondary mb-0 text-success">
+														Tidak Ada Denda</p>';
+													}
 												}
-											}
-										?>
-									</td>
-									
-									<td class="align-middle">
-										<a href="<?= base_url('admin/transaksi/detail_pinjam/').$row->no_pinjam ?>"
-											class="text-secondary text-success font-weight-bold text-xs">
-											<i class="material-icons opacity-10" translate="no">visibility
-											</i>
-										</a> 
-										|
-										<a href="<?= base_url('admin/transaksi/pinjam_hapus/').$row->no_pinjam ?>"
-											onclick="return confirm('Hapus ?')"
-											class="text-secondary text-danger font-weight-bold text-xs">
-											<i class="material-icons opacity-10" translate="no">delete
-											</i>
-										</a>
-									</td>
-								</tr>
-								<?php endforeach ?>
-							</tbody>
-						</table>
+											?>
+										</td>
+										
+										<td class="align-middle">
+											<a href="<?= base_url(is_admin() ? 'admin/transaksi/detail_pinjam/' : 'pengguna/detail_pinjam/').$row->no_pinjam ?>"
+												class="text-secondary text-success font-weight-bold text-xs">
+												<i class="material-icons opacity-10" translate="no">visibility
+												</i>
+											</a> 
+										</td>
+									</tr>
+									<?php endforeach ?>
+								</tbody>
+							</table>
+						</div>
 					</div>
 					<div class="tab-pane fade" id="pengembalian" role="tabpanel" aria-labelledby="pengembalian-tab">
-						<table class="table align-items-center mb-0" id="datatable">
-							<thead>
-								<tr>
-									<th
-										class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-										No</th>
-									<th
-										class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-										No Peminjaman</th>
-									<th
-										class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-										Id Peminjam</th>
-									<th
-										class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-										Nama Peminjam</th>
-									<th
-										class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-										Tanggal Pinjam</th>
-									<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-										Tanggal Balik
-									</th>
-									<th
-										class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-										Tanggal Pengembalian</th>
-									<th
-										class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-										Denda</th>
-									<th class="text-secondary opacity-7"></th>
-								</tr>
-							</thead>
-							<tbody>
-								<?php $no=1; foreach($pengembalian as $row) : ?>
-								<tr>
-									<td class="align-middle text-center">
-										<span
-											class="text-secondary text-xs font-weight-bold"><?= $no++ ?></span>
-									</td>
-									<td>
-										<p class="text-xs text-secondary mb-0"><?= $row->no_pinjam ?></p>
-									</td>
-									<td>
-										<p class="text-xs text-secondary mb-0"><?= $row->id_user ?></p>
-									</td>
-									<td>
-										<p class="text-xs text-secondary mb-0"><?= $row->nama?></p>
-									</td>
-									<td>
-										<p class="text-xs text-secondary mb-0"><?= $row->tgl_pinjam ?></p>
-									</td>
-									<td>
-										<p class="text-xs text-secondary mb-0"><?= $row->tgl_balik ?></p>
-									</td>
-									<td>
-										<p class="text-xs text-secondary mb-0"><?= $row->tgl_kembali ?></p>
-									</td>
-									<td>
-										<?php 
-										$denda = $this->db->query("SELECT * FROM denda WHERE no_pinjam = '$row->no_pinjam'");
-										$total_denda = $denda->row();
-											if($row->status == 'Di Kembalikan')
-											{
-												echo '<p class="text-xs text-secondary mb-0">'.$this->transaksi_m->rp($total_denda->denda).'</p>';
-											}else{
-												$jml = $this->db->query("SELECT * FROM peminjaman WHERE no_pinjam = '$row->no_pinjam'")->num_rows();			
-												$date1 = date('Ymd');
-												$date2 = preg_replace('/[^0-9]/','',$row->tgl_balik);
-												$diff = $date1 - $date2;
-												if($diff > 0 )
+						<div class="table-responsive p-4 mx-2">
+							<table class="table align-items-center mb-0" id="datatable2">
+								<thead>
+									<tr>
+										<th
+											class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+											No</th>
+										<th
+											class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+											No Peminjaman</th>
+										<th
+											class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+											Id Peminjam</th>
+										<th
+											class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+											Nama Peminjam</th>
+										<th
+											class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+											Tanggal Pinjam</th>
+										<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+											Tanggal Balik
+										</th>
+										<th
+											class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+											Tanggal Pengembalian</th>
+										<th
+											class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+											Denda</th>
+										<th class="text-secondary opacity-7"></th>
+									</tr>
+								</thead>
+								<tbody>
+									<?php $no=1; foreach($pengembalian as $row) : ?>
+									<tr>
+										<td class="align-middle text-center">
+											<span
+												class="text-secondary text-xs font-weight-bold"><?= $no++ ?></span>
+										</td>
+										<td>
+											<p class="text-xs text-secondary mb-0"><?= $row->no_pinjam ?></p>
+										</td>
+										<td>
+											<p class="text-xs text-secondary mb-0"><?= $row->id_user ?></p>
+										</td>
+										<td>
+											<p class="text-xs text-secondary mb-0"><?= $row->nama?></p>
+										</td>
+										<td>
+											<p class="text-xs text-secondary mb-0"><?= $row->tgl_pinjam ?></p>
+										</td>
+										<td>
+											<p class="text-xs text-secondary mb-0"><?= $row->tgl_balik ?></p>
+										</td>
+										<td>
+											<p class="text-xs text-secondary mb-0"><?= $row->tgl_kembali ?></p>
+										</td>
+										<td>
+											<?php 
+											$denda = $this->db->query("SELECT * FROM denda WHERE no_pinjam = '$row->no_pinjam'");
+											$total_denda = $denda->row();
+												if($row->status == 'Di Kembalikan')
 												{
-													echo $diff.' hari';
-													$dd = $this->transaksi_m->getBiayaDenda(); 
-													echo '<p class="text-xs text-secondary mb-0 text-danger">
-													'.$this->transaksi_m->rp($jml*($dd->harga_denda*$diff)).' 
-													</p><small style="color:#333;">* Untuk '.$jml.' Buku</small>';
+													echo '<p class="text-xs text-secondary mb-0">'.$this->transaksi_m->rp($total_denda->denda).'</p>';
 												}else{
-													echo '<p class="text-xs text-secondary mb-0 text-success">
-													Tidak Ada Denda</p>';
+													$jml = $this->db->query("SELECT * FROM peminjaman WHERE no_pinjam = '$row->no_pinjam'")->num_rows();			
+													$date1 = date('Ymd');
+													$date2 = preg_replace('/[^0-9]/','',$row->tgl_balik);
+													$diff = $date1 - $date2;
+													if($diff > 0 )
+													{
+														echo $diff.' hari';
+														$dd = $this->transaksi_m->getBiayaDenda(); 
+														echo '<p class="text-xs text-secondary mb-0 text-danger">
+														'.$this->transaksi_m->rp($jml*($dd->harga_denda*$diff)).' 
+														</p><small style="color:#333;">* Untuk '.$jml.' Buku</small>';
+													}else{
+														echo '<p class="text-xs text-secondary mb-0 text-success">
+														Tidak Ada Denda</p>';
+													}
 												}
-											}
-										?>
-									</td>
-									
-									<td class="align-middle">
-										<a href="<?= base_url('admin/transaksi/detail_pinjam/').$row->no_pinjam ?>"
-											class="text-secondary text-success font-weight-bold text-xs">
-											<i class="material-icons opacity-10" translate="no">visibility
-											</i>
-										</a> 
-									</td>
-								</tr>
-								<?php endforeach ?>
-							</tbody>
-						</table>
+											?>
+										</td>
+										
+										<td class="align-middle">
+											<a href="<?= base_url(is_admin() ? 'admin/transaksi/detail_pinjam/' : 'pengguna/detail_pinjam/').$row->no_pinjam ?>"
+												class="text-secondary text-success font-weight-bold text-xs">
+												<i class="material-icons opacity-10" translate="no">visibility
+												</i>
+											</a> 
+										</td>
+									</tr>
+									<?php endforeach ?>
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-
 
 <!-- Modal edit Profil -->
 <div class="modal fade" id="modalEditProfil" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -301,7 +297,7 @@
 				<input type="hidden" name="id" value="<?= $user->id_user ?>">
 				<div class="modal-header p-0 position-relative mt-n4 mx-3 z-index-2">
 					<div
-						class="w-100 bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 d-flex justify-content-between">
+						class="w-100 <?= is_admin() ? 'bg-gradient-primary' : 'bg-gradient-success' ?> shadow-primary border-radius-lg pt-4 pb-3 d-flex justify-content-between">
 						<h6 class="modal-title text-white text-capitalize ps-3">Edit Profil</h6>
 						<button type="button" class="btn-close me-2" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
@@ -347,7 +343,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-					<button type="submit" name="simpan" class="btn btn-primary">Simpan</button>
+					<button type="submit" name="simpan" class="btn <?= is_admin() ? 'btn-primary' : 'btn-success' ?>">Simpan</button>
 				</div>
 			</form>
 		</div>
@@ -362,7 +358,7 @@
 				<input type="hidden" name="id" value="<?= $user->id_user ?>">
 				<div class="modal-header p-0 position-relative mt-n4 mx-3 z-index-2">
 					<div
-						class="w-100 bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 d-flex justify-content-between">
+						class="w-100 <?= is_admin() ? 'bg-gradient-primary' : 'bg-gradient-success' ?> shadow-primary border-radius-lg pt-4 pb-3 d-flex justify-content-between">
 						<h6 class="modal-title text-white text-capitalize ps-3">Edit Password</h6>
 						<button type="button" class="btn-close me-2" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
@@ -389,9 +385,36 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-					<button type="submit" name="simpan" class="btn btn-primary">Simpan</button>
+					<button type="submit" name="simpan" class="btn <?= is_admin() ? 'btn-primary' : 'btn-success' ?>">Simpan</button>
 				</div>
 			</form>
 		</div>
 	</div>
 </div>
+
+<script>
+	$(document).ready( function () {
+		$('#datatable1').DataTable({
+			language: {
+				"paginate": {
+					"first":      "&laquo",
+					"last":       "&raquo",
+					"next":       "&gt",
+					"previous":   "&lt"
+				},
+			},
+			dom:' <"d-flex"l<"input-group input-group-outline justify-content-end me-4"f>>rt<"d-flex justify-content-between"ip><"clear">'
+		});
+		$('#datatable2').DataTable({
+			language: {
+				"paginate": {
+					"first":      "&laquo",
+					"last":       "&raquo",
+					"next":       "&gt",
+					"previous":   "&lt"
+				},
+			},
+			dom:' <"d-flex"l<"input-group input-group-outline justify-content-end me-4"f>>rt<"d-flex justify-content-between "ip><"clear">'
+		});
+	} );
+</script>

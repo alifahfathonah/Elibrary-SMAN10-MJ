@@ -12,12 +12,20 @@ class Auth extends CI_Controller
 
     public function login()
     {
-        check_already_login();
+        check_already_anggota_login();
         $this->load->view('auth/login_user');
     }
 
     public function logout()
     {
+        $sess = [
+            'id_user' => '',
+            'username' => '',
+            'role' => '',
+            'nama' => '',
+            'foto' => ''
+        ];
+        $this->session->unset_userdata($sess);
         $this->session->sess_destroy();
         redirect(base_url());
     }
@@ -26,7 +34,7 @@ class Auth extends CI_Controller
     {
         $post = $this->input->post(NULL, TRUE);
         if (isset($post['login'])) {
-            $query = $this->pengguna_m->login($post);
+            $query = $this->pengguna_m->loginAnggota($post);
             if($query->num_rows() > 0 ) {
                 $row = $query->row();
                 $params = [

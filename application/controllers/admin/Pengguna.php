@@ -7,14 +7,15 @@ class Pengguna extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        check_not_login();
+        check_admin_not_login();
+
         $this->load->model('pengguna_m');
         $this->load->model('transaksi_m');
     }
 
     public function index()
     {
-        check_admin();
+
         $data = [
             'user' => $this->pengguna_m->getUser()
         ];
@@ -46,7 +47,7 @@ class Pengguna extends CI_Controller
 
     public function user_proses()
     {
-        check_admin();
+
         $post = $this->input->post(NULL, TRUE);
         if (isset($post['simpan'])) {
             if ($post['password'] == $post['konfirmasi_password']) {
@@ -68,7 +69,7 @@ class Pengguna extends CI_Controller
 
     public function user_hapus($id = null)
     {
-        check_admin();
+
         if ($id != null) {
             if ($this->pengguna_m->hapusUser($id)) {
                 $this->session->set_flashdata('msg', $this->msgSuccess('Berhasil dihapus'));
@@ -84,7 +85,7 @@ class Pengguna extends CI_Controller
 
     public function active($id)
     {
-        check_admin();
+
         if ($this->pengguna_m->setActive($id)) {
             redirect('admin/pengguna');
         }
@@ -93,7 +94,7 @@ class Pengguna extends CI_Controller
 
     public function profil()
     {
-        check_not_login();
+
         $data = [
             'user' => $this->pengguna_m->getUser($this->session->userdata('id_user'))[0],
             'peminjaman' => $this->transaksi_m->getPeminjamanDistinctUser($this->session->userdata('id_user')),
@@ -105,12 +106,12 @@ class Pengguna extends CI_Controller
 
     public function lihat_profil($id = null)
     {
-        check_admin();
+
         if ($id != null) {
             $data = [
                 'user' => $this->pengguna_m->getUser($id)[0],
-                'peminjaman' => $this->transaksi_m->getPeminjamanDistinctUser($this->session->userdata('id_user')),
-                'pengembalian' => $this->transaksi_m->getPengembalianDistinctUser($this->session->userdata('id_user')),
+                'peminjaman' => $this->transaksi_m->getPeminjamanDistinctUser($id),
+                'pengembalian' => $this->transaksi_m->getPengembalianDistinctUser($id),
             ];
     
             $this->template->load('template/template','pengguna/profil',$data);
@@ -121,7 +122,7 @@ class Pengguna extends CI_Controller
 
     public function update_profil()
     {
-        check_not_login();
+
         $post = $this->input->post(NULL, TRUE);
         if (isset($post['simpan'])) {
             $config['upload_path'] = './assets/img/profil/';
@@ -164,7 +165,7 @@ class Pengguna extends CI_Controller
     
     public function update_password()
     {
-        check_not_login();
+
         $post = $this->input->post(NULL, TRUE);
         if (isset($post['simpan'])) {
             if ($this->pengguna_m->updatePassword($post)) {

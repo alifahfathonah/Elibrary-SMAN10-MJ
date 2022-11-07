@@ -6,17 +6,17 @@ class Dashboard extends CI_Controller
 {
     public function index()
     {
-        // $this->load->model('laporan_m');
+        $this->load->model('laporan_m');
         $this->load->model('transaksi_m');
-        check_not_login();
+        check_admin_not_login();
         $data = [
-            'buku' => 0,
-            'pinjam' => 0,
-            'anggota' => 0,
-            'kategori_buku' => 0,
+            'buku' => $this->laporan_m->getJumlahBuku(),
+            'pinjam' => $this->laporan_m->getJumlahPinjam(),
+            'anggota' => $this->laporan_m->getJumlahAnggota(),
+            'kategori' => $this->laporan_m->getJumlahKategori(),
             'peminjaman' => $this->transaksi_m->getPeminjamanDistinct()
         ];
-
+        
         $this->template->load('template/template', 'dashboard', $data);
     }
 

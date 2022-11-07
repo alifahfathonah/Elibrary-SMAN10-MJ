@@ -13,6 +13,7 @@
 	<?php $this->view('template_home/_partial/navbar.php') ?>
 	<!-- end Navbar -->
 	
+	<script src="<?= base_url() ?>assets/js/jquery.js"></script>
 	<?= $contents ?>
 
 	<?php $this->view('template_home/_partial/js.php') ?>

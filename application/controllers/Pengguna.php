@@ -7,9 +7,12 @@ class Pengguna extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        // check_not_login();
+        
         $this->load->model('pengguna_m');
         $this->load->model('transaksi_m');
+        $this->load->model('buku_m');
+        check_anggota_not_login();
+
 
     }
 
@@ -38,7 +41,7 @@ class Pengguna extends CI_Controller
 
     public function profil()
     {
-        // check_not_login();
+        
         $data = [
             'user' => $this->pengguna_m->getUser($this->session->userdata('id_user'))[0],
             'peminjaman' => $this->transaksi_m->getPeminjamanDistinctUser($this->session->userdata('id_user')),
@@ -50,7 +53,7 @@ class Pengguna extends CI_Controller
 
     public function update_profil()
     {
-        // check_not_login();
+        
         $post = $this->input->post(NULL, TRUE);
         if (isset($post['simpan'])) {
             $config['upload_path'] = './assets/img/profil/';
@@ -93,7 +96,6 @@ class Pengguna extends CI_Controller
     
     public function update_password()
     {
-        check_not_login();
         $post = $this->input->post(NULL, TRUE);
         if (isset($post['simpan'])) {
             if ($this->pengguna_m->updatePassword($post)) {
@@ -109,5 +111,15 @@ class Pengguna extends CI_Controller
         }else{
             redirect('pengguna/profil/'.$post['id']);
         }
+    }
+
+    public function detail_pinjam($no_pinjam)
+    {
+        $data = [
+            'peminjaman' => $this->transaksi_m->getPeminjamanByNoPinjamDistinct($no_pinjam)[0],
+            'buku' => $this->buku_m->getBukuByNoPinjam($no_pinjam)
+        ];
+        
+        $this->template->load('template_home/template_home','transaksi/detail_pinjam',$data);
     }
 }

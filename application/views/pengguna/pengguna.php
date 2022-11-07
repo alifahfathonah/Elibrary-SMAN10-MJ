@@ -190,6 +190,7 @@
 <script>
 	$(document).ready( function () {
 		$('#datatable').DataTable({
+			order: [[4, 'asc']],
 			language: {
 				"paginate": {
 					"first":      "&laquo",
