@@ -12,7 +12,7 @@
 				<a class="nav-link fw-bold <?php if($this->uri->segment(1) == '#lokasi' ) echo 'active' ?>"" href="<?= base_url() ?>#lokasi">Lokasi</a>
 				<a class="nav-link fw-bold <?php if($this->uri->segment(1) == 'buku' ) echo 'active' ?>" href="<?= base_url('buku') ?>">E-Library</a>
 				
-				<?php if(check_user_not_login()) :  ?>
+				<?php if(!check_user_login()) :  ?>
 					<a class="nav-link fw-bold ms-7" href="<?= base_url('auth/login') ?>"><i class="fa fa-sign-in me-sm-1 "></i>Login</a>
 				<?php else : ?>
 				<div class=" fw-bold d-flex justify-content-end ms-7">
@@ -25,7 +25,7 @@
 						<ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4"
 							aria-labelledby="dropdownMenuButton">
 							<li class="mb-2">
-								<a class="dropdown-item border-radius-md" href="<?= base_url('pengguna/profil/') ?>">
+								<a class="dropdown-item border-radius-md" href="<?= (is_admin()) ? base_url('admin/dashboard') : base_url('pengguna/profil/') ?>">
 									<div class="d-flex py-1">
 										<div class="my-auto">
 											<img src="<?= base_url('assets/img/profil/').$this->session->userdata('foto') ?>" class="avatar avatar-sm  me-3 ">

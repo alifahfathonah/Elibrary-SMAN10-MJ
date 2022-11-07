@@ -6,7 +6,8 @@ class Laporan extends CI_Controller
     public function index()
     {
         $this->load->model('laporan_m');
-        check_not_login();
+        check_admin_not_login();
+
         $post = $this->input->post(NULL, TRUE);
         if (isset($post['cetak'])) {
             $table = $post['tabel'];
