@@ -116,6 +116,14 @@ class Data extends CI_Controller
                 $this->session->set_flashdata('msg', $this->msgError('Gagal ditambahkan!'));
                 redirect('admin/data/kategori');
             }
+        }if (isset($post['update'])) {
+            if ($this->buku_m->ubahKategori($post)) {
+                $this->session->set_flashdata('msg', $this->msgSuccess('Berhasil ditambahkan'));
+                redirect('admin/data/kategori');
+            }else{
+                $this->session->set_flashdata('msg', $this->msgError('Gagal ditambahkan!'));
+                redirect('admin/data/kategori');
+            }
         }else{
             redirect('admin/data/kategori');
         }
@@ -156,6 +164,14 @@ class Data extends CI_Controller
                 redirect('admin/data/denda');
             }else{
                 $this->session->set_flashdata('msg', $this->msgError('Gagal ditambahkan!'));
+                redirect('admin/data/denda');
+            }
+        }else if(isset($post['update'])){
+            if ($this->buku_m->ubahDenda($post)) {
+                $this->session->set_flashdata('msg', $this->msgSuccess('Berhasil diubah'));
+                redirect('admin/data/denda');
+            }else{
+                $this->session->set_flashdata('msg', $this->msgError('Gagal diubah!'));
                 redirect('admin/data/denda');
             }
         }else{

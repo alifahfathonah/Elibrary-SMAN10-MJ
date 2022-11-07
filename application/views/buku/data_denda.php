@@ -62,8 +62,12 @@
 										<p class="text-xs text-secondary mb-0"><?= $row->tgl_tetap ?></p>
 									</td>
 									<td class="align-middle">
-										<a href="<?= base_url('admin/data/denda_edit/').$row->id_biaya_denda ?>"
-											class="text-secondary text-warning font-weight-bold text-xs">
+										<a href="#"
+											class="text-secondary text-warning font-weight-bold text-xs" data-bs-toggle="modal"
+											data-bs-target="#modalEdit" 
+											data-id_biaya_denda="<?= $row->id_biaya_denda ?>" 
+											data-harga_denda="<?= $row->harga_denda ?>" 
+											>
 											<i class="material-icons opacity-10" translate="no">edit
 											</i>
 										</a> 
@@ -117,6 +121,38 @@
 	</div>
 </div>
 
+<!-- Modal Edit -->
+<div class="modal fade" id="modalEdit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+	aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-sm">
+		<div class="modal-content">
+			<form action="<?= base_url('admin/data/denda_proses') ?>" method="post" enctype="multipart/form-data">
+				<div class="modal-header p-0 position-relative mt-n4 mx-3 z-index-2">
+					<div
+						class="w-100 bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 d-flex justify-content-between">
+						<h6 class="modal-title text-white text-capitalize ps-3">Edit Denda</h6>
+						<button type="button" class="btn-close me-2" data-bs-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<label class="form-label">Biaya Denda</label>
+						<div class="input-group input-group-outline">
+							<input type="hidden" id="id_biaya_denda" name="id_biaya_denda" class="form-control" required>
+							<input type="number" id="harga_denda" name="harga_denda" class="form-control" required>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+					<button type="submit" name="update" class="btn btn-primary">Ubah</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
 <script>
 	$(document).ready( function () {
 		$('#datatable').DataTable({
@@ -130,5 +166,21 @@
 			},
 			dom:' <"d-flex"l<"input-group input-group-outline justify-content-end me-4"f>>rt<"d-flex justify-content-between"ip><"clear">'
 		});
+
+		$('#modalEdit').on('show.bs.modal', function (event) {
+        // event.relatedtarget menampilkan elemen mana yang digunakan saat diklik.
+        var button              = $(event.relatedTarget)
+
+        // data-data yang disimpan pada tombol edit dimasukkan ke dalam variabelnya masing-masing 
+        var id_biaya_denda         = button.data('id_biaya_denda')
+				var harga_denda         = button.data('harga_denda')
+		
+        var modal = $(this)
+
+        //variabel di atas dimasukkan ke dalam element yang sesuai dengan idnya masing-masing
+        modal.find('#id_biaya_denda').val(id_biaya_denda)
+        modal.find('#harga_denda').val(harga_denda)
+    });
+
 	} );
 </script>

@@ -45,8 +45,13 @@
 										<p class="text-xs text-secondary mb-0"><?= $row->nama_kategori ?></p>
 									</td>
 									<td class="align-middle">
-										<a href="<?= base_url('admin/data/kategori_edit/').$row->id_kategori ?>"
-											class="text-secondary text-warning font-weight-bold text-xs">
+										<a href="#"
+											class="text-secondary text-warning font-weight-bold text-xs"
+											data-bs-toggle="modal"
+											data-bs-target="#modalEdit" 
+											data-id_kategori="<?= $row->id_kategori ?>" 
+											data-nama_kategori="<?= $row->nama_kategori ?>"
+											>
 											<i class="material-icons opacity-10" translate="no">edit
 											</i>
 										</a> 
@@ -100,6 +105,39 @@
 	</div>
 </div>
 
+<!-- Modal Edit -->
+<div class="modal fade" id="modalEdit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+	aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-sm">
+		<div class="modal-content">
+			<form action="<?= base_url('admin/data/kategori_proses') ?>" method="post" enctype="multipart/form-data">
+				<div class="modal-header p-0 position-relative mt-n4 mx-3 z-index-2">
+					<div
+						class="w-100 bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 d-flex justify-content-between">
+						<h6 class="modal-title text-white text-capitalize ps-3">Edit Kategori Buku</h6>
+						<button type="button" class="btn-close me-2" data-bs-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<label class="form-label">Nama Kategori</label>
+						<div class="input-group input-group-outline">
+							<input type="hidden" id="id_kategori" name="id_kategori" class="form-control" required>
+							<input type="text" id="nama_kategori" name="nama_kategori" class="form-control" required>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+					<button type="submit" name="update" class="btn btn-primary">Simpan</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+
 <script>
 	$(document).ready( function () {
 		$('#datatable').DataTable({
@@ -113,5 +151,21 @@
 			},
 			dom:' <"d-flex"l<"input-group input-group-outline justify-content-end me-4"f>>rt<"d-flex justify-content-between"ip><"clear">'
 		});
+
+		$('#modalEdit').on('show.bs.modal', function (event) {
+        // event.relatedtarget menampilkan elemen mana yang digunakan saat diklik.
+        var button              = $(event.relatedTarget)
+
+        // data-data yang disimpan pada tombol edit dimasukkan ke dalam variabelnya masing-masing 
+        var id_kategori         = button.data('id_kategori')
+				var nama_kategori         = button.data('nama_kategori')
+		
+        var modal = $(this)
+
+        //variabel di atas dimasukkan ke dalam element yang sesuai dengan idnya masing-masing
+        modal.find('#id_kategori').val(id_kategori)
+        modal.find('#nama_kategori').val(nama_kategori)
+    });
+
 	} );
 </script>

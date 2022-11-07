@@ -172,18 +172,11 @@
 									</td>
 									
 									<td class="align-middle">
-										<a href="<?= base_url('admin/transaksi/detail_pinjam/').$row->no_pinjam ?>"
+										<a href="<?= base_url(is_admin() ? 'admin/transaksi/detail_pinjam/' : 'pengguna/detail_pinjam/').$row->no_pinjam ?>"
 											class="text-secondary text-success font-weight-bold text-xs">
 											<i class="material-icons opacity-10" translate="no">visibility
 											</i>
 										</a> 
-										|
-										<a href="<?= base_url('admin/transaksi/pinjam_hapus/').$row->no_pinjam ?>"
-											onclick="return confirm('Hapus ?')"
-											class="text-secondary text-danger font-weight-bold text-xs">
-											<i class="material-icons opacity-10" translate="no">delete
-											</i>
-										</a>
 									</td>
 								</tr>
 								<?php endforeach ?>

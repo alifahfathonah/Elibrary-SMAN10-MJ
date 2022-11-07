@@ -1,4 +1,4 @@
-<nav id="navbarscrl" class="navbar navbar-expand-lg sticky-top navbar-dark bg-success">
+<nav id="navbarscrl" class="navbar navbar-expand-lg sticky-top navbar-dark bg-gradient-success">
 	<div class="container">
 		<a class="navbar-brand fw-bold" href="<?= base_url() ?>">E-Library</a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
