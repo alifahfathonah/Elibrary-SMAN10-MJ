@@ -64,7 +64,7 @@ class Data extends CI_Controller
         if (isset($post['simpan'])) {
             $post['cover'] = $this->uploadCover();
             $post['file'] = $this->uploadFile();
-            if($post['cover'] && $post['file']){
+            if ($post['cover'] && $post['file'] ) {
                 if ($this->buku_m->simpanBuku($post)) {
                     $this->session->set_flashdata('msg', $this->msgSuccess('Berhasil ditambahkan'));
                     redirect('admin/data/buku');
@@ -72,8 +72,23 @@ class Data extends CI_Controller
                     $this->session->set_flashdata('msg', $this->msgError('Gagal ditambahkan!'));
                     redirect('admin/data/buku');
                 }
+            }else{
+                $this->session->set_flashdata('msg', $this->msgError('Gagal ditambahkan format berkas tidak sesuai!'));
+                    redirect('admin/data/buku');
             }
             redirect('admin/data/buku');
+        }else if (isset($post['update'])) {
+
+
+
+            var_dump($post);
+
+
+
+
+
+
+            
         }else{
             redirect('admin/data/buku');
         }
@@ -208,7 +223,7 @@ class Data extends CI_Controller
     {
 
         $config['upload_path'] = './assets/buku/cover/';
-        $config['allowed_types'] = 'pdf|doc|docx|png|jpg|jpeg';
+        $config['allowed_types'] = 'png|jpg|jpeg';
         $config['max_size'] = 4096;
         $config['file_name'] = 'cover-'.date('ymd').time();
         $this->load->library('upload', $config);
