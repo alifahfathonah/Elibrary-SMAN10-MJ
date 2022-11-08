@@ -14,7 +14,7 @@ function check_admin_not_login()
     $ci = &get_instance();
     $ci->load->library('fungsi');
     if ($ci->session->userdata('role') != 'admin') {
-        redirect('admin/auth/login');
+        redirect('auth/login');
     }
 }
 

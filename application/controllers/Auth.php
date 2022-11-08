@@ -12,8 +12,15 @@ class Auth extends CI_Controller
 
     public function login()
     {
-        check_already_anggota_login();
-        $this->load->view('auth/login_user');
+        if (check_user_login()) {
+            if (is_admin()) {
+                check_already_admin_login();
+            }else{
+                check_already_anggota_login();
+            }
+        }
+        
+        $this->load->view('auth/login');
     }
 
     public function logout()
@@ -34,9 +41,21 @@ class Auth extends CI_Controller
     {
         $post = $this->input->post(NULL, TRUE);
         if (isset($post['login'])) {
-            $query = $this->pengguna_m->loginAnggota($post);
-            if($query->num_rows() > 0 ) {
-                $row = $query->row();
+            $admin = $this->pengguna_m->loginAdmin($post);
+            $anggota = $this->pengguna_m->loginAnggota($post);
+            if($admin->num_rows() > 0 ) {
+                $row = $admin->row();
+                $params = [
+                    'id_user' => $row->id_user,
+                    'username' => $row->username,
+                    'role' => $row->role,
+                    'nama' => $row->nama,
+                    'foto' => $row->foto
+                ];
+                $this->session->set_userdata($params);
+                redirect('admin/dashboard');
+            }else  if($anggota->num_rows() > 0 ) {
+                $row = $anggota->row();
                 $params = [
                     'id_user' => $row->id_user,
                     'username' => $row->username,

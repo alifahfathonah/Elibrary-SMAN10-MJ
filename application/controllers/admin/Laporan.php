@@ -38,7 +38,7 @@ class Laporan extends CI_Controller
         $pdf->Cell(190, 7, 'Perpustakaan SMAN 10 Muaro Jambi', 0, 1, 'C');
         $pdf->SetFont('Times', 'B', 8);
         $pdf->Cell(190, 7, 'Jl. Lintas Sumatra Jl. Petaling No.RT 14, Kb. IX, Kec. Sungai Gelam, Kabupaten Muaro Jambi, Jambi 36364', 0, 1, 'C');
-       $pdf->Line(10,30,205,30);
+        $pdf->Line(10,30,205,30);
         $pdf->Ln(10);
 
         // $pdf->AddPage('P', 'Letter');

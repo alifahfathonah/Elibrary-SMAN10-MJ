@@ -40,7 +40,7 @@
 							</a>
 						</li>
 						<li class="d-flex justify-content-end">
-							<a href="<?= base_url('admin/auth/logout') ?>" class="w-100 btn btn-danger"><i class="material-icons opacity-10">logout</i> Logout</a>
+							<a href="<?= base_url('auth/logout') ?>" class="w-100 btn btn-danger"><i class="material-icons opacity-10">logout</i> Logout</a>
 						</li>
 					</ul>
 				</li>
