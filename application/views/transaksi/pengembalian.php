@@ -1,12 +1,6 @@
 <div class="container-fluid py-4">
-	<div class="row justify-content-end">
-		<div class="col-6">
-			<?= $this->session->flashdata('msg'); ?>
-		</div>
-	</div>
 	<div class="row">
 		<div class="col-12">
-
 			<div class="card my-4">
 				<div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
 					<div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
@@ -14,11 +8,6 @@
 					</div>
 				</div>
 				<div class="card-body px-0 pb-2">
-					<!-- <div class="text-end me-3">
-						<a href="<?= base_url('admin/transaksi/tambahpinjam') ?>" class="btn btn-secondary">
-							<i class="material-icons opacity-10" translate="no">add</i> Tambah Pinjam
-						</a>
-					</div> -->
 					<div class="table-responsive p-4 mx-2">
 						<table class="table align-items-center mb-0" id="datatable">
 							<thead>

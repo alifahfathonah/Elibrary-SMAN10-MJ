@@ -76,6 +76,30 @@ class Buku_m extends CI_Model
         return $this->db->insert('buku',$data);
     }
 
+    public function ubahBuku($post)
+    {
+        
+        $data = [
+            'judul_buku' => $post['judul_buku'],
+            'pengarang' => $post['pengarang'],
+            'tahun_terbit' => $post['tahun_terbit'],
+            'penerbit' => $post['penerbit'],
+            'id_kategori' => $post['id_kategori'],
+            'isbn' => $post['isbn'],
+            'jumlah_buku' => $post['jumlah_buku']
+        ];
+
+        if ($post['cover']) {
+            $data['cover'] = $post['cover'];
+        }
+        
+        if($post['file']) {
+            $data['file'] = $post['file'];
+        }
+        
+        return $this->db->update('buku',$data, ['kd_buku' => $post['kd_buku']]);
+    }
+
     public function hapusBuku($kd_buku)
     {
         $buku = $this->getBuku($kd_buku)[0];

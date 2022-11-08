@@ -78,16 +78,15 @@ class Data extends CI_Controller
             }
             redirect('admin/data/buku');
         }else if (isset($post['update'])) {
-
-
-
-            var_dump($post);
-
-
-
-
-
-
+            $post['cover'] = $this->uploadCover();
+            $post['file'] = $this->uploadFile();
+            if ($this->buku_m->ubahBuku($post)) {
+                $this->session->set_flashdata('msg', $this->msgSuccess('Berhasil ditambahkan'));
+                redirect('admin/data/buku');
+            }else{
+                $this->session->set_flashdata('msg', $this->msgError('Gagal ditambahkan!'));
+                redirect('admin/data/buku');
+            }
             
         }else{
             redirect('admin/data/buku');
@@ -219,7 +218,7 @@ class Data extends CI_Controller
         }
     }
 
-    function uploadCover()
+    function uploadCover($coverLama = null)
     {
 
         $config['upload_path'] = './assets/buku/cover/';
@@ -232,17 +231,17 @@ class Data extends CI_Controller
         if(@$_FILES['cover']['error'] == 0){
             if ($this->upload->do_upload('cover')) {
                 return $this->upload->data('file_name');
-                // if (file_exists('./assets/buku/'.$name.'/'.$buku->foto)) 
-                // {
-                //     unlink('./assets/buku/'.$name.'/'.$buku->foto);
-                // }
+                if (file_exists('./assets/buku/cover/'.$coverLama)) 
+                {
+                    unlink('./assets/buku/cover/'.$coverLama);
+                }
             }
             return false;
         }
         return false;
     }
 
-    function uploadFile()
+    function uploadFile($fileLama = null)
     {
 
         $config['upload_path'] = './assets/buku/file/';
@@ -255,10 +254,10 @@ class Data extends CI_Controller
         if(@$_FILES['file']['error'] == 0){
             if ($this->upload->do_upload('file')) {
                 return $this->upload->data('file_name');
-                // if (file_exists('./assets/buku/'.$name.'/'.$buku->foto)) 
-                // {
-                //     unlink('./assets/buku/'.$name.'/'.$buku->foto);
-                // }
+                if (file_exists('./assets/buku/file/'.$fileLama)) 
+                {
+                    unlink('./assets/buku/file/'.$fileLama);
+                }
             }
             return false;
         }
