@@ -43,6 +43,50 @@
 			</div>
 		</div>
 		<div class="row">
+			<div class="col-7">
+				<div class="row">
+					<h2><?= $user->nama ?></h2>
+					<!-- <h5 class="text-secondary text-sm"><?= $buku->pengarang ?>  ( <?= $buku->tahun_terbit ?> )</h5> -->
+				</div>
+				<hr>
+				<div class="row">
+					<div class="col-md-4 col-4">
+						<p>Username</p>
+					</div>
+					<div class="col-md-8 col-8">
+						<p class="font-weight-bolder"><?= $user->username ?></p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4 col-4 ">
+						<p>No Telpon</p>
+					</div>
+					<div class="col-md-8 col-8">
+						<p class="font-weight-bolder"><?= $user->no_telp ?></p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4 col-4">
+						<p>Email</p>
+					</div>
+					<div class="col-md-8 col-8">
+						<p class="font-weight-bolder"><?= $user->email ?></p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4 col-4">
+						<p>Terdaftar Sejak</p>
+					</div>
+					<div class="col-md-8 col-8">
+						<p class="font-weight-bolder"><?= date('d-M-Y',$user->create_at) ?></p>
+					</div>
+				</div>
+			</div>
+			<div class="col-5">
+				<?= $this->session->flashdata('msg') ?>
+			</div>
+		</div>
+		<!-- <div class="row">
 			<div class="row justify-content-around">
 				<div class="col">
 					<div class="card card-plain h-100">
@@ -72,7 +116,7 @@
 				<?= $this->session->flashdata('msg') ?>
 				</div>
 			</div>
-		</div>
+		</div> -->
 		<div class="row mt-4 mb-4">
 			<div class="col-md-12">
 				<ul class="nav nav-tabs" id="myTab" role="tablist">
