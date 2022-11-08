@@ -13,16 +13,16 @@
 							<div class="col-sm-6 text-center">Laporan Transaksi</div>
 							<div class="col-sm-6">
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="tabel"
-										id="pemasukan" value="pemasukan" checked>
-									<label class="form-check-label" for="pemasukan">
+									<input class="form-check-input" type="radio" name="status"
+										id="status" value="Dipinjam" checked>
+									<label class="form-check-label" for="status">
 										Peminjaman
 									</label>
 								</div>
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="tabel"
-										id="pengeluaran" value="pengeluaran">
-									<label class="form-check-label" for="pengeluaran">
+									<input class="form-check-input" type="radio" name="status"
+										id="status" value="Di Kembalikan">
+									<label class="form-check-label" for="status">
 										Pengembalian
 									</label>
 								</div>
