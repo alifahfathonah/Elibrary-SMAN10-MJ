@@ -1,9 +1,4 @@
 <div class="container-fluid py-4">
-	<div class="row justify-content-end">
-		<div class="col-6">
-			<?= $this->session->flashdata('msg'); ?>
-		</div>
-	</div>
 		<div class="row">
 			<div class="col-lg-6 col-md-6">
 				<div class="card my-4">

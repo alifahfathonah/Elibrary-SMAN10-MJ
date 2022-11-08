@@ -300,7 +300,7 @@
 							<img width="100px" src="https://w7.pngwing.com/pngs/867/249/png-transparent-book-thick-isolated-pink-peach-blank-closed-shut-cover-hardcover-thumbnail.png"  alt="">
 							<label>Cover <span class="text-danger">*(JPG | PNG | JPEG)</span></label>
 							<div class="input-group input-group-outline">
-								<input type="hidden" name="coverlama" id="coverlama" required class="form-control">
+								<input type="hidden" name="coverlama" id="coverlama" required class="form-control" accept="image/jpeg,image/jpeg,image/png">
 								<input type="file" name="cover" id="cover" class="form-control">
 							</div>
 						</div>
@@ -308,7 +308,7 @@
 							<img width="100px" src="https://w7.pngwing.com/pngs/138/818/png-transparent-computer-icons-book-computer-program-open-book-purple-angle-violet-thumbnail.png" alt="">
 							<label>File Lampiran <span class="text-danger">*(PDF < 4MB)</span></label>
 							<div class="input-group input-group-outline">
-								<input type="hidden" name="filelama" id="filelama" required class="form-control">
+								<input type="hidden" name="filelama" id="filelama" required class="form-control" accept="application/pdf">
 								<input type="file" name="file" id="file" class="form-control">
 							</div>
 						</div>

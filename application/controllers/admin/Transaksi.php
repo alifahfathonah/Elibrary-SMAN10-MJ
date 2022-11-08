@@ -77,10 +77,10 @@ class Transaksi extends CI_Controller
     {
         if ($no_pinjam != null) {
             if ($this->transaksi_m->simpanKembalikan($no_pinjam)) {
-                $this->session->set_flashdata('msg', $this->msgSuccess('Berhasil ditambahkan'));
+                $this->session->set_flashdata('msg', $this->msgSuccess('Berhasil dikembalikan'));
                 redirect('admin/transaksi/peminjaman');
             }else{
-                $this->session->set_flashdata('msg', $this->msgError('Gagal ditambahkan!'));
+                $this->session->set_flashdata('msg', $this->msgError('Gagal dikembalikan!'));
                 redirect('admin/transaksi/peminjaman');
             }
         }else{

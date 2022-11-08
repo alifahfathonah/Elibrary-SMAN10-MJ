@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 08 Nov 2022 pada 06.30
+-- Waktu pembuatan: 08 Nov 2022 pada 19.00
 -- Versi server: 8.0.31-0ubuntu0.22.04.1
 -- Versi PHP: 8.1.2-1ubuntu2.6
 
@@ -34,13 +34,6 @@ CREATE TABLE `biaya_denda` (
   `tgl_tetap` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Dumping data untuk tabel `biaya_denda`
---
-
-INSERT INTO `biaya_denda` (`id_biaya_denda`, `harga_denda`, `stat`, `tgl_tetap`) VALUES
-(5, '5000', 'Aktif', '2022-11-05');
-
 -- --------------------------------------------------------
 
 --
@@ -60,17 +53,6 @@ CREATE TABLE `buku` (
   `file` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Dumping data untuk tabel `buku`
---
-
-INSERT INTO `buku` (`kd_buku`, `judul_buku`, `pengarang`, `tahun_terbit`, `penerbit`, `isbn`, `id_kategori`, `jumlah_buku`, `cover`, `file`) VALUES
-('BK001', '3232', 'adfaf', 0000, 'dasf', '090i09i0i09i0', 1, 323, 'cover-2211061667695940.jpg', 'file-2211061667695940.jpg'),
-('BK002', 'opkp', 'oopo', 2003, 'jiojojo', '322', 1, 32, 'cover-2211061667668767.jpg', 'file-2211061667668767.jpg'),
-('BK003', 'sf', 'ds', 0000, 'sffds', 'adfsf', 1, 232, 'cover-2211071667835380.jpg', 'file-2211071667835380.jpg'),
-('BK004', 'huih', 'ojoi', 2003, 'joi', '090i09i0i09i0', 1, 200, 'cover-2211071667837654.jpg', 'file-2211071667837654.pdf'),
-('BK005', 'huih', 'oijiojoj', 2003, '9ijoj', '090i09i0i09i0', 1, 17, 'cover-2211071667837694.jpg', 'file-2211071667837694.pdf');
-
 -- --------------------------------------------------------
 
 --
@@ -85,15 +67,6 @@ CREATE TABLE `denda` (
   `tgl_denda` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Dumping data untuk tabel `denda`
---
-
-INSERT INTO `denda` (`id_denda`, `no_pinjam`, `denda`, `lama_waktu`, `tgl_denda`) VALUES
-(9, 'PJ001', '60000', 3, '2022-11-06'),
-(10, 'PJ0024', '20000', 1, '2022-11-06'),
-(11, 'PJ0026', '0', 0, '2022-11-06');
-
 -- --------------------------------------------------------
 
 --
@@ -104,13 +77,6 @@ CREATE TABLE `kategori` (
   `id_kategori` int NOT NULL,
   `nama_kategori` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data untuk tabel `kategori`
---
-
-INSERT INTO `kategori` (`id_kategori`, `nama_kategori`) VALUES
-(1, 'Pemrograman');
 
 -- --------------------------------------------------------
 
@@ -129,22 +95,6 @@ CREATE TABLE `peminjaman` (
   `tgl_balik` varchar(255) NOT NULL,
   `tgl_kembali` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data untuk tabel `peminjaman`
---
-
-INSERT INTO `peminjaman` (`id_pinjam`, `no_pinjam`, `id_user`, `kd_buku`, `status`, `tgl_pinjam`, `lama_pinjam`, `tgl_balik`, `tgl_kembali`) VALUES
-(22, 'PJ001', '2', '122', 'Di Kembalikan', '2022-11-01', 2, '2022-11-03', '2022-11-06'),
-(23, 'PJ001', '2', '1223', 'Di Kembalikan', '2022-11-01', 2, '2022-11-03', '2022-11-06'),
-(24, 'PJ0024', '2', '122', 'Di Kembalikan', '2022-11-03', 2, '2022-11-05', '2022-11-06'),
-(25, 'PJ0024', '2', '1223', 'Di Kembalikan', '2022-11-03', 2, '2022-11-05', '2022-11-06'),
-(26, 'PJ0026', '2', '122', 'Di Kembalikan', '2022-11-05', 2, '2022-11-07', '2022-11-06'),
-(27, 'PJ0026', '2', '1223', 'Di Kembalikan', '2022-11-05', 2, '2022-11-07', '2022-11-06'),
-(28, 'PJ0028', '2', 'BK001', 'Dipinjam', '2022-11-07', 2, '2022-11-09', '0'),
-(29, 'PJ0028', '2', 'BK002', 'Dipinjam', '2022-11-07', 2, '2022-11-09', '0'),
-(30, 'PJ0030', '7', 'BK001', 'Dipinjam', '2022-11-06', 4, '2022-11-10', '0'),
-(31, 'PJ0030', '7', 'BK002', 'Dipinjam', '2022-11-06', 4, '2022-11-10', '0');
 
 -- --------------------------------------------------------
 
@@ -170,10 +120,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `username`, `nama`, `email`, `no_telp`, `create_at`, `password`, `foto`, `role`, `is_active`) VALUES
-(1, 'admin', 'adminnya w', 'admin@gmail.com', '082389324', 1636668594, '123', 'team-4.jpg', 'admin', '1'),
-(2, 'popo', 'popo', 'popo@gmail.com', '082389324', 1636668594, '123', 'team-5.jpg', 'anggota', '1'),
-(7, 'bro', 'bro', 'bro@gmail.com', '123456', 1667744196, '123', '', 'anggota', '1'),
-(8, 'tes', 'tes', 'tes@gmail.com', '0808', 1667832741, '123', '', 'admin', '0');
+(1, 'admin', 'Administrator', 'admin@gmail.com', '082389324', 1636668594, '123', 'team-4.jpg', 'admin', '1');
 
 --
 -- Indexes for dumped tables
@@ -223,13 +170,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `biaya_denda`
 --
 ALTER TABLE `biaya_denda`
-  MODIFY `id_biaya_denda` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_biaya_denda` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `denda`
 --
 ALTER TABLE `denda`
-  MODIFY `id_denda` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_denda` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT untuk tabel `kategori`
@@ -241,7 +188,7 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT untuk tabel `peminjaman`
 --
 ALTER TABLE `peminjaman`
-  MODIFY `id_pinjam` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id_pinjam` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`

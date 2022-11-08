@@ -27,7 +27,9 @@
 							<a class="dropdown-item border-radius-md" href="<?= (is_admin()) ? base_url('admin/dashboard') : base_url('pengguna/profil/') ?>">
 								<div class="d-flex py-1">
 									<div class="my-auto">
-										<img src="<?= base_url('assets/img/profil/').$this->session->userdata('foto') ?>" class="avatar avatar-sm  me-3 ">
+										<img src="<?= ($this->session->userdata('foto') != '') ? 
+														base_url('assets/img/profil/').$this->session->userdata('foto') : base_url('assets/img/profil/avatar.png')
+													?>" class="avatar avatar-sm  me-3 ">
 									</div>
 									<div class="d-flex flex-column justify-content-center">
 										<h6 class="text-sm font-weight-normal mb-1">

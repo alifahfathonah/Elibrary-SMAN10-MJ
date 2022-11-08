@@ -81,8 +81,11 @@ class Pengguna_m extends CI_Model
                 'email' => $post['email'],
                 'no_telp' => $post['no_telp']
             ];
+            if(@$post['role'] != null){
+                $data['role'] = $post['role'];
+            }
             if($post['foto'] != null) $data['foto'] = $post['foto'];
-
+            
             if($user != $post['username'] && empty($this->_checkUsername($post['username']))){
                 
                 $data['username'] = $post['username'];

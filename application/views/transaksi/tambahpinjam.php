@@ -1,9 +1,4 @@
 <div class="container-fluid py-4">
-	<div class="row justify-content-end">
-		<div class="col-6">
-			<?= $this->session->flashdata('msg'); ?>
-		</div>
-	</div>
 	<form action="<?= base_url('admin/transaksi/pinjam_proses') ?>" method="post">
 		<div class="row">
 		<div class="col-lg-6 col-md-6">

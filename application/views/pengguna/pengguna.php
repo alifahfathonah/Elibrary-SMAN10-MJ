@@ -53,13 +53,8 @@
 								<tr>
 									<td class="align-middle text-center">
 										<span class="text-secondary text-xs font-weight-bold">
-											<?php if($row->foto == ""): ?>
-											<i class="material-icons opacity-10" translate="no">person</i>
-											<?php else : ?>
-											<img src="<?= base_url('assets/img/profil/').$row->foto ?>"
+											<img src="<?=  ($row->foto != "") ? base_url('assets/img/profil/').$row->foto : base_url('assets/img/profil/avatar.png') ?>"
 												class="avatar avatar-sm">
-											<?php endif ?>
-
 										</span>
 									</td>
 									<td>

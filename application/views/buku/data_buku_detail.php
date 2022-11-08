@@ -13,59 +13,69 @@
 			</div>
 			<hr>
 			<div class="row">
-				<div class="col-md-4 col-sm-4">
+				<div class="col-md-4 col-4">
 					<p>Kode Buku</p>
 				</div>
-				<div class="col-md-8 col-sm-8">
+				<div class="col-md-8 col-8">
 					<p class="font-weight-bolder"><?= $buku->kd_buku ?></p>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-4">
+				<div class="col-md-4 col-4 ">
 					<p>Penerbit</p>
 				</div>
-				<div class="col-md-8">
+				<div class="col-md-8 col-8">
 					<p class="font-weight-bolder"><?= $buku->penerbit ?></p>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-4">
+				<div class="col-md-4 col-4">
 					<p>ISBN</p>
 				</div>
-				<div class="col-md-8">
+				<div class="col-md-8 col-8">
 					<p class="font-weight-bolder"><?= $buku->isbn ?></p>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-4">
+				<div class="col-md-4 col-4">
 					<p>Kategori</p>
 				</div>
-				<div class="col-md-8">
+				<div class="col-md-8 col-8">
 					<p class="font-weight-bolder"><?= $buku->nama_kategori ?></p>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-4">
+				<div class="col-md-4 col-4">
 					<p>Jumlah Buku</p>
 				</div>
-				<div class="col-md-8">
+				<div class="col-md-8 col-8">
 					<p class="font-weight-bolder"><?= $buku->jumlah_buku ?></p>
 				</div>
 			</div>
-			<?php if(is_admin()): ?>
-				<div class="row">
-					<div class="col-md-4">
-						<p>File PDF</p>
-					</div>
-					<div class="col-md-8">
-						<p><a class="btn btn-primary" href="<?= base_url('assets/buku/file/'.$buku->file) ?>"><?= $buku->file ?></a></p>
-					</div>
+			<div class="row">
+				<div class="col-md-4 col-4">
+					<p>File PDF</p>
 				</div>
-			<?php endif ?>
+					<?php if(check_user_login()): ?>
+					<div class="col-md-8 col-8">
+						<p><a class="btn btn-primary" target="_blank" href="<?= base_url('assets/buku/file/'.$buku->file) ?>">Download</a></p>
+					</div>
+					<?php else : ?>
+						<div class="col-md-8 col-8">
+							<p><a class="btn btn-primary" href="<?= base_url('auth/login') ?>">Login</a></p>
+						</div>
+					<?php endif ?>
+				</div>
 		</div>
 	</div>
-	<div class="row container-fluid">
-		<embed src="<?= base_url('assets/buku/file/'.$buku->file) ?>#view=FitV"  height="500px"></emded>
+	<?php if(check_user_login()): ?>
+	<div class="row">
+		<div class="col-md-8 mx-auto">
+			<div class="row container-fluid">
+				<embed src="<?= base_url('assets/buku/file/'.$buku->file) ?>#view=FitV"  height="560px"></emded>
+			</div>
+		</div>
 	</div>
+	<?php endif ?>
 
 </div>

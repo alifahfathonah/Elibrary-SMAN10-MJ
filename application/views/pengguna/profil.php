@@ -7,12 +7,8 @@
 		<div class="row gx-4 mb-2">
 			<div class="col-auto">
 				<div class="avatar avatar-xl position-relative">
-				<?php if($user->foto == ''): ?>
-					<i class="material-icons text-lg position-relative text-primary">person</i>
-				<?php else : ?>
-					<img src="<?= base_url('/assets/img/profil/').$user->foto ?>" alt="profile_image"
+					<img src="<?= ($user->foto != '') ? base_url('/assets/img/profil/').$user->foto : base_url('/assets/img/profil/avatar.png') ?>" alt="profile_image"
 					class="w-100 border-radius-lg shadow-sm">
-				<?php endif ?>
 				</div>
 			</div>
 			<div class="col-auto my-auto">
@@ -44,14 +40,11 @@
 						<span class="ms-1">Ganti Password</span>
 					</button>
 				</div>
-				<div class="row mb-2">
-				<?= $this->session->flashdata('msg') ?>
-				</div>
 			</div>
 		</div>
 		<div class="row">
-			<div class="row">
-				<div class="col-12 col-xl-4">
+			<div class="row justify-content-around">
+				<div class="col">
 					<div class="card card-plain h-100">
 						<div class="card-header pb-0 p-3">
 							<div class="row">
@@ -74,6 +67,9 @@
 							</ul>
 						</div>
 					</div>
+				</div>
+				<div class="col">
+				<?= $this->session->flashdata('msg') ?>
 				</div>
 			</div>
 		</div>
@@ -340,6 +336,17 @@
 							</div>
 						</div>
 					</div>
+					<?php if(is_admin() && $user->id_user != $this->session->userdata('id_user')) : ?>
+					<div class="row my-3">
+						<div class="input-group input-group-outline">
+							<select class="form-control" name="role" required>
+								<option value="">Pilih Level/Role</option>
+								<option value="admin" <?= $user->role == 'admin' ? 'selected' : '' ?> >Admin</option>
+								<option value="anggota" <?= $user->role == 'anggota' ? 'selected' : '' ?>>Anggota</option>
+							</select>
+						</div>
+					</div>
+					<?php endif ?>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

@@ -23,7 +23,9 @@
 							<a class="dropdown-item border-radius-md" href="<?= base_url('admin/pengguna/profil/') ?>">
 								<div class="d-flex py-1">
 									<div class="my-auto">
-										<img src="<?= base_url('assets/img/profil/').$this->session->userdata('foto') ?>" class="avatar avatar-sm  me-3 ">
+										<img src="<?= ($this->session->userdata('foto') != '') ? 
+														base_url('assets/img/profil/').$this->session->userdata('foto') : base_url('assets/img/profil/avatar.png')
+													?>" class="avatar avatar-sm  me-3 ">
 									</div>
 									<div class="d-flex flex-column justify-content-center">
 										<h6 class="text-sm font-weight-normal mb-1">
@@ -51,11 +53,6 @@
 						</div>
 					</a>
 				</li>
-				<!-- <li class="nav-item px-3 d-flex align-items-center">
-					<a href="javascript:;" class="nav-link text-body p-0">
-						<i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
-					</a>
-				</li> -->
 			</ul>
 		</div>
 	</div>
