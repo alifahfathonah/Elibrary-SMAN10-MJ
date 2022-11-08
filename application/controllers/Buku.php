@@ -31,7 +31,7 @@ class Buku extends CI_Controller
             'buku' => $this->buku_m->getBuku($kd_buku)[0]
         ];
 
-        $this->template->load('template_home/template_home','home/detail_buku', $data);
+        $this->template->load('template_home/template_home','buku/data_buku_detail', $data);
     }
 
 }
