@@ -1,4 +1,4 @@
-<!-- layanan -->
+<!-- Buku -->
 <div class="bg-light p-4" id="layanan">
 	<div class="container">
     <div class="row text-center">
@@ -43,6 +43,11 @@
 				</div>
       <?php endif ?>
 		</div>
+		<div class="row mt-4">
+				<div class="d-flex justify-content-center my-auto ">
+				<?= $this->pagination->create_links() ?>
+				</div>
+		</div>
 	</div>
 </div>
-<!-- end layanan -->
+<!-- end buku-->
