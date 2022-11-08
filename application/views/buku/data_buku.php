@@ -360,7 +360,7 @@
         var modal = $(this)
 
         //variabel di atas dimasukkan ke dalam element yang sesuai dengan idnya masing-masing
-        modal.find('#kd_buku').val(id_kategori)
+        modal.find('#kd_buku').val(kd_buku)
         modal.find('#id_kategori').val(id_kategori)
         modal.find('#pengarang').val(pengarang)
         modal.find('#judul_buku').val(judul_buku)

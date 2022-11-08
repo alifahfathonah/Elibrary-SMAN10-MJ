@@ -40,9 +40,8 @@
 										<span
 											class="text-secondary text-xs font-weight-bold"><?= $no++ ?></span>
 									</td>
-									<
 									<td>
-										<p class="text-xs text-secondary mb-0"><?= $row->nama_kategori ?></p>
+										<p class="text-xs text-secondary font-weight-bolder mb-0"><?= $row->nama_kategori ?></p>
 									</td>
 									<td class="align-middle">
 										<a href="#"
