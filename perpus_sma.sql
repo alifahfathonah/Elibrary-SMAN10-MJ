@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 08 Nov 2022 pada 19.00
+-- Waktu pembuatan: 09 Nov 2022 pada 19.22
 -- Versi server: 8.0.31-0ubuntu0.22.04.1
 -- Versi PHP: 8.1.2-1ubuntu2.6
 
@@ -32,7 +32,7 @@ CREATE TABLE `biaya_denda` (
   `harga_denda` varchar(255) NOT NULL,
   `stat` varchar(255) NOT NULL,
   `tgl_tetap` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -51,7 +51,21 @@ CREATE TABLE `buku` (
   `jumlah_buku` int NOT NULL,
   `cover` varchar(100) NOT NULL,
   `file` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `buku`
+--
+
+INSERT INTO `buku` (`kd_buku`, `judul_buku`, `pengarang`, `tahun_terbit`, `penerbit`, `isbn`, `id_kategori`, `jumlah_buku`, `cover`, `file`) VALUES
+('BK001', 'Buku bacaan kisah penulis', 'pengarangnya saya', 2000, 'saya yang terbitkan', '980-293-234-23', 5, 100, 'cover-2211081667913860.jpg', 'file-2211081667913860.pdf'),
+('BK002', 'Buku bacaan kisah penulis', 'pengarangnya saya', 2000, 'saya yang terbitkan', '980-293-234-23', 5, 100, 'cover-22110816679138602.jpg', 'file-22110816679138602.pdf'),
+('BK003', 'Buku bacaan kisah penulis', 'pengarangnya saya', 2000, 'saya yang terbitkan', '980-293-234-23', 5, 100, 'cover-22110816679138603.jpg', 'file-22110816679138603.pdf'),
+('BK004', 'Buku bacaan kisah penulis', 'pengarangnya saya', 2000, 'saya yang terbitkan', '980-293-234-23', 5, 100, 'cover-22110816679138604.jpg', 'file-22110816679138604.pdf'),
+('BK005', 'Buku bacaan kisah penulis', 'pengarangnya saya', 2000, 'saya yang terbitkan', '980-293-234-23', 5, 100, 'cover-22110816679138605.jpg', 'file-22110816679138605.pdf'),
+('BK006', 'Buku bacaan kisah penulis', 'pengarangnya saya', 2000, 'saya yang terbitkan', '980-293-234-23', 5, 100, 'cover-22110816679138606.jpg', 'file-22110816679138606.pdf'),
+('BK007', 'Buku bacaan kisah penulis', 'pengarangnya saya', 2000, 'saya yang terbitkan', '980-293-234-23', 5, 100, 'cover-22110816679138607.jpg', 'file-22110816679138607.pdf'),
+('BK008', 'Buku bacaan kisah penulis', 'pengarangnya saya', 2000, 'saya yang terbitkan', '980-293-234-23', 5, 100, 'cover-22110816679138608.jpg', 'file-22110816679138608.pdf');
 
 -- --------------------------------------------------------
 
@@ -61,11 +75,11 @@ CREATE TABLE `buku` (
 
 CREATE TABLE `denda` (
   `id_denda` int NOT NULL,
-  `no_pinjam` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `no_pinjam` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `denda` varchar(255) NOT NULL,
   `lama_waktu` int NOT NULL,
   `tgl_denda` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -76,7 +90,15 @@ CREATE TABLE `denda` (
 CREATE TABLE `kategori` (
   `id_kategori` int NOT NULL,
   `nama_kategori` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `kategori`
+--
+
+INSERT INTO `kategori` (`id_kategori`, `nama_kategori`) VALUES
+(4, 'Buku Bacaan Siswa'),
+(5, 'Buku Siswa');
 
 -- --------------------------------------------------------
 
@@ -86,15 +108,15 @@ CREATE TABLE `kategori` (
 
 CREATE TABLE `peminjaman` (
   `id_pinjam` int NOT NULL,
-  `no_pinjam` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `id_user` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `kd_buku` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `no_pinjam` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `id_user` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `kd_buku` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `status` varchar(255) NOT NULL,
   `tgl_pinjam` varchar(255) NOT NULL,
   `lama_pinjam` int NOT NULL,
   `tgl_balik` varchar(255) NOT NULL,
   `tgl_kembali` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -111,16 +133,17 @@ CREATE TABLE `user` (
   `create_at` int NOT NULL,
   `password` varchar(255) NOT NULL,
   `foto` varchar(255) NOT NULL,
-  `role` enum('admin','anggota') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `role` enum('admin','anggota') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `is_active` enum('0','1') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `user`
 --
 
 INSERT INTO `user` (`id_user`, `username`, `nama`, `email`, `no_telp`, `create_at`, `password`, `foto`, `role`, `is_active`) VALUES
-(1, 'admin', 'Administrator', 'admin@gmail.com', '082389324', 1636668594, '123', 'team-4.jpg', 'admin', '1');
+(1, 'admin', 'Administrator', 'admin@gmail.com', '082389324', 1636668594, '123', 'team-4.jpg', 'admin', '1'),
+(10, 'popo', 'popo', 'popo@gmail.com', '0808', 1667928021, '123', '', 'anggota', '1');
 
 --
 -- Indexes for dumped tables
@@ -182,7 +205,7 @@ ALTER TABLE `denda`
 -- AUTO_INCREMENT untuk tabel `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id_kategori` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_kategori` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `peminjaman`
@@ -194,7 +217,7 @@ ALTER TABLE `peminjaman`
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_user` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -46,7 +46,6 @@
 			<div class="col-7">
 				<div class="row">
 					<h2><?= $user->nama ?></h2>
-					<!-- <h5 class="text-secondary text-sm"><?= $buku->pengarang ?>  ( <?= $buku->tahun_terbit ?> )</h5> -->
 				</div>
 				<hr>
 				<div class="row">
@@ -86,37 +85,6 @@
 				<?= $this->session->flashdata('msg') ?>
 			</div>
 		</div>
-		<!-- <div class="row">
-			<div class="row justify-content-around">
-				<div class="col">
-					<div class="card card-plain h-100">
-						<div class="card-header pb-0 p-3">
-							<div class="row">
-								<div class="col-md-8 d-flex align-items-center">
-									<h6 class="mb-0">Informasi Profil</h6>
-								</div>
-							</div>
-						</div>
-						<div class="card-body p-3">
-							<hr class="horizontal gray-light my-4">
-							<ul class="list-group">
-								<li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Username :</strong>
-									&nbsp; <?= $user->username ?></li>
-								<li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Nama:</strong> &nbsp;
-									<?= $user->nama ?></li>
-								<li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Nomor Telepon:</strong>
-									&nbsp; <?= $user->no_telp ?></li>
-								<li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp;
-									<?= $user->email ?></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div class="col">
-				<?= $this->session->flashdata('msg') ?>
-				</div>
-			</div>
-		</div> -->
 		<div class="row mt-4 mb-4">
 			<div class="col-md-12">
 				<ul class="nav nav-tabs" id="myTab" role="tablist">
