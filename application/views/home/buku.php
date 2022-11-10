@@ -22,7 +22,7 @@
 		<div class="row mt-4">
       <?php if(count($buku) > 0) : ?>
 			<?php foreach($buku as $b) : ?>
-			<div class="col-6 col-md-3 col-sm-6 mt-2">
+			<div class="col-12 col-md-3 col-sm-6 mt-2">
 				<div class="card">
 					<div class="text-center">
 						<img src="<?= base_url('assets/buku/cover/').$b->cover ?>" height="200px"
