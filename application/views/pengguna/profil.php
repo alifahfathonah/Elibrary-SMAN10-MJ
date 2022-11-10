@@ -43,7 +43,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-7">
+			<div class="col-md-7 col-12">
 				<div class="row">
 					<h2><?= $user->nama ?></h2>
 				</div>
@@ -81,7 +81,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-5">
+			<div class="col-md-5">
 				<?= $this->session->flashdata('msg') ?>
 			</div>
 		</div>
