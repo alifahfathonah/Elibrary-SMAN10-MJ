@@ -58,12 +58,16 @@ class Buku_m extends CI_Model
 
     public function buatKodeBuku()
     {
-        $query = $this->db->query("SELECT * FROM buku"); // cek dulu apakah ada sudah ada kode di tabel.
-
+        $query = $this->db->query("SELECT * FROM buku ORDER BY kd_buku DESC"); // cek dulu apakah ada sudah ada kode di tabel.
         if($query->num_rows() > 0){
+            $kd_buku = [];
+            foreach($query->result() as $r){
+                array_push($kd_buku,substr($r->kd_buku, 4));
+            }
         //jika kode ternyata sudah ada.
             $hasil = $query->row();
-            $cd = $query->num_rows();
+            $kd = max($kd_buku);
+            $cd = $kd;
             $kode = $cd + 1;
             $kodejadi = "BK00".$kode;    // hasilnya CUS-0001 dst.
         }else {
