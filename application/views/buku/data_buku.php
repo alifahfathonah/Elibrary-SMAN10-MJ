@@ -202,7 +202,7 @@
 						</div>
 						<div class="col-md-4">
 							<img width="100px" src="https://w7.pngwing.com/pngs/138/818/png-transparent-computer-icons-book-computer-program-open-book-purple-angle-violet-thumbnail.png" alt="">
-							<label>File Lampiran <span class="text-danger">*(PDF < 4MB)</span></label>
+							<label>File Lampiran <span class="text-danger">*(PDF < 4MB | JPG | PNG | JPEG)</span></label>
 							<div class="input-group input-group-outline">
 								<input type="file" name="file" required class="form-control" accept="application/pdf">
 							</div>
@@ -307,7 +307,7 @@
 						<div class="col-md-4">
 							<img width="100px" id="file-icon" src="https://w7.pngwing.com/pngs/138/818/png-transparent-computer-icons-book-computer-program-open-book-purple-angle-violet-thumbnail.png" alt="">
 							<label>File Lampiran 
-								<span class="text-danger">*(PDF < 4MB)</span>
+								<span class="text-danger">*(PDF < 4MB | JPG | PNG | JPEG)</span>
 								<p><span class="text-info">Abaikan jika tidak ada perubahan</span></p>
 							</label>
 							<div class="input-group input-group-outline">

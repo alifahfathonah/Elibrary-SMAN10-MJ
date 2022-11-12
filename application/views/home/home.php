@@ -156,7 +156,7 @@
 							</tr>
 							<tr>
 								<td>Minggu</td>
-								<td>09.00 - 17.00</td>
+								<td>Tutup</td>
 							</tr>
 						</table>
 					</div>
