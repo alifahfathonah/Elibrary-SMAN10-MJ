@@ -1,14 +1,14 @@
-<nav id="navbarscrl" class="navbar navbar-expand-lg sticky-top navbar-dark bg-gradient-success">
+<nav id="navbarscrl" class="navbar navbar-expand-lg  sticky-top navbar-dark bg-secondary">
 	<div class="container">
 		<a class="navbar-brand fw-bold" href="<?= base_url() ?>">E-Library</a>
 		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-			<div class="navbar-nav mx-auto">
+			<div class="navbar-nav ms-auto">
 				<a class="nav-link fw-bold <?php if($this->uri->segment(1) == '' ) echo 'active' ?>"" href="<?= base_url() ?>">Home</a>
-				<a class="nav-link fw-bold <?php if($this->uri->segment(1) == '#galeri' ) echo 'active' ?>"" href="<?= base_url() ?>#galeri">Galeri</a>
-				<a class="nav-link fw-bold <?php if($this->uri->segment(1) == '#lokasi' ) echo 'active' ?>"" href="<?= base_url() ?>#lokasi">Lokasi</a>
-				<a class="nav-link fw-bold <?php if($this->uri->segment(1) == 'buku' ) echo 'active' ?>" href="<?= base_url('buku') ?>">E-Library</a>
+				<a class="nav-link fw-bold <?php if($this->uri->segment(1) == '#galeri' ) echo 'active text-white' ?>"" href="<?= base_url() ?>#galeri">Galeri</a>
+				<a class="nav-link fw-bold <?php if($this->uri->segment(1) == '#lokasi' ) echo 'active text-white' ?>"" href="<?= base_url() ?>#lokasi">Lokasi</a>
+				<a class="nav-link fw-bold <?php if($this->uri->segment(1) == 'buku' ) echo 'active text-white' ?>" href="<?= base_url('buku') ?>">E-Library</a>
 				<?php if(!check_user_login()) :  ?>
-					<a class="nav-link fw-bold" href="<?= base_url('auth/login') ?>"><i class="fa fa-sign-in me-sm-1 "></i>Login</a>
+					<a class="nav-link fw-bold " href="<?= base_url('auth/login') ?>"><i class="fa fa-sign-in me-sm-1 "></i>Login</a>
 				<?php endif ?>
 			</div>
 		</div>
@@ -33,7 +33,7 @@
 									</div>
 									<div class="d-flex flex-column justify-content-center">
 										<h6 class="text-sm font-weight-normal mb-1">
-											<span class="font-weight-bold "><?= ucwords($this->session->userdata('nama')) ?></span>
+											<span class="font-weight-bold"><?= ucwords($this->session->userdata('nama')) ?></span>
 										</h6>
 										<p class="text-xs text-secondary mb-0">
 											<i class="fa fa-briefcase me-1"></i>

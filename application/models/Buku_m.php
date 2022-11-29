@@ -31,6 +31,50 @@ class Buku_m extends CI_Model
         return $this->db->get('buku')->result();
     }
 
+    public function getKoleksi()
+    {
+        $this->db->order_by('RAND()');
+        $this->db->limit('6');
+        return $this->db->get('buku')->result();
+    }
+
+    public function getKoleksiTerbaru()
+    {
+        $this->db->select("*, CAST(SUBSTR(kd_buku,5) AS UNSIGNED) as order_id");
+        $this->db->order_by('order_id', 'DESC');
+        $this->db->limit('6');
+        return $this->db->get('buku')->result();
+    }
+
+    public function getKoleksiKategori()
+    {
+        $this->db->select('id_kategori, nama_kategori');
+
+        $this->db->order_by('RAND()');
+        $this->db->limit('2');
+
+        $kategori = $this->db->get('kategori')->result();
+        $koleksi = [];
+        foreach($kategori as $k) {
+            $this->db->order_by('RAND()');
+            $this->db->limit('6');
+            $this->db->where('id_kategori', $k->id_kategori);
+            $koleksi[$k->nama_kategori] = $this->db->get('buku')->result();
+        }
+        return $koleksi;
+    }
+
+    public function getKoleksiPopuler()
+    {
+        $this->db->select("COUNT(*) as jumlah, buku.*");
+        $this->db->join('buku', 'peminjaman.kd_buku = buku.kd_buku');
+        $this->db->group_by('peminjaman.kd_buku');
+        $this->db->order_by('jumlah', 'DESC');
+        $this->db->limit('6');
+
+        return $this->db->get('peminjaman')->result();
+    }
+
     public function getBukuByName($name)
     {
         $this->db->join('kategori', 'kategori.id_kategori = buku.id_kategori');
