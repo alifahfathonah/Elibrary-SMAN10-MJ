@@ -1,6 +1,9 @@
 <nav id="navbarscrl" class="navbar navbar-expand-lg  sticky-top navbar-dark bg-secondary">
 	<div class="container">
-		<a class="navbar-brand fw-bold" href="<?= base_url() ?>">E-Library</a>
+		<a class="navbar-brand fw-bold" href="<?= base_url() ?>">
+			<img src="<?= base_url('assets/img/icon/LOGO_SMAN_10-removebg-preview.png') ?>" alt="logo" class="w-6">
+			E-Library
+		</a>
 		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 			<div class="navbar-nav ms-auto">
 				<a class="nav-link fw-bold <?php if($this->uri->segment(1) == '' ) echo 'active' ?>"" href="<?= base_url() ?>">Home</a>

@@ -95,7 +95,8 @@ class Buku extends CI_Controller
     public function detail($kd_buku)
     {
         $data = [
-            'buku' => $this->buku_m->getBuku($kd_buku)[0]
+            'buku' => $this->buku_m->getBuku($kd_buku)[0],
+            'koleksi' => $this->buku_m->getKoleksi(),
         ];
 
         $this->template->load('template_home/template_home','buku/data_buku_detail', $data);

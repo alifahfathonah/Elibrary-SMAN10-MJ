@@ -114,7 +114,7 @@
         left: 0;
         right: 0;
         background: black;
-        opacity: 0.2;
+        opacity: 0.3;
         z-index: 1;
     }
 

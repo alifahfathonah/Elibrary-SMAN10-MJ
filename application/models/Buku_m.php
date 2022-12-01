@@ -51,7 +51,7 @@ class Buku_m extends CI_Model
         $this->db->select('id_kategori, nama_kategori');
 
         $this->db->order_by('RAND()');
-        $this->db->limit('2');
+        $this->db->limit('3');
 
         $kategori = $this->db->get('kategori')->result();
         $koleksi = [];

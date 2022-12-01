@@ -58,8 +58,8 @@
 		<form action="<?= base_url('buku/cari') ?>" method="post">
 					<div class="col-md-8 mx-auto p-4">
 						<div class="search m-4">
-							<input type="text" name="search" class="form-control" placeholder="Pencarian Buku">
-							<button class="btn btn-primary "><i class="fa fa-search"></i></button>
+							<input type="text" name="search" class="form-control text-center" autocomplete="off" placeholder="Pencarian Buku">
+							<button class="btn "><i class="fa fa-search"></i></button>
 						</div>
 					</div>
 			<img src="<?= base_url('assets/img/icon/') ?>wavesNegative.svg" alt="" class="">
@@ -238,11 +238,12 @@
 				</div>
 			</div>
 		</div>
+		<img src="<?= base_url('assets/img/icon/') ?>wavesNegative.svg" alt="" class="">
 	</div>
 	<!-- end galeri -->
 
 	<!-- Lokasi -->
-	<div class="bg-light mb-4" id="lokasi">
+	<div class="mb-4 mt-n6" id="lokasi">
 		<div class="container p-4">
 			<div class="row text-center">
 				<h4 class="fw-bold text-dark">Lokasi</h4>
