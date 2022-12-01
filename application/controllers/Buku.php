@@ -42,6 +42,9 @@ class Buku extends CI_Controller
         $this->pagination->initialize($config);	
 
         $data['buku'] = $this->buku_m->data($config['per_page'], $from);
+        $data['kategori'] = $this->buku_m->getKategori();
+        $data['search'] = "";
+
         
         $this->template->load('template_home/template_home','home/buku', $data);
     }
@@ -87,7 +90,55 @@ class Buku extends CI_Controller
         $this->pagination->initialize($config);	
 
         $data['buku'] = $this->buku_m->data($config['per_page'], $from, $search);
+        $data['kategori'] = $this->buku_m->getKategori();
         $data['search'] = $search;
+        
+        $this->template->load('template_home/template_home','home/buku', $data);
+    }
+
+    public function filter()
+    {
+        $this->load->library('pagination');
+
+
+        $kategori = $this->input->post('kategori');
+        $kategori = $this->uri->segment(3) ?? $kategori;
+        $kategori = str_replace('%20', ' ', $kategori);
+    
+        if(in_array($kategori, ['', null])){
+            redirect(base_url('buku'));
+        }
+
+        $config['base_url'] = base_url('buku/filter/').$kategori;
+        $config['total_rows'] = $this->buku_m->getJumlahBuku(null, $kategori);
+        $config['per_page'] = 12;
+
+        $config['full_tag_open'] = '<ul class="pagination">';        
+        $config['full_tag_close'] = '</ul>';        
+        $config['first_link'] = 'First';        
+        $config['last_link'] = 'Last';        
+        $config['first_tag_open'] = '<li class="page-item"><span class="page-link">';        
+        $config['first_tag_close'] = '</span></li>';        
+        $config['prev_link'] = '&laquo';        
+        $config['prev_tag_open'] = '<li class="page-item"><span class="page-link">';        
+        $config['prev_tag_close'] = '</span></li>';        
+        $config['next_link'] = '&raquo';        
+        $config['next_tag_open'] = '<li class="page-item"><span class="page-link">';        
+        $config['next_tag_close'] = '</span></li>';        
+        $config['last_tag_open'] = '<li class="page-item"><span class="page-link">';        
+        $config['last_tag_close'] = '</span></li>';        
+        $config['cur_tag_open'] = '<li class="page-item active "><a class="page-link" href="#">';        
+        $config['cur_tag_close'] = '</a></li>';        
+        $config['num_tag_open'] = '<li class="page-item"><span class="page-link">';        
+        $config['num_tag_close'] = '</span></li>';
+
+        $from = $this->uri->segment(4) ?? 0;
+
+        $this->pagination->initialize($config);	
+
+        $data['buku'] = $this->buku_m->data($config['per_page'], $from, null, $kategori );
+        $data['kategori'] = $this->buku_m->getKategori();
+        $data['search'] = $kategori;
         
         $this->template->load('template_home/template_home','home/buku', $data);
     }

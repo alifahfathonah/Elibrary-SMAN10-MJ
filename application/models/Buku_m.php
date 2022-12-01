@@ -4,19 +4,26 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Buku_m extends CI_Model
 {
 
-    public function getJumlahBuku($s = null)
+    public function getJumlahBuku($s = null, $k = null)
     {
         if ($s != null) {
             $this->db->like('judul_buku', $s,'both');
         }
+        if ($k != null) {
+            $this->db->join('kategori', 'kategori.id_kategori = buku.id_kategori');
+            $this->db->where('nama_kategori', $k);
+        }
         return $this->db->get('buku')->num_rows();
     }
 
-    public function data($number,$offset, $s = null){
+    public function data($number,$offset, $search = null, $kategori = null){
         $this->db->join('kategori', 'kategori.id_kategori = buku.id_kategori');
         $this->db->order_by('judul_buku', 'ASC');
-        if ($s != null) {
-            $this->db->like('judul_buku', $s,'both');
+        if ($search != null) {
+            $this->db->like('judul_buku', $search,'both');
+        }
+        if ($kategori != null) {
+            $this->db->where('nama_kategori', $kategori);
         }
 		return $query = $this->db->get('buku',$number,$offset)->result();		
 	}

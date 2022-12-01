@@ -146,8 +146,16 @@
 	<div class="container mt-5">
 		<div class="mb-4">
 			<div class="row">
-				<h4 class="fw-bold text-dark">KOLEKSI <?= strtoupper($key) ?></h4>
-				<p>Koleksi <?= ucfirst($key) ?> di perpustakaan kami</p>
+				<div class="col-md-9">
+					<h4 class="fw-bold text-dark">KOLEKSI <?= strtoupper($key) ?></h4>
+					<p>Koleksi <?= ucfirst($key) ?> di perpustakaan kami</p>
+				</div>
+				<div class="col-md-3 text-end">
+					<form action="<?= base_url('buku/filter') ?>" method="post">
+						<input type="hidden" name="kategori" value="<?= $key ?>" >
+						<button class="fw-bold text-dark btn">Lihat Lainnya</button>
+					</form>
+				</div>
 			</div>
 			<div class="row">
 				<?php foreach($value as $b) : ?>
