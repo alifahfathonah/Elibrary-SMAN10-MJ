@@ -180,7 +180,7 @@
 	<!-- end Buku -->
 	
 	<!-- galeri -->
-	<div class="bg-secondary">
+	<!-- <div class="bg-secondary">
 		<img src="<?= base_url('assets/img/icon/') ?>wavesNegative1.svg" alt="" class="">
 		<div class="p-4 mt-n7" id="galeri">
 			<div class="row text-center">
@@ -247,14 +247,15 @@
 			</div>
 		</div>
 		<img src="<?= base_url('assets/img/icon/') ?>wavesNegative.svg" alt="" class="">
-	</div>
+	</div> -->
 	<!-- end galeri -->
 
 	<!-- Lokasi -->
-	<div class="mb-4 mt-n6" id="lokasi">
-		<div class="container p-4">
+	<div class="bg-secondary" id="lokasi">
+		<img src="<?= base_url('assets/img/icon/') ?>wavesNegative1.svg" alt="" class="">
+		<div class="container p-4 mt-n6">
 			<div class="row text-center">
-				<h4 class="fw-bold text-dark">Lokasi</h4>
+				<h4 class="fw-bold text-light">Lokasi</h4>
 			</div>
 			<div class="row mt-4">
 				<div class="col-md-8">
@@ -262,14 +263,14 @@
 				</div>
 				<div class="col-md-4">
 					<div class="row">
-						<h5 class="fw-bolder">Alamat</h5>
-						<p>Jl. Lintas Sumatra Jl. Petaling No.RT 14, Kb. IX, Kec. Sungai Gelam, Kabupaten Muaro Jambi, Jambi 36364
+						<h5 class="fw-bolder text-light">Alamat</h5>
+						<p class="text-light">Jl. Lintas Sumatra Jl. Petaling No.RT 14, Kb. IX, Kec. Sungai Gelam, Kabupaten Muaro Jambi, Jambi 36364
 						</p>
 					</div>
 					<div class="row">
-						<h5 class="fw-bolder">Jam Buka</h5>
+						<h5 class="fw-bolder text-light">Jam Buka</h5>
 						<table class="table">
-							<tr>
+							<tr class="text-light">
 								<td>Senin - Sabtu</td>
 								<td>09.00 - 17.00</td>
 							</tr>
@@ -293,15 +294,15 @@
 								<td>Sabtu</td>
 								<td>09.00 - 17.00</td>
 							</tr> -->
-							<tr>
+							<tr class="text-light">
 								<td>Minggu</td>
 								<td>Tutup</td>
 							</tr>
 						</table>
 					</div>
 					<div class="row">
-						<h5 class="fw-bolder">Kontak</h5>
-						<p>+62809219029</p>
+						<h5 class="fw-bolder text-light">Kontak</h5>
+						<p class="text-light">+62809219029</p>
 						<div class="row">
 							<div class="col">
 								<a href="https://api.whatsapp.com/send?phone=+62809219029&text=...."
@@ -314,4 +315,5 @@
 				</div>
 			</div>
 		</div>
+
 	</div>
