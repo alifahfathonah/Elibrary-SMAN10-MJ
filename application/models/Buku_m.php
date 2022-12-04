@@ -160,12 +160,23 @@ class Buku_m extends CI_Model
             'jumlah_buku' => $post['jumlah_buku']
         ];
 
+        $buku = $this->getBuku($post['kd_buku'])[0];
         if ($post['cover']) {
             $data['cover'] = $post['cover'];
+
+            if (file_exists('./assets/buku/cover/'. $buku->cover)) 
+            {
+                unlink('./assets/buku/cover/'. $buku->cover);
+            }
         }
         
         if($post['file']) {
             $data['file'] = $post['file'];
+
+            if (file_exists('./assets/buku/file/'. $buku->file)) 
+            {
+                unlink('./assets/buku/file/'. $buku->file);
+            }
         }
         
         return $this->db->update('buku',$data, ['kd_buku' => $post['kd_buku']]);
