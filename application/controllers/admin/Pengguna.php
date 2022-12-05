@@ -56,11 +56,11 @@ class Pengguna extends CI_Controller
                     redirect('admin/pengguna');
                 }else{
                     $this->session->set_flashdata('msg', $this->msgError('Gagal ditambahkan username telah ada!'));
-                redirect('admin/pengguna');
+                    redirect('admin/pengguna');
                 }
             }else{
                 $this->session->set_flashdata('msg', $this->msgError('Gagal ditambahkan Konfirmasi Password tidak cocok!'));
-            redirect('admin/pengguna');
+                redirect('admin/pengguna');
             }
         }else{
             redirect('admin/pengguna');

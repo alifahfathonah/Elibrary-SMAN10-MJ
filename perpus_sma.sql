@@ -32,7 +32,7 @@ CREATE TABLE `biaya_denda` (
   `harga_denda` varchar(255) NOT NULL,
   `stat` varchar(255) NOT NULL,
   `tgl_tetap` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -51,7 +51,7 @@ CREATE TABLE `buku` (
   `jumlah_buku` int NOT NULL,
   `cover` varchar(100) NOT NULL,
   `file` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `buku`
@@ -80,11 +80,11 @@ INSERT INTO `buku` (`kd_buku`, `judul_buku`, `pengarang`, `tahun_terbit`, `pener
 
 CREATE TABLE `denda` (
   `id_denda` int NOT NULL,
-  `no_pinjam` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `no_pinjam` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `denda` varchar(255) NOT NULL,
   `lama_waktu` int NOT NULL,
   `tgl_denda` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `denda`
@@ -103,7 +103,7 @@ INSERT INTO `denda` (`id_denda`, `no_pinjam`, `denda`, `lama_waktu`, `tgl_denda`
 CREATE TABLE `kategori` (
   `id_kategori` int NOT NULL,
   `nama_kategori` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `kategori`
@@ -122,15 +122,15 @@ INSERT INTO `kategori` (`id_kategori`, `nama_kategori`) VALUES
 
 CREATE TABLE `peminjaman` (
   `id_pinjam` int NOT NULL,
-  `no_pinjam` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `id_user` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `kd_buku` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `no_pinjam` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `id_user` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `kd_buku` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `status` varchar(255) NOT NULL,
   `tgl_pinjam` varchar(255) NOT NULL,
   `lama_pinjam` int NOT NULL,
   `tgl_balik` varchar(255) NOT NULL,
   `tgl_kembali` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `peminjaman`
@@ -159,17 +159,16 @@ CREATE TABLE `user` (
   `create_at` int NOT NULL,
   `password` varchar(255) NOT NULL,
   `foto` varchar(255) NOT NULL,
-  `role` enum('admin','anggota') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `role` enum('admin','anggota') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `is_active` enum('0','1') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `user`
 --
 
 INSERT INTO `user` (`id_user`, `username`, `nama`, `email`, `no_telp`, `create_at`, `password`, `foto`, `role`, `is_active`) VALUES
-(1, 'admin', 'Administrator', 'admin@gmail.com', '082389324', 1636668594, '123', 'team-4.jpg', 'admin', '1'),
-(10, 'popo', 'popo', 'popo@gmail.com', '0808', 1667928021, '123', '', 'anggota', '1');
+(1, 'admin', 'Administrator', 'admin@gmail.com', '082389324', 1636668594, '123', 'team-4.jpg', 'admin', '1');
 
 --
 -- Indexes for dumped tables

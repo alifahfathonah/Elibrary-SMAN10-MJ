@@ -100,6 +100,9 @@
 							<div class="row container-fluid bg-dark">
 								<embed src="<?= base_url('assets/buku/file/'.$buku->file) ?>#view=FitV"  height="450px"></emded>
 							</div>
+							<div class="row mt-4">
+								<a href="<?= base_url('assets/buku/file/'.$buku->file) ?>" target="_blank" class="btn btn-secondary">Preview</a>
+							</div>
 						</div>
 					</div>
 					<?php else : ?>

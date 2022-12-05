@@ -7,7 +7,7 @@
 		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 			<div class="navbar-nav ms-auto">
 				<a class="nav-link fw-bold <?php if($this->uri->segment(1) == '' ) echo 'active' ?>"" href="<?= base_url() ?>">Home</a>
-				<a class="nav-link fw-bold <?php if($this->uri->segment(1) == '#galeri' ) echo 'active text-white' ?>"" href="<?= base_url() ?>#galeri">Galeri</a>
+				<!-- <a class="nav-link fw-bold <?php if($this->uri->segment(1) == '#galeri' ) echo 'active text-white' ?>"" href="<?= base_url() ?>#galeri">Galeri</a> -->
 				<a class="nav-link fw-bold <?php if($this->uri->segment(1) == '#lokasi' ) echo 'active text-white' ?>"" href="<?= base_url() ?>#lokasi">Lokasi</a>
 				<a class="nav-link fw-bold <?php if($this->uri->segment(1) == 'buku' ) echo 'active text-white' ?>" href="<?= base_url('buku') ?>">E-Library</a>
 				<?php if(!check_user_login()) :  ?>
