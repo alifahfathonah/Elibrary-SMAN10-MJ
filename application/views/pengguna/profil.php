@@ -85,7 +85,7 @@
 				<?= $this->session->flashdata('msg') ?>
 			</div>
 		</div>
-		<div class="row mt-4 mb-4">
+		<!-- <div class="row mt-4 mb-4">
 			<div class="col-md-12">
 				<ul class="nav nav-tabs" id="myTab" role="tablist">
 					<li class="nav-item" role="presentation">
@@ -292,7 +292,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 	</div>
 </div>
 

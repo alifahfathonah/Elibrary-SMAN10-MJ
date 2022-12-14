@@ -117,7 +117,7 @@
 		</div>
 	</div>
 
-	<div class="container mt-5">
+	<!-- <div class="container mt-5">
 		<div class="mb-4">
 			<div class="row">
 				<h4 class="fw-bold text-dark">KOLEKSI POPULER</h4>
@@ -140,7 +140,7 @@
 				<?php endforeach ?>
 			</div>
 		</div>
-	</div>
+	</div> -->
 
 	<?php foreach($koleksi_kategori as $key => $value) : ?>
 	<div class="container mt-5">

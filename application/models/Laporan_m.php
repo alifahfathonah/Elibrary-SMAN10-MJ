@@ -36,6 +36,12 @@ class Laporan_m extends CI_Model
         return $this->_getCount('user');
     }
 
+    public function getJumlahAdmin()
+    {
+        $this->db->where('role', 'admin');
+        return $this->_getCount('user');
+    }
+
     public function getJumlahKategori()
     {
         return $this->_getCount('kategori');

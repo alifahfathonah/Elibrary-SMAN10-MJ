@@ -10,7 +10,7 @@ class Pengguna extends CI_Controller
         check_admin_not_login();
 
         $this->load->model('pengguna_m');
-        $this->load->model('transaksi_m');
+        // $this->load->model('transaksi_m');
     }
 
     public function index()
@@ -97,8 +97,8 @@ class Pengguna extends CI_Controller
 
         $data = [
             'user' => $this->pengguna_m->getUser($this->session->userdata('id_user'))[0],
-            'peminjaman' => $this->transaksi_m->getPeminjamanDistinctUser($this->session->userdata('id_user')),
-            'pengembalian' => $this->transaksi_m->getPengembalianDistinctUser($this->session->userdata('id_user')),
+            // 'peminjaman' => $this->transaksi_m->getPeminjamanDistinctUser($this->session->userdata('id_user')),
+            // 'pengembalian' => $this->transaksi_m->getPengembalianDistinctUser($this->session->userdata('id_user')),
         ];
 
         $this->template->load('template/template','pengguna/profil',$data);
@@ -110,8 +110,8 @@ class Pengguna extends CI_Controller
         if ($id != null) {
             $data = [
                 'user' => $this->pengguna_m->getUser($id)[0],
-                'peminjaman' => $this->transaksi_m->getPeminjamanDistinctUser($id),
-                'pengembalian' => $this->transaksi_m->getPengembalianDistinctUser($id),
+                // 'peminjaman' => $this->transaksi_m->getPeminjamanDistinctUser($id),
+                // 'pengembalian' => $this->transaksi_m->getPengembalianDistinctUser($id),
             ];
     
             $this->template->load('template/template','pengguna/profil',$data);

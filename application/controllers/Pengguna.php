@@ -9,7 +9,7 @@ class Pengguna extends CI_Controller
         parent::__construct();
         
         $this->load->model('pengguna_m');
-        $this->load->model('transaksi_m');
+        // $this->load->model('transaksi_m');
         $this->load->model('buku_m');
         check_anggota_not_login();
 
@@ -44,8 +44,8 @@ class Pengguna extends CI_Controller
         
         $data = [
             'user' => $this->pengguna_m->getUser($this->session->userdata('id_user'))[0],
-            'peminjaman' => $this->transaksi_m->getPeminjamanDistinctUser($this->session->userdata('id_user')),
-            'pengembalian' => $this->transaksi_m->getPengembalianDistinctUser($this->session->userdata('id_user')),
+            // 'peminjaman' => $this->transaksi_m->getPeminjamanDistinctUser($this->session->userdata('id_user')),
+            // 'pengembalian' => $this->transaksi_m->getPengembalianDistinctUser($this->session->userdata('id_user')),
         ];
 
         $this->template->load('template_home/template_home','pengguna/profil',$data);

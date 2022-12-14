@@ -39,7 +39,7 @@
 					<span class="nav-link-text ms-1">Kategori Buku</span>
 				</a>
 			</li>
-      <li class="nav-item mt-3">
+      <!-- <li class="nav-item mt-3">
 				<h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Transaksi</h6>
 			</li>
 			<li class="nav-item">
@@ -68,7 +68,7 @@
 					</div>
 					<span class="nav-link-text ms-1">Cetak Laporan</span>
 				</a>
-			</li>
+			</li> -->
 			<?php //if(is_admin()) : ?>
 			<li class="nav-item mt-3">
 				<h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Pengaturan</h6>
@@ -81,14 +81,14 @@
 					<span class="nav-link-text ms-1">User Management</span>
 				</a>
 			</li>
-			<li class="nav-item">
+			<!-- <li class="nav-item">
 				<a class="nav-link text-white <?php if($this->uri->segment(3) == 'denda') echo 'active bg-gradient-primary' ?>" href="<?= base_url('admin/data/denda') ?>">
 					<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
 						<i class="material-icons opacity-10" translate="no">local_atm</i>
 					</div>
 					<span class="nav-link-text ms-1">Denda</span>
 				</a>
-			</li>
+			</li> -->
 			<?php //endif ?>
 		</ul>
 	</div>

@@ -15,7 +15,7 @@ class Home extends CI_Controller
         $data = [
             'koleksi' => $this->buku_m->getKoleksi(),
             'koleksi_terbaru' => $this->buku_m->getKoleksiTerbaru(),
-            'koleksi_populer' => $this->buku_m->getKoleksiPopuler(),
+            // 'koleksi_populer' => $this->buku_m->getKoleksiPopuler(),
             'koleksi_kategori' => $this->buku_m->getKoleksiKategori(),
 
 

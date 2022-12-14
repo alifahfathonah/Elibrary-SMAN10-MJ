@@ -18,24 +18,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-			<div class="card">
-				<div class="card-header p-3 pt-2">
-					<div
-						class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
-						<i class="material-icons opacity-10" translate="no">receipt</i>
-					</div>
-					<div class="text-end pt-1">
-						<p class="text-sm mb-0 text-capitalize">Pinjam</p>
-						<h4 class="mb-0"><?= number_format($pinjam  ?? 0) ?></h4>
-					</div>
-				</div>
-				<hr class="dark horizontal my-0">
-				<div class="card-footer p-3 text-center">
-					<a href="<?= base_url('admin/transaksi/peminjaman') ?>">Lihat Selengkapnya <i class="material-icons opacity-10 align-middle" translate="no">visibility</i></a>
-				</div>
-			</div>
-		</div>
+		
 		<div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
 			<div class="card">
 				<div class="card-header p-3 pt-2">
@@ -51,6 +34,24 @@
 				<hr class="dark horizontal my-0">
 				<div class="card-footer p-3 text-center">
 					<a href="<?= base_url('admin/data/kategori') ?>">Lihat Selengkapnya <i class="material-icons opacity-10 align-middle" translate="no">visibility</i></a>
+				</div>
+			</div>
+		</div>
+		<div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+			<div class="card">
+				<div class="card-header p-3 pt-2">
+					<div
+						class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
+						<i class="material-icons opacity-10" translate="no">people</i>
+					</div>
+					<div class="text-end pt-1">
+						<p class="text-sm mb-0 text-capitalize">Admin</p>
+						<h4 class="mb-0"><?= number_format($admin  ?? 0) ?></h4>
+					</div>
+				</div>
+				<hr class="dark horizontal my-0">
+				<div class="card-footer p-3 text-center">
+					<a href="<?= base_url('admin/pengguna') ?>">Lihat Selengkapnya <i class="material-icons opacity-10 align-middle" translate="no">visibility</i></a>
 				</div>
 			</div>
 		</div>
@@ -74,7 +75,7 @@
 		</div>
 	</div>
 	
-	<div class="row mb-4 mt-4">
+	<!-- <div class="row mb-4 mt-4">
 		<div class="card my-4">
 			<div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
 				<div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
@@ -186,7 +187,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	
 </div>
 
