@@ -246,7 +246,7 @@ class Data extends CI_Controller
 
         $config['upload_path'] = './assets/buku/file/';
         $config['allowed_types'] = 'pdf|doc|docx|png|jpg|jpeg';
-        $config['max_size'] = 4096;
+        $config['max_size'] = 14096;
         $config['file_name'] = 'file-'.date('ymd').time();
         $this->load->library('upload', $config);
         $this->upload->initialize($config);

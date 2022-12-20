@@ -4,7 +4,7 @@
 	<div class="sidenav-header">
 		<i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
 			aria-hidden="true" id="iconSidenav"></i>
-		<a class="navbar-brand m-0" href="<?= base_url('dashboard') ?>">
+		<a class="navbar-brand m-0" href="<?= base_url('admin/dashboard') ?>">
 			<img src="<?= base_url('assets/img/icon/LOGO_SMAN_10-removebg-preview.png') ?>" class="navbar-brand-img h-100" alt="main_logo">
 			<span class="font-weight-bold ms-2 text-white" translate="no">E-Library</span>
 		</a>
